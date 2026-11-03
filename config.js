@@ -1,6 +1,6 @@
 // Налаштування. Змініть тільки OWNER і REPO (решта зазвичай не потрібна).
 window.FS_CONFIG = {
-  OWNER: "ваш-логін-github",   // ваш логін на GitHub
+  OWNER: "mazurvalera7-prog",   // ваш логін на GitHub
   REPO: "fs23-modhub",         // назва репозиторію
   BRANCH: "main",              // гілка, з якої працює GitHub Pages
   RELEASE_TAG: "mods",         // у цей релиз завантажуються ZIP-файли
