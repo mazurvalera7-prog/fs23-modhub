@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FS23 ModHub</title>
+<meta name="description" content="Моди для Farming Simulator 23. У грі вони підтягуються автоматично.">
+<style>
+  :root { --bg:#12161b; --card:#1b222a; --line:#2a343f; --text:#e8edf2; --mute:#8d9aa8; --acc:#6cc04a; --accd:#10200a; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  header { max-width:1100px; margin:0 auto; padding:22px 16px 6px; }
+  h1 { margin:0; font-size:26px; letter-spacing:.2px; }
+  h1 span { color:var(--acc); }
+  .sub { color:var(--mute); margin:4px 0 0; }
+  .bar { position:sticky; top:0; z-index:5; background:linear-gradient(var(--bg) 80%, transparent); padding:12px 16px 8px; }
+  .bar > div { max-width:1100px; margin:0 auto; display:flex; gap:10px; flex-wrap:wrap; }
+  input, select { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font:inherit; min-width:0; }
+  input { flex:1 1 220px; }
+  select { flex:0 1 220px; }
+  main { max-width:1100px; margin:0 auto; padding:6px 16px 40px; display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; transition:border-color .15s, transform .15s; }
+  .card:hover { border-color:var(--acc); transform:translateY(-2px); }
+  .img { aspect-ratio:16/9; background:#0c0f13 center/cover no-repeat; }
+  .body { padding:12px 14px 14px; display:flex; flex-direction:column; gap:5px; flex:1; }
+  .t { font-weight:650; }
+  .m { color:var(--mute); font-size:14px; }
+  .d { color:var(--mute); font-size:14px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; white-space:pre-line; }
+  .btn { display:inline-block; text-align:center; background:var(--acc); color:var(--accd); font-weight:650; padding:10px 14px; border-radius:10px; text-decoration:none; border:0; font:inherit; font-weight:650; cursor:pointer; }
+  .btn:hover { filter:brightness(1.08); }
+  .card .btn { margin-top:auto; }
+  .tag { display:inline-block; background:#24303b; border-radius:999px; padding:1px 10px; font-size:13px; color:#b9c6d3; }
+  .empty { grid-column:1/-1; text-align:center; color:var(--mute); padding:60px 0; }
+  footer { text-align:center; color:var(--mute); padding:0 16px 28px; font-size:14px; }
+  /* вікно мода */
+  dialog { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:16px; padding:0; width:min(680px, calc(100vw - 24px)); max-height:calc(100vh - 24px); overflow:auto; }
+  dialog::backdrop { background:rgba(0,0,0,.65); }
+  .dh { aspect-ratio:16/9; background:#0c0f13 center/cover no-repeat; }
+  .db { padding:16px; display:flex; flex-direction:column; gap:10px; }
+  .db h2 { margin:0; font-size:22px; }
+  .db .desc { white-space:pre-line; color:#cdd6df; }
+  .shots { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
+  .shots img { height:110px; border-radius:8px; border:1px solid var(--line); }
+  .row { display:flex; gap:10px; flex-wrap:wrap; }
+  .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <h1>FS23 <span>ModHub</span></h1>
+  <p class="sub">Моди для Farming Simulator 23. У грі вони підтягуються автоматично.</p>
+</header>
+<div class="bar"><div>
+  <input id="q" type="search" placeholder="Пошук за назвою або автором" autocomplete="off">
+  <select id="cat"><option value="">Усі категорії</option></select>
+</div></div>
+<main id="list"><div class="empty">Завантаження…</div></main>
+<footer id="count"></footer>
+
+<dialog id="dlg">
+  <div class="dh" id="dh"></div>
+  <div class="db" id="db"></div>
+</dialog>
+
+<script src="config.js"></script>
+<script src="shared.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " МБ" : Math.max(1, Math.round(b / 1024)) + " КБ";
+const catTitle = Object.fromEntries(FS.CATEGORIES.map((c) => [c.name, c.title]));
+const nl = (s) => String(s || "").replace(/\\n/g, "\n");
+// шлях картинки зі сховища -> безпечний відносний URL
+const imgUrl = (p) => p ? p.split("/").map(encodeURIComponent).join("/") : "";
+const safeHref = (u) => /^https:\/\//.test(u) ? u : "#";
+let mods = [];
+
+function render() {
+  const q = $("q").value.trim().toLowerCase(), c = $("cat").value;
+  const rows = mods.map((m, i) => ({ m, i })).filter(({ m }) =>
+    (!c || m.category === c) && (!q || ((m.title || "") + " " + (m.author || "")).toLowerCase().includes(q)));
+  $("list").innerHTML = rows.length ? rows.map(({ m, i }) => `
+    <article class="card" data-i="${i}">
+      <div class="img" style="${m.image ? `background-image:url('${esc(imgUrl(m.image))}')` : ""}"></div>
+      <div class="body">
+        <div class="t">${esc(m.title)}</div>
+        <div class="m"><span class="tag">${esc(catTitle[m.category] || m.category)}</span> v${esc(m.version)} · ${fmt(m.size || 0)}</div>
+        ${m.author ? `<div class="m">Автор: ${esc(m.author)}</div>` : ""}
+        <div class="d">${esc(nl(m.description))}</div>
+        <a class="btn" href="${esc(safeHref(m.downloadUrl))}" data-dl>Завантажити</a>
+      </div>
+    </article>`).join("") : '<div class="empty">Нічого не знайдено</div>';
+  $("count").textContent = mods.length ? `Показано ${rows.length} з ${mods.length}` : "";
+}
+
+function openMod(i) {
+  const m = mods[i]; if (!m) return;
+  $("dh").style.backgroundImage = m.image ? `url('${imgUrl(m.image)}')` : "none";
+  $("db").innerHTML = `
+    <h2>${esc(m.title)}</h2>
+    <div class="m"><span class="tag">${esc(catTitle[m.category] || m.category)}</span> v${esc(m.version)} · ${fmt(m.size || 0)}${m.author ? " · " + esc(m.author) : ""}</div>
+    <div class="desc">${esc(nl(m.description))}</div>
+    ${(m.screenshots || []).length ? `<div class="shots">${m.screenshots.map((s) => `<img src="${esc(imgUrl(s))}" loading="lazy" alt="">`).join("")}</div>` : ""}
+    <div class="row"><a class="btn" href="${esc(safeHref(m.downloadUrl))}">Завантажити ZIP</a><button class="btn ghost" id="close">Закрити</button></div>`;
+  $("close").onclick = () => $("dlg").close();
+  $("dlg").showModal();
+}
+
+$("list").addEventListener("click", (e) => {
+  if (e.target.closest("[data-dl]")) return; // кнопка «Завантажити» працює як звичайне посилання
+  const card = e.target.closest(".card"); if (card) openMod(Number(card.dataset.i));
+});
+$("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
+$("q").addEventListener("input", render);
+$("cat").addEventListener("change", render);
+
+fetch("mods.json?t=" + Date.now(), { cache: "no-store" })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((j) => {
+    mods = j.mods || [];
+    const used = new Set(mods.map((x) => x.category));
+    FS.CATEGORIES.filter((x) => used.has(x.name)).forEach((x) => $("cat").insertAdjacentHTML("beforeend", `<option value="${x.name}">${esc(x.title)}</option>`));
+    render();
+  })
+  .catch(() => { $("list").innerHTML = '<div class="empty">Не вдалося завантажити список модів</div>'; });
+</script>
+</body>
+</html>
