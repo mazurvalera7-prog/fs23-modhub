@@ -63,6 +63,7 @@
       <label>ZIP мода</label>
       <input type="file" id="zip" accept=".zip,application/zip">
       <div class="hint">Назва файлу латиницею, без пробілів. Файл до 60 МБ збережеться прямо в репозиторії й буде качатися з вашого сайту.</div>
+      <div class="hint" id="autoInfo"></div>
       <label>…або посилання на ZIP, який уже лежить десь (замість файлу)</label>
       <input id="zipurl" type="url" placeholder="https://…/мод.zip">
       <div class="row">
@@ -229,6 +230,143 @@ function putFileProgress(path, b64, message, onProgress) {
   });
 }
 
+// ---------- дані мода з ZIP: modDesc.xml та іконка (читаємо лише потрібні шматки файлу) ----------
+const u16 = (v, o) => v.getUint16(o, true), u32 = (v, o) => v.getUint32(o, true);
+async function sliceBuf(file, a, b) { return new DataView(await file.slice(a, b).arrayBuffer()); }
+async function readZipDirectory(file) {
+  const tailLen = Math.min(file.size, 65557 + 22);
+  const tailStart = file.size - tailLen;
+  const tail = await sliceBuf(file, tailStart, file.size);
+  let e = -1;
+  for (let i = tail.byteLength - 22; i >= 0; i--) { if (u32(tail, i) === 0x06054b50) { e = i; break; } }
+  if (e < 0) throw new Error("Це не схоже на ZIP");
+  let count = u16(tail, e + 10), cdSize = u32(tail, e + 12), cdOff = u32(tail, e + 16);
+  if (cdOff === 0xFFFFFFFF || cdSize === 0xFFFFFFFF || count === 0xFFFF) { // ZIP64
+    const loc = tailStart + e - 20;
+    const l = await sliceBuf(file, loc, loc + 20);
+    if (u32(l, 0) !== 0x07064b50) throw new Error("Непідтримуваний ZIP64");
+    const r64 = Number(l.getBigUint64(8, true));
+    const z = await sliceBuf(file, r64, r64 + 56);
+    count = Number(z.getBigUint64(32, true)); cdSize = Number(z.getBigUint64(40, true)); cdOff = Number(z.getBigUint64(48, true));
+  }
+  const cd = await sliceBuf(file, cdOff, cdOff + cdSize);
+  const dec = new TextDecoder();
+  const entries = [];
+  let p = 0;
+  while (p + 46 <= cd.byteLength && u32(cd, p) === 0x02014b50) {
+    const flags = u16(cd, p + 8), method = u16(cd, p + 10);
+    let csize = u32(cd, p + 20), usize = u32(cd, p + 24), nlen = u16(cd, p + 28), xlen = u16(cd, p + 30), clen = u16(cd, p + 32), off = u32(cd, p + 42);
+    const name = dec.decode(new Uint8Array(cd.buffer, cd.byteOffset + p + 46, nlen));
+    if (usize === 0xFFFFFFFF || csize === 0xFFFFFFFF || off === 0xFFFFFFFF) {
+      let x = p + 46 + nlen; const xend = x + xlen;
+      while (x + 4 <= xend) {
+        const id = u16(cd, x), sz = u16(cd, x + 2);
+        if (id === 1) { let q = x + 4; if (usize === 0xFFFFFFFF) { usize = Number(cd.getBigUint64(q, true)); q += 8; } if (csize === 0xFFFFFFFF) { csize = Number(cd.getBigUint64(q, true)); q += 8; } if (off === 0xFFFFFFFF) { off = Number(cd.getBigUint64(q, true)); } }
+        x += 4 + sz;
+      }
+    }
+    entries.push({ name, method, csize, usize, off, flags });
+    p += 46 + nlen + xlen + clen;
+  }
+  return entries;
+}
+async function readZipEntry(file, entry, maxBytes = 8 * 1048576) {
+  if (entry.usize > maxBytes) throw new Error("Файл у архіві завеликий");
+  const h = await sliceBuf(file, entry.off, entry.off + 30);
+  if (u32(h, 0) !== 0x04034b50) throw new Error("Пошкоджений ZIP");
+  const start = entry.off + 30 + u16(h, 26) + u16(h, 28);
+  const blob = file.slice(start, start + entry.csize);
+  if (entry.method === 0) return new Uint8Array(await blob.arrayBuffer());
+  if (entry.method !== 8) throw new Error("Непідтримуваний спосіб стиснення");
+  if (typeof DecompressionStream === "undefined") throw new Error("Браузер не вміє розпаковувати ZIP");
+  const stream = blob.stream().pipeThrough(new DecompressionStream("deflate-raw"));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+// DDS (DXT1/3/5, RGBA без стиснення) -> PNG blob: більшість іконок модів саме в цьому форматі
+async function ddsToBlob(bytes) {
+  const v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  if (v.getUint32(0, true) !== 0x20534444) throw new Error("Не DDS");
+  const h = v.getUint32(12, true), w = v.getUint32(16, true);
+  const pfFlags = v.getUint32(80, true), fourCC = String.fromCharCode(...bytes.slice(84, 88));
+  if (w < 1 || h < 1 || w > 4096 || h > 4096) throw new Error("Дивний розмір");
+  const out = new Uint8ClampedArray(w * h * 4);
+  const c565 = (c) => [((c >> 11) & 31) * 255 / 31, ((c >> 5) & 63) * 255 / 63, (c & 31) * 255 / 31];
+  if (pfFlags & 4) { // стиснений формат
+    const bs = fourCC === "DXT1" ? 8 : 16;
+    if (!["DXT1", "DXT3", "DXT5"].includes(fourCC)) throw new Error("Формат " + fourCC + " не підтримується");
+    let p = 128;
+    for (let by = 0; by < h; by += 4) for (let bx = 0; bx < w; bx += 4) {
+      const cp = p + (bs === 8 ? 0 : 8);
+      const c0 = v.getUint16(cp, true), c1 = v.getUint16(cp + 2, true), bits = v.getUint32(cp + 4, true);
+      const a = c565(c0), b = c565(c1), pal = [a, b];
+      if (c0 > c1 || bs === 16) { pal.push(a.map((x, i) => (2 * x + b[i]) / 3), a.map((x, i) => (x + 2 * b[i]) / 3)); }
+      else { pal.push(a.map((x, i) => (x + b[i]) / 2), [0, 0, 0]); }
+      let alpha = null;
+      if (fourCC === "DXT5") {
+        const a0 = v.getUint8(p), a1 = v.getUint8(p + 1), al = [a0, a1];
+        if (a0 > a1) for (let i = 1; i < 7; i++) al.push(((7 - i) * a0 + i * a1) / 7); else { for (let i = 1; i < 5; i++) al.push(((5 - i) * a0 + i * a1) / 5); al.push(0, 255); }
+        let lo = BigInt(v.getUint32(p + 2, true)) | (BigInt(v.getUint16(p + 6, true)) << 32n);
+        alpha = []; for (let i = 0; i < 16; i++) { alpha.push(al[Number(lo & 7n)]); lo >>= 3n; }
+      } else if (fourCC === "DXT3") {
+        alpha = []; for (let i = 0; i < 16; i++) { const byte = v.getUint8(p + (i >> 1)); alpha.push(((i & 1) ? byte >> 4 : byte & 15) * 17); }
+      }
+      for (let i = 0; i < 16; i++) {
+        const x = bx + (i & 3), y = by + (i >> 2);
+        if (x >= w || y >= h) continue;
+        const col = pal[(bits >> (2 * i)) & 3], o = (y * w + x) * 4;
+        out[o] = col[0]; out[o + 1] = col[1]; out[o + 2] = col[2];
+        out[o + 3] = alpha ? alpha[i] : (c0 <= c1 && ((bits >> (2 * i)) & 3) === 3 ? 0 : 255);
+      }
+      p += bs;
+    }
+  } else if (pfFlags & 0x40) { // RGB(A) без стиснення
+    const bpp = v.getUint32(88, true) / 8, rm = v.getUint32(92, true), gm = v.getUint32(96, true), bm = v.getUint32(100, true), am = v.getUint32(104, true);
+    const ch = (px, m) => { if (!m) return 255; let s = 0; while (!((m >>> s) & 1)) s++; const bits = 32 - Math.clz32(m >>> s); return ((px & m) >>> s) * 255 / ((1 << bits) - 1); };
+    for (let i = 0; i < w * h; i++) {
+      let px = 0; for (let k = 0; k < bpp; k++) px |= v.getUint8(128 + i * bpp + k) << (8 * k);
+      out[i * 4] = ch(px, rm); out[i * 4 + 1] = ch(px, gm); out[i * 4 + 2] = ch(px, bm); out[i * 4 + 3] = am ? ch(px, am) : 255;
+    }
+  } else throw new Error("Формат DDS не підтримується");
+  const cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+  cv.getContext("2d").putImageData(new ImageData(out, w, h), 0, 0);
+  return await new Promise((res) => cv.toBlob(res, "image/png"));
+}
+function textOf(el) { return el ? (el.textContent || "").trim() : ""; }
+function l10nText(parent, tag) {
+  const el = parent.getElementsByTagName(tag)[0];
+  if (!el) return "";
+  if (!el.children.length) return textOf(el);
+  const en = el.getElementsByTagName("en")[0];
+  return textOf(en || el.children[0]);
+}
+async function readModInfo(file) {
+  const entries = await readZipDirectory(file);
+  const norm = (n) => n.replace(/\\/g, "/");
+  const descEntry = entries.find((e) => norm(e.name).toLowerCase() === "moddesc.xml");
+  if (!descEntry) throw new Error("У ZIP немає modDesc.xml (мод у вкладеній папці?)");
+  const xml = new DOMParser().parseFromString(new TextDecoder().decode(await readZipEntry(file, descEntry)), "text/xml");
+  if (xml.getElementsByTagName("parsererror").length) throw new Error("modDesc.xml не читається");
+  const root = xml.documentElement;
+  const info = { title: l10nText(root, "title"), author: textOf(root.getElementsByTagName("author")[0]), version: textOf(root.getElementsByTagName("version")[0]), description: l10nText(root, "description"), icon: null, iconName: "" };
+  info.description = info.description.replace(/\r/g, "").replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+  const iconName = textOf(root.getElementsByTagName("iconFilename")[0]);
+  if (iconName) {
+    const want = norm(iconName).toLowerCase();
+    const alt = want.replace(/\.dds$/, ".png");
+    const ie = entries.find((e) => norm(e.name).toLowerCase() === want) || entries.find((e) => norm(e.name).toLowerCase() === alt);
+    if (ie) {
+      try {
+        const bytes = await readZipEntry(file, ie);
+        const low = norm(ie.name).toLowerCase();
+        info.icon = low.endsWith(".dds") ? await ddsToBlob(bytes) : new Blob([bytes], { type: low.endsWith(".png") ? "image/png" : low.endsWith(".webp") ? "image/webp" : "image/jpeg" });
+        info.iconName = ie.name;
+      } catch (err) { info.iconError = err.message; }
+    }
+  }
+  return info;
+}
+let autoIcon = null;
+
 // ---------- зображення ----------
 async function prepImage(file) {
   try {
@@ -284,6 +422,20 @@ $("list").addEventListener("click", async (e) => {
   loadList();
 });
 
+$("zip").addEventListener("change", async () => {
+  autoIcon = null; $("autoInfo").textContent = "";
+  const f = $("zip").files[0]; if (!f) return;
+  $("autoInfo").textContent = "Читаю modDesc.xml з ZIP…";
+  try {
+    const info = await readModInfo(f);
+    if (!$("title").value.trim() && info.title) $("title").value = info.title.slice(0, 80);
+    if (!$("author").value.trim() && info.author) $("author").value = info.author.slice(0, 60);
+    if (info.version && (!$("version").value.trim() || $("version").value === "1.0.0.0")) $("version").value = info.version.slice(0, 20);
+    if (!$("description").value.trim() && info.description) $("description").value = info.description.slice(0, 1500);
+    autoIcon = info.icon ? new File([info.icon], "icon.png", { type: info.icon.type }) : null;
+    $("autoInfo").textContent = "З modDesc.xml підставлено: назву, автора, версію, опис" + (autoIcon ? ", іконку (" + info.iconName + ")" : info.iconError ? ". Іконку не вдалося прочитати: " + info.iconError : ". Іконки в моді не знайдено") + ". Усе можна змінити.";
+  } catch (err) { $("autoInfo").textContent = "Не вдалося прочитати дані з ZIP: " + err.message + ". Заповніть поля вручну."; }
+});
 $("zipurl").addEventListener("input", () => { $("sizeRow").style.display = $("zipurl").value.trim() ? "" : "none"; });
 
 $("f").addEventListener("submit", async (e) => {
@@ -295,7 +447,7 @@ $("f").addEventListener("submit", async (e) => {
   if (zip && !/\.zip$/i.test(zip.name)) return logLine("Потрібен файл .zip", "err");
   if (!title) return logLine("Вкажіть назву", "err");
 
-  const image = $("image").files[0], shots = [...$("shots").files].slice(0, 4);
+  const image = $("image").files[0] || autoIcon, shots = [...$("shots").files].slice(0, 4);
   const go = $("go"), pr = $("pr");
   go.disabled = true; pr.style.display = "block"; pr.value = 0;
   const written = []; // зображення, записані в репозиторій (для відкату)
@@ -340,7 +492,7 @@ $("f").addEventListener("submit", async (e) => {
     }, `Додано мод ${title}`);
     pr.value = 100;
     logLine("Готово: мод додано в каталог. Сайт оновиться за 1–2 хвилини.", "ok");
-    $("f").reset(); $("version").value = "1.0.0.0"; $("sizeRow").style.display = "none";
+    $("f").reset(); autoIcon = null; $("autoInfo").textContent = ""; $("version").value = "1.0.0.0"; $("sizeRow").style.display = "none";
     loadList();
   } catch (err) {
     for (const p of written) { try { await deleteFile(p, "Відкат зображення"); } catch {} }
