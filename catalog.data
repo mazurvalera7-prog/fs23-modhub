@@ -1,1 +1,15 @@
-count=0
+count=1
+mod0_title=Fendt 900 Vario Series
+mod0_author=Schnibbl Modding
+mod0_version=2.0.0.1
+mod0_category=tractorsM
+mod0_filename=FS22_FendtVario_900Gen7.zip
+mod0_sha256=1fe459248263f54f1ea68de36fc743cc2d6649b46ec0fa7b892cb4e4d9d055ab
+mod0_size=32578536
+mod0_downloadUrl=https://mazurvalera7-prog.github.io/fs23-modhub/mods/FS22_FendtVario_900Gen7.zip
+mod0_imageUrl=https://mazurvalera7-prog.github.io/fs23-modhub/images/fendt-900-vario-series-59c617.jpg
+mod0_description=Fendt 900 Vario Series Gen6\nBase price: 262,656 $\nPower: 296 hp\n\nFendt 900 Vario Series Gen7\nBase price: 266,500 $\nPower: 296 hp\n\nConfigurations:\n- Tire configuration\n- Beacon Lights\n- Warning Signs\n- Main Body Color\n- Rim color\n- Design\n- Line\n\nEngine configuration:\n- Vario 930 (296 hp)\n- Vario 933 (326 hp)\n- Vario 936 (355 hp)\n- Vario 939 (385 hp)\n- Vario 942 (415 hp)\n\nAnimation (Mouse control):\n- The door can be opened/closed by pressing both mouse buttons left/right\n- The rear window can be opened/closed with the push of the two mouse buttons backwards/forwards\n- The roof window can be opened/closed with the mouse wheel\n\nChangelog 1.1.0.0:\n- Indicators placed in the correct position\n- Light set to correct position\n- Animated fan\n- Added Power, Power+, Profi and Profi+\n- Fixed visual flaws\n- Added Fendt 900 Vario Gen6\n- Addes isoBus function\n\nChangelog 1.1.1.0:\n- added 'interactive control' support (Requires 'FS22_interactiveControl')\n- 'mouse control' or 'interactive control' can be configured (for consoles)\n\nChangelog 2.0.0.0:\n- Fixed steering console (Only when playing without 'Interactive Control')\n- Fixed left beacon when not selected\n- Completely new interior decals in the 900 Gen6\n- Decals in the 900 Gen7 completely revised\n- Added Darkmode for both generations\n- Halogen or LED configuration for the light package\n- New tractor sound\n\nChangelog 2.0.0.1:\n- Added realistic rims\n- Fixed some smaller issues
+mod0_screenshot1Url=
+mod0_screenshot2Url=
+mod0_screenshot3Url=
+mod0_screenshot4Url=
