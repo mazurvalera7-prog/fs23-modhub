@@ -14,6 +14,21 @@
       "image": "images/gaz-53-b075ea.jpg",
       "screenshots": [],
       "createdAt": "2026-11-08T08:15:16.825Z"
+    },
+    {
+      "title": "HTZ 17221-21",
+      "author": "XTZ17221-21",
+      "version": "1.5.5.0",
+      "category": "tractorsM",
+      "description": "Model: 17221-21\nStandard engine: YAMZ-238\nPrice: 41000 €\nMax. power: 240 hp\nMax. speed: 40 kph",
+      "filename": "FS22_HTZ_17221_NEW.zip",
+      "size": 58190746,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_HTZ_17221_NEW.zip",
+      "zipPath": null,
+      "image": "images/htz-17221-21-60c3d3.jpg",
+      "screenshots": [],
+      "createdAt": "2026-11-08T11:06:25.313Z"
     }
   ]
 }
