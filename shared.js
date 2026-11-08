@@ -29,6 +29,13 @@
     { name: "misc", title: "Різне" },
   ];
 
+  // назва категорії на сайті -> файл іконки в icons/ (де назви збігаються, окремо вказувати не треба)
+  const ICON_ALIAS = { seeders: "sowingMachines", palletHandling: "pallets", woodHarvesting: "wood", placeables: "sheds", wheelLoaderVehicles: "wheelLoaders" };
+  function categoryIcon(name) {
+    const f = ICON_ALIAS[name] || name;
+    return /^[A-Za-z0-9_]+$/.test(f) ? "icons/" + f + ".png" : "";
+  }
+
   function siteUrl(cfg) {
     const u = (cfg.SITE_URL || `https://${cfg.OWNER}.github.io/${cfg.REPO}`).replace(/\/+$/, "");
     return u;
@@ -150,6 +157,6 @@
     return s.hex();
   }
 
-  root.FS = { CATEGORIES, siteUrl, cleanValue, buildCatalog, Sha256, sha256File };
+  root.FS = { CATEGORIES, categoryIcon, siteUrl, cleanValue, buildCatalog, Sha256, sha256File };
   if (typeof module !== "undefined") module.exports = root.FS;
 })(typeof window !== "undefined" ? window : globalThis);
