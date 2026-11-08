@@ -30,6 +30,7 @@
   .btn { display:inline-block; text-align:center; background:var(--acc); color:var(--accd); font-weight:650; padding:10px 14px; border-radius:10px; text-decoration:none; border:0; font:inherit; font-weight:650; cursor:pointer; }
   .btn:hover { filter:brightness(1.08); }
   .card .btn { margin-top:auto; }
+  .tag img { width:18px; height:18px; vertical-align:-4px; margin-right:5px; }
   .tag { display:inline-block; background:#24303b; border-radius:999px; padding:1px 10px; font-size:13px; color:#b9c6d3; }
   .empty { grid-column:1/-1; text-align:center; color:var(--mute); padding:60px 0; }
   footer { text-align:center; color:var(--mute); padding:0 16px 28px; font-size:14px; }
@@ -69,6 +70,7 @@
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " МБ" : Math.max(1, Math.round(b / 1024)) + " КБ";
+function tagHtml(m) { const ic = FS.categoryIcon(m.category); return `<span class="tag">${ic ? `<img src="${esc(ic)}" alt="" onerror="this.remove()">` : ""}${esc(catTitle[m.category] || m.category)}</span>`; }
 const catTitle = Object.fromEntries(FS.CATEGORIES.map((c) => [c.name, c.title]));
 const nl = (s) => String(s || "").replace(/\\n/g, "\n");
 // шлях картинки зі сховища -> безпечний відносний URL
@@ -85,7 +87,7 @@ function render() {
       <div class="img" style="${m.image ? `background-image:url('${esc(imgUrl(m.image))}')` : ""}"></div>
       <div class="body">
         <div class="t">${esc(m.title)}</div>
-        <div class="m"><span class="tag">${esc(catTitle[m.category] || m.category)}</span> v${esc(m.version)} · ${fmt(m.size || 0)}</div>
+        <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}</div>
         ${m.author ? `<div class="m">Автор: ${esc(m.author)}</div>` : ""}
         <div class="d">${esc(nl(m.description))}</div>
         <a class="btn" href="${esc(safeHref(m.downloadUrl))}" data-dl>Завантажити</a>
@@ -99,7 +101,7 @@ function openMod(i) {
   $("dh").style.backgroundImage = m.image ? `url('${imgUrl(m.image)}')` : "none";
   $("db").innerHTML = `
     <h2>${esc(m.title)}</h2>
-    <div class="m"><span class="tag">${esc(catTitle[m.category] || m.category)}</span> v${esc(m.version)} · ${fmt(m.size || 0)}${m.author ? " · " + esc(m.author) : ""}</div>
+    <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}${m.author ? " · " + esc(m.author) : ""}</div>
     <div class="desc">${esc(nl(m.description))}</div>
     ${(m.screenshots || []).length ? `<div class="shots">${m.screenshots.map((s) => `<img src="${esc(imgUrl(s))}" loading="lazy" alt="">`).join("")}</div>` : ""}
     <div class="row"><a class="btn" href="${esc(safeHref(m.downloadUrl))}">Завантажити ZIP</a><button class="btn ghost" id="close">Закрити</button></div>`;
