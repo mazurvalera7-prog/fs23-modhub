@@ -94,6 +94,7 @@
 
     <h2>Моди в каталозі</h2>
     <div class="panel" id="list"></div>
+    <button type="button" id="rebuild" style="margin-top:10px">Оновити каталог для гри</button>
     <div class="hint" style="margin-top:10px">Після змін сайт GitHub Pages оновлюється приблизно за 1–2 хвилини.</div>
   </div>
 </div>
@@ -155,6 +156,26 @@ async function deleteFile(path, message) {
   await ghOk(`${RP}/contents/${encPath(path)}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message, sha: f.sha, branch: CFG.BRANCH }) });
 }
 
+// catalog.data пишемо окремо й з повторами, щоб конфлікт версій не лишав каталог застарілим
+async function writeCatalog(mods, message) {
+  for (let k = 0; k < 6; k++) {
+    try {
+      const c = await getFile("catalog.data");
+      await putFile("catalog.data", textToB64(FS.buildCatalog(mods, CFG)), c && c.sha, message);
+      return;
+    } catch (e) {
+      if ((e.status === 409 || e.status === 422) && k < 5) { await new Promise((r) => setTimeout(r, 700 * (k + 1))); continue; }
+      throw e;
+    }
+  }
+}
+async function rebuildCatalog() {
+  const f = await getFile("mods.json");
+  const mods = (f && f.text ? JSON.parse(f.text).mods : []) || [];
+  await writeCatalog(mods, "Оновлено каталог");
+  return mods.length;
+}
+
 // Змінює mods.json і одразу перегенерує catalog.data. Повторює спробу при конфлікті версій.
 async function updateDb(mutator, message) {
   for (let attempt = 0; attempt < 4; attempt++) {
@@ -164,8 +185,7 @@ async function updateDb(mutator, message) {
       db.mods = db.mods || [];
       await mutator(db);
       await putFile("mods.json", textToB64(JSON.stringify(db, null, 2) + "\n"), f && f.sha, message);
-      const c = await getFile("catalog.data");
-      await putFile("catalog.data", textToB64(FS.buildCatalog(db.mods, CFG)), c && c.sha, message);
+      await writeCatalog(db.mods, message);
       return db;
     } catch (e) {
       if ((e.status === 409 || e.status === 422) && attempt < 3) { await new Promise((r) => setTimeout(r, 600 * (attempt + 1))); continue; }
@@ -428,6 +448,13 @@ async function loadList() {
       </div>`).join("") : '<div class="m">Поки порожньо</div>';
   } catch (e) { $("list").innerHTML = `<div class="err">${esc(e.message)}</div>`; }
 }
+
+$("rebuild").addEventListener("click", async () => {
+  const b = $("rebuild"); b.disabled = true;
+  try { const n = await rebuildCatalog(); alert(`Каталог для гри оновлено (модів: ${n}). Сайт оновиться за 1–2 хвилини.`); }
+  catch (err) { alert(err.message); }
+  b.disabled = false;
+});
 
 $("list").addEventListener("click", async (e) => {
   const b = e.target.closest("button.del"); if (!b) return;
