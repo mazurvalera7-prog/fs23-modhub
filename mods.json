@@ -1,3 +1,19 @@
 {
-  "mods": []
+  "mods": [
+    {
+      "title": "GAZ 53",
+      "author": "Radichkov; FS19 SD Team; SJAY; ALCOfermer_152",
+      "version": "1.0.0.1",
+      "category": "trucks",
+      "description": "GAZ-53. Variants of execution:\n- Onboard, capacity - 5000 l.\n- Onboard extended, capacity - 7000 l.\n- Onboard extended, capacity - 12500 l.\n\nEngines:\n- ZMZ53 - 115hp.\n- ZMZ511 - 120hp.\n- ZMZ513 boost - 145hp",
+      "filename": "FS22_GAZ_53_AF_UA.zip",
+      "size": 55987912,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_GAZ_53_AF_UA.zip",
+      "zipPath": null,
+      "image": "images/gaz-53-83b3f7.jpg",
+      "screenshots": [],
+      "createdAt": "2026-11-08T14:26:34.062Z"
+    }
+  ]
 }
