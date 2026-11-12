@@ -141,7 +141,7 @@ const textToB64 = (t) => bytesToB64(new TextEncoder().encode(t));
 const b64ToText = (b) => { const s = atob(b.replace(/\s/g, "")); const a = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) a[i] = s.charCodeAt(i); return new TextDecoder().decode(a); };
 
 async function getFile(path) {
-  const r = await gh(`${RP}/contents/${encPath(path)}?ref=${encodeURIComponent(CFG.BRANCH)}`);
+  const r = await gh(`${RP}/contents/${encPath(path)}?ref=${encodeURIComponent(CFG.BRANCH)}&_=${Date.now()}`, { cache: "no-store" });
   if (r.status === 404) return null;
   if (!r.ok) throw new Error(await errText(r));
   const j = await r.json();
@@ -177,8 +177,15 @@ async function rebuildCatalog() {
 }
 
 // Змінює mods.json і одразу перегенерує catalog.data. Повторює спробу при конфлікті версій.
-async function updateDb(mutator, message) {
-  for (let attempt = 0; attempt < 4; attempt++) {
+let dbQueue = Promise.resolve();
+function updateDb(mutator, message) {
+  const run = () => updateDbNow(mutator, message);
+  const p = dbQueue.then(run, run);
+  dbQueue = p.catch(() => {});
+  return p;
+}
+async function updateDbNow(mutator, message) {
+  for (let attempt = 0; attempt < 6; attempt++) {
     try {
       const f = await getFile("mods.json");
       const db = f && f.text ? JSON.parse(f.text) : { mods: [] };
@@ -188,7 +195,7 @@ async function updateDb(mutator, message) {
       await writeCatalog(db.mods, message);
       return db;
     } catch (e) {
-      if ((e.status === 409 || e.status === 422) && attempt < 3) { await new Promise((r) => setTimeout(r, 600 * (attempt + 1))); continue; }
+      if ((e.status === 409 || e.status === 422) && attempt < 5) { await new Promise((r) => setTimeout(r, 800 * (attempt + 1))); continue; }
       throw e;
     }
   }
