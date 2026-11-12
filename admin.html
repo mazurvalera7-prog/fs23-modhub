@@ -419,29 +419,35 @@ async function readModInfo(file) {
       } catch (err) { info.iconError = err.message; }
     }
   }
-  try { info.category = await detectCategory(file, entries, root, norm); } catch (err) { info.category = ""; }
+  detectCategory.unknown = [];
+  try { info.category = await detectCategory(file, entries, root, norm); } catch (err) { info.category = ""; info.catError = err.message; }
+  info.catUnknown = (detectCategory.unknown || []).slice(0, 3).join(", ");
   return info;
 }
-// автовизначення категорії: карти -> maps, техніка -> <storeData><category> з xml першого предмета магазину
-const CAT_ALIAS = { wheelLoaders: "wheelLoaderVehicles", sowingMachines: "seeders", pallets: "palletHandling", wood: "woodHarvesting", sheds: "placeables" };
+// автовизначення категорії: карти -> maps, техніка -> <storeData><category> з xml предметів магазину (без урахування регістру)
+const CAT_ALIAS = { wheelloaders: "wheelLoaderVehicles", wheelloader: "wheelLoaderVehicles", sowingmachines: "seeders", pallets: "palletHandling", wood: "woodHarvesting", sheds: "placeables", teleloaders: "frontLoaders", tractors: "tractorsM", tractor: "tractorsM" };
 async function detectCategory(file, entries, root, norm) {
-  const known = new Set(FS.CATEGORIES.map((c) => c.name));
+  const byLow = {}; FS.CATEGORIES.forEach((c) => { byLow[c.name.toLowerCase()] = c.name; });
   const maps = root.getElementsByTagName("maps")[0];
   if (maps && maps.getElementsByTagName("map").length) return "maps";
-  const items = [...root.getElementsByTagName("storeItem")].map((el) => el.getAttribute("xmlFile")).filter((x) => x && !/^\$/.test(x)).slice(0, 8);
+  const lower = (n) => norm(n).toLowerCase();
+  let paths = [...root.getElementsByTagName("storeItem")].map((el) => el.getAttribute("xmlFile")).filter((x) => x && !/^\$/.test(x)).map((x) => lower(x).replace(/^\.\//, ""));
+  // запасний варіант: усі невеликі xml у ZIP, де може бути storeData
+  const extra = entries.filter((e) => /\.xml$/i.test(e.name) && e.usize < 400000 && lower(e.name) !== "moddesc.xml").map((e) => lower(e.name));
+  paths = [...new Set([...paths.slice(0, 8), ...extra.slice(0, 60)])];
   const votes = {};
-  for (const x of items) {
-    const want = norm(x).toLowerCase().replace(/^\.\//, "");
-    const ent = entries.find((e) => norm(e.name).toLowerCase() === want);
+  for (const want of paths) {
+    const ent = entries.find((e) => lower(e.name) === want);
     if (!ent) continue;
     let doc;
     try { doc = new DOMParser().parseFromString(new TextDecoder().decode(await readZipEntry(file, ent)), "text/xml"); } catch { continue; }
     if (doc.getElementsByTagName("parsererror").length) continue;
-    let cat = "";
     const sd = doc.getElementsByTagName("storeData")[0];
-    const raw = sd ? textOf(sd.getElementsByTagName("category")[0]).split(/\s+/)[0] : "";
-    if (raw) cat = known.has(raw) ? raw : (CAT_ALIAS[raw] && known.has(CAT_ALIAS[raw]) ? CAT_ALIAS[raw] : "");
+    if (!sd) continue;
+    const raw = textOf(sd.getElementsByTagName("category")[0]).split(/\s+/)[0].toLowerCase();
+    let cat = byLow[raw] || (CAT_ALIAS[raw] && byLow[CAT_ALIAS[raw].toLowerCase()]) || "";
     if (!cat && doc.documentElement && doc.documentElement.tagName.toLowerCase() === "placeable") cat = "placeables";
+    if (!cat && raw) { (detectCategory.unknown = detectCategory.unknown || []).push(raw); }
     if (cat) votes[cat] = (votes[cat] || 0) + 1;
   }
   const best = Object.entries(votes).sort((a, b) => b[1] - a[1])[0];
@@ -564,7 +570,7 @@ $("zip").addEventListener("change", async () => {
     let catNote = "";
     if (!$("category").value) {
       if (info.category) { $("category").value = info.category; const ct = FS.CATEGORIES.find((c) => c.name === info.category); catNote = ", категорію (" + (ct ? ct.title : info.category) + ")"; }
-      else catNote = ". Категорію визначити не вдалося: оберіть її вручну";
+      else catNote = ". Категорію визначити не вдалося" + (info.catUnknown ? " (у моді вказано: " + info.catUnknown + ")" : info.catError ? " (" + info.catError + ")" : " (у моді не знайдено storeData)") + ": оберіть її вручну";
     }
     autoIcon = info.icon ? new File([info.icon], "icon.png", { type: info.icon.type }) : null;
     $("autoInfo").textContent = "З modDesc.xml підставлено: назву, автора, версію, опис" + catNote + (autoIcon ? ", іконку (" + info.iconName + ")" : info.iconError ? ". Іконку не вдалося прочитати: " + info.iconError : ". Іконки в моді не знайдено") + ". Усе можна змінити.";
