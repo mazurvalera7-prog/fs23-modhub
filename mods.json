@@ -134,6 +134,24 @@
         "images/kirovetz-k4-8c77e1.jpg"
       ],
       "createdAt": "2026-11-12T22:07:20.772Z"
+    },
+    {
+      "title": "BELARUS-3022DC.1 early",
+      "author": "Konb,FS22: AiBoLiT",
+      "version": "1.0.0.2",
+      "category": "tractorsM",
+      "description": "Tractor \"BELARUS\" 3022 DC.1 is a tractor of General purpose traction class 5 with wheel formula 4x4.",
+      "filename": "FS22_Belarus_3022_DC1_agroBy.zip",
+      "size": 75354541,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Belarus_3022_DC1_agroBy.zip",
+      "zipPath": null,
+      "image": "images/belarus-3022dc-1-early-55a075.jpg",
+      "screenshots": [
+        "images/belarus-3022dc-1-early-ea11dd.jpg",
+        "images/belarus-3022dc-1-early-3e65a4.jpg"
+      ],
+      "createdAt": "2026-11-12T23:43:29.888Z"
     }
   ]
 }
