@@ -209,6 +209,26 @@
         "images/john-deere-8r-series-2011-12a286.jpg"
       ],
       "createdAt": "2026-11-12T23:52:29.551Z"
+    },
+    {
+      "title": "Zubr",
+      "author": "Gian FS, Erik isac, Agro Mods, Agro Akademie",
+      "version": "1.0.0.1",
+      "category": "tractorsS",
+      "description": "Micro Tractor Package\nSmall articulated tractor for small producers.\n\n- Micro Tractor:\n- Price: $10,190;\n- Power: 20-50 HP;\n- Wheel Configuration;\n- Main Color Configuration;\n- Design Color Configuration;\n- Wheel Color Configuration;\n- Design Configuration;",
+      "filename": "FS22_Zubr_Agro_Akademie.zip",
+      "size": 30219768,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Zubr_Agro_Akademie.zip",
+      "zipPath": null,
+      "image": "images/zubr-191f61.jpg",
+      "screenshots": [
+        "images/zubr-8f650b.jpg",
+        "images/zubr-ace2b3.jpg",
+        "images/zubr-b85e50.jpg",
+        "images/zubr-790583.jpg"
+      ],
+      "createdAt": "2026-11-12T23:53:57.235Z"
     }
   ]
 }
