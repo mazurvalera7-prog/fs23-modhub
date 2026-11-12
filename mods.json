@@ -94,6 +94,21 @@
         "images/htz-t-150k-0228e1.jpg"
       ],
       "createdAt": "2026-11-12T22:00:09.829Z"
+    },
+    {
+      "title": "Kirovetz K4",
+      "author": "Cheb_mods, loopol_mods",
+      "version": "1.2.0.0",
+      "category": "tractorsM",
+      "description": "Kirovetz K4 is a general purpose agricultural tractor, four-wheel drive, articulated frame. Kirovetz K4 is a universal farm tractor, the most effective for farms with arable land from 500 hectares to 2000 hectares. K4 will also fit into the agricultural technology of large land users and agricultural holdings, primarily for solving the following tasks: frequent transportation of equipment to remote fields on public roads, work on small contour fields. Power: 240 HP (184 kW). Top speed: 45 kph. Price: 110000 $",
+      "filename": "FS22_K424.zip",
+      "size": 35111142,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_K424.zip",
+      "zipPath": null,
+      "image": "images/kirovetz-k4-c3adf7.jpg",
+      "screenshots": [],
+      "createdAt": "2026-11-12T22:00:55.444Z"
     }
   ]
 }
