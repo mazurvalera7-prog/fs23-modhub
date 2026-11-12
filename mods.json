@@ -192,6 +192,23 @@
         "images/htz-t-150k-277a22.jpg"
       ],
       "createdAt": "2026-11-12T23:49:25.947Z"
+    },
+    {
+      "title": "John Deere 8R Series 2011",
+      "author": "Udruzenje Nezavisnih Modera",
+      "version": "1.0.0.0",
+      "category": "tractorsL",
+      "description": "John Deere 8R 2011 Series\n\n285 to 410 engine hp. The 8R Series Tractors are world-class machines designed\nto provide the hydraulic capacity and horsepower to handle large planters and implements.\nPowered by the PowerTech™ PSS 9.0L engine, the 8R is a champion in the field, delivering\nuncompromised performance while meeting Tier 4 emission requirements.",
+      "filename": "FS22_JohnDeere_8R_2012.zip",
+      "size": 28632275,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_JohnDeere_8R_2012.zip",
+      "zipPath": null,
+      "image": "images/john-deere-8r-series-2011-fbf030.jpg",
+      "screenshots": [
+        "images/john-deere-8r-series-2011-12a286.jpg"
+      ],
+      "createdAt": "2026-11-12T23:52:29.551Z"
     }
   ]
 }
