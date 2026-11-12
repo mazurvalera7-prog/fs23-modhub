@@ -249,6 +249,26 @@
         "images/mtz-82-605d73.jpg"
       ],
       "createdAt": "2026-11-12T23:55:32.348Z"
+    },
+    {
+      "title": "Kirovets",
+      "author": "Alex716Rus",
+      "version": "1.0.0.0",
+      "category": "tractorsL",
+      "description": "Manufacturer: USSR\nModel: K-700A K-701\nProduction: 1975 - 2002\nStandard engine: YaMZ-238/v8 YaMZ-240BM V12\nPrice: 28000 €\nMax. power: 230,300 hp\nMax. speed: 33,8 kph",
+      "filename": "FS22_Kirovets_NEW.zip",
+      "size": 48904758,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Kirovets_NEW.zip",
+      "zipPath": null,
+      "image": "images/kirovets-2d8efe.jpg",
+      "screenshots": [
+        "images/kirovets-85ed29.jpg",
+        "images/kirovets-1a0660.jpg",
+        "images/kirovets-00dc45.jpg",
+        "images/kirovets-c0ad7c.jpg"
+      ],
+      "createdAt": "2026-11-12T23:57:29.390Z"
     }
   ]
 }
