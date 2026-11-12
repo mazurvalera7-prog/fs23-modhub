@@ -54,6 +54,26 @@
         "images/umz-6-fm-6794f9.jpg"
       ],
       "createdAt": "2026-11-12T21:00:04.380Z"
+    },
+    {
+      "title": "Kirovets K-700A",
+      "author": "Aluha74rus,region038,voiyka_13(Владимир Кузинкин)",
+      "version": "1.1",
+      "category": "tractorsL",
+      "description": "Kirovets K-700A",
+      "filename": "FS22_K700A_AndriyModding.zip",
+      "size": 51428551,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_K700A_AndriyModding.zip",
+      "zipPath": null,
+      "image": "images/kirovets-k-700a-9bb7fd.jpg",
+      "screenshots": [
+        "images/kirovets-k-700a-c26aac.jpg",
+        "images/kirovets-k-700a-c8acb3.jpg",
+        "images/kirovets-k-700a-9ae83f.jpg",
+        "images/kirovets-k-700a-27b0d9.jpg"
+      ],
+      "createdAt": "2026-11-12T21:58:06.618Z"
     }
   ]
 }
