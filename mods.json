@@ -69,6 +69,26 @@
         "images/mtz-belarus-3022-3522-826b6c.jpg"
       ],
       "createdAt": "2026-11-12T20:58:18.883Z"
+    },
+    {
+      "title": "UMZ-6_FM",
+      "author": "FOP_Mukola, Tolik_Modding, Derezovsky",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: UMZ\nModel: 6\nMax. power: 60 hp\nMax. speed: 39 kph\nPrice: 15800 €\n\nColor configuration:\n- Main color\n- Cab color\n- Lattice color\n- Rim color\n\nConfiguration parts:\n- Wheels selection\n- Weight selection: 40, 80, 120, 160 kg.\n- Lattice selection\n- Air filter selection\n- Fenders: yes/no\n- Mudflap: yes/no\n- Mirrors: yes/no\n- Step selection\n- Number selection\n- Hood design",
+      "filename": "FS22_UMZ_6_FM.zip",
+      "size": 77774694,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_UMZ_6_FM.zip",
+      "zipPath": null,
+      "image": "images/umz-6-fm-985adf.jpg",
+      "screenshots": [
+        "images/umz-6-fm-77e39a.jpg",
+        "images/umz-6-fm-34ddf4.jpg",
+        "images/umz-6-fm-486564.jpg",
+        "images/umz-6-fm-6794f9.jpg"
+      ],
+      "createdAt": "2026-11-12T21:00:04.380Z"
     }
   ]
 }
