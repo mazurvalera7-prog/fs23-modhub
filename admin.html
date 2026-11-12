@@ -412,7 +412,33 @@ async function readModInfo(file) {
       } catch (err) { info.iconError = err.message; }
     }
   }
+  try { info.category = await detectCategory(file, entries, root, norm); } catch (err) { info.category = ""; }
   return info;
+}
+// автовизначення категорії: карти -> maps, техніка -> <storeData><category> з xml першого предмета магазину
+const CAT_ALIAS = { wheelLoaders: "wheelLoaderVehicles", sowingMachines: "seeders", pallets: "palletHandling", wood: "woodHarvesting", sheds: "placeables" };
+async function detectCategory(file, entries, root, norm) {
+  const known = new Set(FS.CATEGORIES.map((c) => c.name));
+  const maps = root.getElementsByTagName("maps")[0];
+  if (maps && maps.getElementsByTagName("map").length) return "maps";
+  const items = [...root.getElementsByTagName("storeItem")].map((el) => el.getAttribute("xmlFile")).filter((x) => x && !/^\$/.test(x)).slice(0, 8);
+  const votes = {};
+  for (const x of items) {
+    const want = norm(x).toLowerCase().replace(/^\.\//, "");
+    const ent = entries.find((e) => norm(e.name).toLowerCase() === want);
+    if (!ent) continue;
+    let doc;
+    try { doc = new DOMParser().parseFromString(new TextDecoder().decode(await readZipEntry(file, ent)), "text/xml"); } catch { continue; }
+    if (doc.getElementsByTagName("parsererror").length) continue;
+    let cat = "";
+    const sd = doc.getElementsByTagName("storeData")[0];
+    const raw = sd ? textOf(sd.getElementsByTagName("category")[0]).split(/\s+/)[0] : "";
+    if (raw) cat = known.has(raw) ? raw : (CAT_ALIAS[raw] && known.has(CAT_ALIAS[raw]) ? CAT_ALIAS[raw] : "");
+    if (!cat && doc.documentElement && doc.documentElement.tagName.toLowerCase() === "placeable") cat = "placeables";
+    if (cat) votes[cat] = (votes[cat] || 0) + 1;
+  }
+  const best = Object.entries(votes).sort((a, b) => b[1] - a[1])[0];
+  return best ? best[0] : "";
 }
 let autoIcon = null;
 
@@ -436,6 +462,19 @@ const safeZipName = (n) => ((String(n).split(/[\\/]/).pop().replace(/\.zip$/i, "
 // ---------- інтерфейс ----------
 const logLine = (t, cls) => { $("log").className = cls || ""; $("log").textContent = t; };
 
+function catOptions(cur) {
+  const list = FS.CATEGORIES.slice();
+  const opts = list.map((c) => `<option value="${c.name}"${c.name === cur ? " selected" : ""}>${esc(c.title)}</option>`);
+  if (cur && !list.some((c) => c.name === cur)) opts.unshift(`<option value="${esc(cur)}" selected>${esc(cur)}</option>`);
+  return opts.join("");
+}
+$("list").addEventListener("change", async (e) => {
+  const sel = e.target.closest("select.cat"); if (!sel) return;
+  sel.disabled = true;
+  try { await updateDb((db) => { const m = db.mods.find((x) => x.filename === sel.dataset.fn); if (m) m.category = sel.value; }, `Категорія мода ${sel.dataset.fn}`); sel.style.outline = "2px solid #4caf50"; }
+  catch (err) { alert(err.message); loadList(); return; }
+  sel.disabled = false; setTimeout(() => { sel.style.outline = ""; }, 1500);
+});
 async function loadList() {
   try {
     const f = await getFile("mods.json");
@@ -443,7 +482,8 @@ async function loadList() {
     $("list").innerHTML = mods.length ? mods.map((m, i) => `
       <div class="item">
         <div><div>${esc(m.title)} <span class="m">v${esc(m.version)}</span></div>
-        <div class="m">${esc(m.category)} · ${esc(m.filename)} · ${fmt(m.size)}</div></div>
+        <div class="m">${esc(m.filename)} · ${fmt(m.size)}</div>
+        <select class="cat" data-fn="${esc(m.filename)}" style="margin-top:6px">${catOptions(m.category)}</select></div>
         <button class="del" data-fn="${esc(m.filename)}" data-t="${esc(m.title)}">Видалити</button>
       </div>`).join("") : '<div class="m">Поки порожньо</div>';
   } catch (e) { $("list").innerHTML = `<div class="err">${esc(e.message)}</div>`; }
@@ -514,8 +554,13 @@ $("zip").addEventListener("change", async () => {
     if (!$("author").value.trim() && info.author) $("author").value = info.author.slice(0, 60);
     if (info.version && (!$("version").value.trim() || $("version").value === "1.0.0.0")) $("version").value = info.version.slice(0, 20);
     if (!$("description").value.trim() && info.description) $("description").value = info.description.slice(0, 1500);
+    let catNote = "";
+    if (!$("category").value) {
+      if (info.category) { $("category").value = info.category; const ct = FS.CATEGORIES.find((c) => c.name === info.category); catNote = ", категорію (" + (ct ? ct.title : info.category) + ")"; }
+      else catNote = ". Категорію визначити не вдалося: оберіть її вручну";
+    }
     autoIcon = info.icon ? new File([info.icon], "icon.png", { type: info.icon.type }) : null;
-    $("autoInfo").textContent = "З modDesc.xml підставлено: назву, автора, версію, опис" + (autoIcon ? ", іконку (" + info.iconName + ")" : info.iconError ? ". Іконку не вдалося прочитати: " + info.iconError : ". Іконки в моді не знайдено") + ". Усе можна змінити.";
+    $("autoInfo").textContent = "З modDesc.xml підставлено: назву, автора, версію, опис" + catNote + (autoIcon ? ", іконку (" + info.iconName + ")" : info.iconError ? ". Іконку не вдалося прочитати: " + info.iconError : ". Іконки в моді не знайдено") + ". Усе можна змінити.";
   } catch (err) { $("autoInfo").textContent = "Не вдалося прочитати дані з ZIP: " + err.message + ". Заповніть поля вручну."; }
 });
 $("zipurl").addEventListener("input", () => { $("sizeRow").style.display = $("zipurl").value.trim() ? "" : "none"; });
@@ -528,6 +573,7 @@ $("f").addEventListener("submit", async (e) => {
   if (url && !/^https:\/\/.+/i.test(url)) return logLine("Посилання має починатися з https://", "err");
   if (zip && !/\.zip$/i.test(zip.name)) return logLine("Потрібен файл .zip", "err");
   if (!title) return logLine("Вкажіть назву", "err");
+  if (!$("category").value) return logLine("Оберіть категорію", "err");
 
   const image = $("image").files[0] || autoIcon, shots = [...$("shots").files].slice(0, 4);
   const go = $("go"), pr = $("pr");
@@ -576,7 +622,7 @@ $("f").addEventListener("submit", async (e) => {
     }, `Додано мод ${title}`);
     pr.value = 100;
     logLine("Готово: мод додано в каталог. Сайт оновиться за 1–2 хвилини.", "ok");
-    $("f").reset(); autoIcon = null; $("autoInfo").textContent = ""; $("version").value = "1.0.0.0"; $("sizeRow").style.display = "none";
+    $("f").reset(); $("category").value = ""; autoIcon = null; $("autoInfo").textContent = ""; $("version").value = "1.0.0.0"; $("sizeRow").style.display = "none";
     loadList();
   } catch (err) {
     for (const p of written) { try { await deleteFile(p, "Відкат зображення"); } catch {} }
@@ -605,7 +651,7 @@ async function enter() {
 $("enter").addEventListener("click", enter);
 $("tok").addEventListener("keydown", (e) => { if (e.key === "Enter") enter(); });
 $("logout").addEventListener("click", () => { store.del("fs23_gh_token"); location.reload(); });
-$("category").innerHTML = FS.CATEGORIES.map((c) => `<option value="${c.name}">${esc(c.title)} (${c.name})</option>`).join("");
+$("category").innerHTML = '<option value="">— оберіть категорію —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${esc(c.title)} (${c.name})</option>`).join("");
 if (store.get("fs23_gh_token")) enter();
 </script>
 </body>
