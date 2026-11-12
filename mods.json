@@ -152,6 +152,26 @@
         "images/belarus-3022dc-1-early-3e65a4.jpg"
       ],
       "createdAt": "2026-11-12T23:43:29.888Z"
+    },
+    {
+      "title": "HTZ T-150K",
+      "author": "Derezovsky Modding",
+      "version": "1.0.0.0",
+      "category": "tractorsM",
+      "description": "Manufacturer: HTZ\nModel: T-150K\nStandard engine: yamz-236\nPrice: 5150 €\nMax. power: 180 hp\nMax. speed: 40 kph",
+      "filename": "FS22_T150K_c_vip.zip",
+      "size": 74439857,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_T150K_c_vip.zip",
+      "zipPath": null,
+      "image": "images/htz-t-150k-5750eb.jpg",
+      "screenshots": [
+        "images/htz-t-150k-18e72a.jpg",
+        "images/htz-t-150k-a353b7.jpg",
+        "images/htz-t-150k-a89b5d.jpg",
+        "images/htz-t-150k-91ec10.jpg"
+      ],
+      "createdAt": "2026-11-12T23:46:06.983Z"
     }
   ]
 }
