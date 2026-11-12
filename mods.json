@@ -269,6 +269,26 @@
         "images/kirovets-c0ad7c.jpg"
       ],
       "createdAt": "2026-11-12T23:57:29.390Z"
+    },
+    {
+      "title": "MTZ 80-82 Series",
+      "author": "Sevill, _Androed_ , FS_UA_MODDING_TEAM",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "MTZ Belarus 80-82 Series Pack\n\nConfiurations:\n- Tires\n- Decals\n- Front weight\n- Wheel weight\n- Front fenders\n- Mud guards\n- Mirrors\n- Ladders\n- Front lights\n- Back lights\n- Additional lights\n- Back attacher\n- Exhaust\n- Steering wheel\n- Hood\n- Frontloader console\n- Animations: IC, MC\n\nColor configurations:\n- Hood\n- Axels\n- Glass\n- Fenders\n- Rims\n- Wheel weights\n\nInteractive Control support",
+      "filename": "FS22_MTZ_80_82s.zip",
+      "size": 87896878,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_80_82s.zip",
+      "zipPath": null,
+      "image": "images/mtz-80-82-series-9fd9e1.jpg",
+      "screenshots": [
+        "images/mtz-80-82-series-374b2a.jpg",
+        "images/mtz-80-82-series-1957b7.jpg",
+        "images/mtz-80-82-series-d5275a.jpg",
+        "images/mtz-80-82-series-d8965c.jpg"
+      ],
+      "createdAt": "2026-11-12T23:58:45.874Z"
     }
   ]
 }
