@@ -74,6 +74,26 @@
         "images/kirovets-k-700a-27b0d9.jpg"
       ],
       "createdAt": "2026-11-12T21:58:06.618Z"
+    },
+    {
+      "title": "HTZ T-150K",
+      "author": "RusAgroTeh, KeLa",
+      "version": "1.3.2.2",
+      "category": "tractorsM",
+      "description": "Plant manufacturer: ХТЗ\nModel: T-150K\nEngine: YaMZ-236\nPrice: 30 150 €\nEngine power: 175 hp\nMaximum speed: 30 km / h\n\nAdditional options:\n- Choice of color (frame) green, red, blue, dark blue, orange\n- Choice of color (hood) green, red, blue, dark blue, white, orange\n- Color selection (discs) green, red, blue, dark blue, white, orange\n\n- Spark wheels\n- Choice of hitch\n- Air conditioning\n- Choice of State number\n- Support for \"simpleIC\" script\n- Choice of headlights (front-rear)\n\nChangelog: 1.3.2.2\n- Added choice of rear lights (stops)\n- Added selection of 2 YaMZ engines\n- Added beacons\n- Added road train signs",
+      "filename": "T_150K.zip",
+      "size": 62415650,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/T_150K.zip",
+      "zipPath": null,
+      "image": "images/htz-t-150k-8faf0a.jpg",
+      "screenshots": [
+        "images/htz-t-150k-a4176e.jpg",
+        "images/htz-t-150k-b9599c.jpg",
+        "images/htz-t-150k-0d2282.jpg",
+        "images/htz-t-150k-0228e1.jpg"
+      ],
+      "createdAt": "2026-11-12T22:00:09.829Z"
     }
   ]
 }
