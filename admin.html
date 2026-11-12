@@ -487,9 +487,13 @@ async function loadRelAssets() {
     if (r.status === 404) { sel.innerHTML = '<option value="">— релізу «' + CFG.RELEASE_TAG + '» ще нема —</option>'; return; }
     if (!r.ok) throw new Error(await errText(r));
     const rel = await r.json();
-    relAssets = (rel.assets || []).filter((a) => /\.zip$/i.test(a.name));
+    // файли, що вже є в каталозі, повторно не пропонуємо
+    let used = new Set();
+    try { const f = await getFile("mods.json"); used = new Set(((f && f.text ? JSON.parse(f.text).mods : []) || []).map((m) => m.filename)); } catch {}
+    const all = (rel.assets || []).filter((a) => /\.zip$/i.test(a.name));
+    relAssets = all.filter((a) => !used.has(a.name));
     sel.innerHTML = '<option value="">— не вибрано —</option>' + relAssets.map((a, i) => `<option value="${i}">${a.name} (${(a.size / 1048576).toFixed(1)} МБ)</option>`).join("");
-    if (!relAssets.length) sel.innerHTML = '<option value="">— у релізі «' + CFG.RELEASE_TAG + '» немає ZIP —</option>';
+    if (!relAssets.length) sel.innerHTML = '<option value="">— ' + (all.length ? "усі файли з релізу вже додані в каталог" : "у релізі «" + CFG.RELEASE_TAG + "» немає ZIP") + ' —</option>';
   } catch (err) { sel.innerHTML = '<option value="">— не вдалося завантажити список —</option>'; }
 }
 $("relPick").addEventListener("change", () => {

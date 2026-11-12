@@ -16,6 +16,7 @@
     { name: "plows", title: "Плуги" },
     { name: "cultivators", title: "Культиватори" },
     { name: "seeders", title: "Сівалки" },
+    { name: "maps", title: "Карти" },
     { name: "sprayers", title: "Обприскувачі" },
     { name: "fertilizerSpreaders", title: "Розкидачі добрив" },
     { name: "manureSpreaders", title: "Розкидачі гною" },
