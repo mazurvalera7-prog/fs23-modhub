@@ -49,6 +49,26 @@
         "images/gaz-3307-e256fa.jpg"
       ],
       "createdAt": "2026-11-08T17:41:35.257Z"
+    },
+    {
+      "title": "MTZ Belarus 3022/3522",
+      "author": "SMods",
+      "version": "1.1.0.2",
+      "category": "tractorsS",
+      "description": "The BELARUS-3522 tractor has a 4*4 drive and is designed for agricultural work\nwith mounted, semi-mounted and trailed machines and implements, in transport,\nwith for loading,\nas well as for driving stationary agricultural machinery.\nShop Category: Large Tractors\nPrice: 156.000 $\nPower: 360 hp\nMax speed: 42 kph\nMod supported : Interactive Control\n\nConfigurations:\n- Tire configuration\n- Beacon Lights\n- Main Body Color\n- Rim color\n- Seat color\n- Plastyk color",
+      "filename": "FS22_MTZ_3522_WP10.zip",
+      "size": 36818754,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_3522_WP10.zip",
+      "zipPath": null,
+      "image": "images/mtz-belarus-3022-3522-3be8ef.jpg",
+      "screenshots": [
+        "images/mtz-belarus-3022-3522-b8a4f6.jpg",
+        "images/mtz-belarus-3022-3522-0d9b5d.jpg",
+        "images/mtz-belarus-3022-3522-851780.jpg",
+        "images/mtz-belarus-3022-3522-826b6c.jpg"
+      ],
+      "createdAt": "2026-11-12T20:58:18.883Z"
     }
   ]
 }
