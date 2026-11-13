@@ -388,6 +388,26 @@
         "images/kirovets-k-703ma-e0e0a3.jpg"
       ],
       "createdAt": "2026-11-13T00:52:32.062Z"
+    },
+    {
+      "title": "MTZ Belarus 2022.7",
+      "author": "SMods",
+      "version": "1.0.0.1",
+      "category": "tractorsM",
+      "description": "The BELARUS-2022 tractor has a 4*4 drive and is designed for agricultural work\nwith mounted, semi-mounted and trailed machines and implements, in transport,\nwith for loading,\nas well as for driving stationary agricultural machinery.\nShop Category: Medium Tractors\nPrice: 69.500 $\nPower: 201 hp\nMax speed: 42 kph\nMod supported : Interactive Control\n\nConfigurations:\n- Tire configuration\n- Beacon Lights\n- Main Body Color\n- Rim color\n- Seat color\n- Plastyk color",
+      "filename": "FS22_MTZ_2022_7byAGRO.zip",
+      "size": 32869799,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_2022_7byAGRO.zip",
+      "zipPath": null,
+      "image": "images/mtz-belarus-2022-7-6f0f13.jpg",
+      "screenshots": [
+        "images/mtz-belarus-2022-7-6fff89.jpg",
+        "images/mtz-belarus-2022-7-e73375.jpg",
+        "images/mtz-belarus-2022-7-fe191d.jpg",
+        "images/mtz-belarus-2022-7-6f6380.jpg"
+      ],
+      "createdAt": "2026-11-13T00:53:38.481Z"
     }
   ]
 }
