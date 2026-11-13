@@ -1058,6 +1058,26 @@
         "images/htz-17221-21-aed93b.jpg"
       ],
       "createdAt": "2026-11-13T16:49:07.817Z"
+    },
+    {
+      "title": "HTZ T-150K V8",
+      "author": "AgroFermaUA",
+      "version": "2.2.0.0",
+      "category": "tractorsM",
+      "description": "Manufacturer: HTZ\nModel: T-150K V8\nStandard engine: YAMZ-238\nPrice: 5150 €\nMax. power: 240 hp\nMax. speed: 42 kph\n\nAdditional option:\n- Color variant (body) green, red, blue, dark blue\n- Color variant (hood) green, red, blue, dark blue, white\n- Color variant (rim) green, red, blue, dark blue, white\n- 2 Tyre brand configurations (KAMA, Belshina)\n- Twin wheels\n- Selection of hydraulics\n- Conditioner\n- Selecting a license plate\n- Support \"simpleIC\" script",
+      "filename": "FS22_T_150K_V8_AF.zip",
+      "size": 63691560,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_T_150K_V8_AF.zip",
+      "zipPath": null,
+      "image": "images/htz-t-150k-v8-d65745.jpg",
+      "screenshots": [
+        "images/htz-t-150k-v8-420bd7.jpg",
+        "images/htz-t-150k-v8-835c2e.jpg",
+        "images/htz-t-150k-v8-847b92.jpg",
+        "images/htz-t-150k-v8-d7ee66.jpg"
+      ],
+      "createdAt": "2026-11-13T16:50:33.189Z"
     }
   ]
 }
