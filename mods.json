@@ -368,6 +368,26 @@
         "images/mtz-800-1000-series-cace3c.jpg"
       ],
       "createdAt": "2026-11-13T00:50:15.310Z"
+    },
+    {
+      "title": "Kirovets K-703MA",
+      "author": "Bodik55, Region38, Erlan10",
+      "version": "1.0.0.3",
+      "category": "tractorsL",
+      "description": "Manufacturer: USSR\nModel: K-703MA\nProduction: 1975 - 2002\nStandard engine: YaMZ-238ND3/v8\nPrice: 78000 €\nMax. power: 235 hp\nMax. speed: 33,8 kph",
+      "filename": "FS22_K703.zip",
+      "size": 38565389,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_K703.zip",
+      "zipPath": null,
+      "image": "images/kirovets-k-703ma-29c35d.jpg",
+      "screenshots": [
+        "images/kirovets-k-703ma-857395.jpg",
+        "images/kirovets-k-703ma-a08c10.jpg",
+        "images/kirovets-k-703ma-368e18.jpg",
+        "images/kirovets-k-703ma-e0e0a3.jpg"
+      ],
+      "createdAt": "2026-11-13T00:52:32.062Z"
     }
   ]
 }
