@@ -923,6 +923,25 @@
         "images/umz-6al-65e2b9.jpg"
       ],
       "createdAt": "2026-11-13T14:35:05.475Z"
+    },
+    {
+      "title": "Pack UMZ-6",
+      "author": "FS UA Modding Team",
+      "version": "0.0.0.1",
+      "category": "tractorsS",
+      "description": "Manufacturer: UMZ\nModel: 6L\nMax. power: 60 hp\nMax. speed: 25 kph\nPrice: 2500 €\n\nColor configuration:\n- Main color\n- Cab color\n- Rim color",
+      "filename": "FS22_UMZ6L.zip",
+      "size": 16993116,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_UMZ6L.zip",
+      "zipPath": null,
+      "image": "images/pack-umz-6-7e3727.jpg",
+      "screenshots": [
+        "images/pack-umz-6-55d221.jpg",
+        "images/pack-umz-6-9752fb.jpg",
+        "images/pack-umz-6-9c50fb.jpg"
+      ],
+      "createdAt": "2026-11-13T15:53:59.147Z"
     }
   ]
 }
