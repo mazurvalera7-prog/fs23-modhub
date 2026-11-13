@@ -903,6 +903,26 @@
         "images/mtz-belarus-4522-29e4f8.jpg"
       ],
       "createdAt": "2026-11-13T14:33:52.375Z"
+    },
+    {
+      "title": "UMZ-6AL",
+      "author": "FarmAndrei,Derezovsky,STM",
+      "version": "1.1.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: UMZ\nModel: 6\nMax. power: 60 hp\nMax. speed: 27 kph\nPrice: 15800 €\n\nColor configuration:\n- Main color\n- Cab color\n- Lattice color\n- Rim color\n\nConfiguration parts:\n- Wheels selection\n- Weight selection: 40, 80, 120, 160 kg.\n- Lattice selection\n- Air filter selection\n- Fenders: yes/no\n- Mudflap: yes/no\n- Mirrors: yes/no\n- Step selection\n- Number selection\n- Hood design",
+      "filename": "FS22_UMZ_6AL.zip",
+      "size": 29393226,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_UMZ_6AL.zip",
+      "zipPath": null,
+      "image": "images/umz-6al-c29200.jpg",
+      "screenshots": [
+        "images/umz-6al-8abe0f.jpg",
+        "images/umz-6al-9d0cd1.jpg",
+        "images/umz-6al-a06558.jpg",
+        "images/umz-6al-65e2b9.jpg"
+      ],
+      "createdAt": "2026-11-13T14:35:05.475Z"
     }
   ]
 }
