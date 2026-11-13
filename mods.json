@@ -1233,6 +1233,26 @@
         "images/sipma-rn610-antek-58e1d9.jpg"
       ],
       "createdAt": "2026-11-13T20:35:23.854Z"
+    },
+    {
+      "title": "Tuman-2M",
+      "author": "AVSR FS19 MelMax Gomior",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Tuman-2M",
+      "filename": "FS22_Tuman2M.zip",
+      "size": 12734412,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Tuman2M.zip",
+      "zipPath": null,
+      "image": "images/tuman-2m-b1df2c.jpg",
+      "screenshots": [
+        "images/tuman-2m-830661.jpg",
+        "images/tuman-2m-74bb9d.jpg",
+        "images/tuman-2m-1fd523.jpg",
+        "images/tuman-2m-772579.jpg"
+      ],
+      "createdAt": "2026-11-13T20:39:05.760Z"
     }
   ]
 }
