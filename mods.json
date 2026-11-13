@@ -1078,6 +1078,26 @@
         "images/htz-t-150k-v8-d7ee66.jpg"
       ],
       "createdAt": "2026-11-13T16:50:33.189Z"
+    },
+    {
+      "title": "HTZ T-150K-D260",
+      "author": "Derezovsky,RusAgroTeh",
+      "version": "1.0.0.0",
+      "category": "tractorsM",
+      "description": "Manufacturer: HTZ\nModel: T-150K\nStandard engine: mmz-d260\nPrice: 5150 €\nMax. power: 210 hp\nMax. speed: 42 kph\n\nAdditional option:\n- Color variant (body) green, red, blue, dark blue\n- Color variant (hood) green, red, blue, dark blue, white\n- Color variant (rim) green, red, blue, dark blue, white\n- 2 Tyre brand configurations (KAMA, Belshina)\n- Twin wheels\n- Selection of hydraulics\n- Conditioner\n- Selecting a license plate\n- Support \"simpleIC\" script\n\nChangelog: 1.3.2.1\n- Added air connector\n- Added animation of the PTO shaft\n- Changed detail smoothing (front frame, steering wheel)\n- Minor fixed and improvements",
+      "filename": "FS22_T_150K_D260.zip",
+      "size": 80439220,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_T_150K_D260.zip",
+      "zipPath": null,
+      "image": "images/htz-t-150k-d260-cab293.jpg",
+      "screenshots": [
+        "images/htz-t-150k-d260-ec86ef.jpg",
+        "images/htz-t-150k-d260-a50cc3.jpg",
+        "images/htz-t-150k-d260-952d07.jpg",
+        "images/htz-t-150k-d260-ccae30.jpg"
+      ],
+      "createdAt": "2026-11-13T16:51:48.877Z"
     }
   ]
 }
