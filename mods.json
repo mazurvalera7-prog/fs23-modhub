@@ -560,6 +560,24 @@
         "images/mtz-1221-tank-6ae30e.jpg"
       ],
       "createdAt": "2026-11-13T07:26:19.314Z"
+    },
+    {
+      "title": "MTZ 80.1/82.1",
+      "author": "Schumi",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "MTZ 80.1/82.1",
+      "filename": "FS22_MTZ_82_1.zip",
+      "size": 50465533,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_82_1.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/mtz-80-1-82-1-7145cb.jpg",
+        "images/mtz-80-1-82-1-5677e9.jpg"
+      ],
+      "createdAt": "2026-11-13T07:27:48.589Z"
     }
   ]
 }
