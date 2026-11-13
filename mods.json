@@ -1642,6 +1642,24 @@
         "images/mvu-fertilizer-spreaders-45b18c.jpg"
       ],
       "createdAt": "2026-11-13T21:41:31.567Z"
+    },
+    {
+      "title": "RU-7000",
+      "author": "model maximka,textures serega zheltok,AvanGard.  Конверт в F",
+      "version": "1.0.0.1",
+      "category": "fertilizerSpreaders",
+      "description": "RU 7000 The distributor of mineral fertilizers is designed for transportation and surface application of solid mineral fertilizers, lime materials and chemical ameliorants.\n-Price: 18788 €\n-Application width, m: 36m\n-Configuration: Color\n-Capacity: 8000L\n\nList of changes:\n1.0.0.1:\n-added color selection and minor edits",
+      "filename": "FS22_RU_7000.zip",
+      "size": 9628250,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_RU_7000.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/ru-7000-d7dab9.jpg",
+        "images/ru-7000-82cd11.jpg"
+      ],
+      "createdAt": "2026-11-13T21:42:55.259Z"
     }
   ]
 }
