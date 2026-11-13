@@ -1038,6 +1038,26 @@
         "images/john-deere-8r-series-2014-2019-e18b90.jpg"
       ],
       "createdAt": "2026-11-13T16:04:11.621Z"
+    },
+    {
+      "title": "HTZ 17221-21",
+      "author": "XTZ17221-21, Almaz1",
+      "version": "1.5.5.0",
+      "category": "tractorsM",
+      "description": "Model: 17221-21\nStandard engine: YAMZ-238\nPrice: 41000 €\nMax. power: 240 hp\nMax. speed: 40 kph",
+      "filename": "XTZ_17221.zip",
+      "size": 50444064,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/XTZ_17221.zip",
+      "zipPath": null,
+      "image": "images/htz-17221-21-521ab8.jpg",
+      "screenshots": [
+        "images/htz-17221-21-b91d50.jpg",
+        "images/htz-17221-21-8fb77f.jpg",
+        "images/htz-17221-21-0212d7.jpg",
+        "images/htz-17221-21-aed93b.jpg"
+      ],
+      "createdAt": "2026-11-13T16:49:07.817Z"
     }
   ]
 }
