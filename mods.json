@@ -1491,6 +1491,25 @@
         "images/rzht-4m-7c3f74.jpg"
       ],
       "createdAt": "2026-11-13T21:29:10.536Z"
+    },
+    {
+      "title": "MZHT-16",
+      "author": "FSSA Modding Team. FS22:VLADISLAV ROMAKIN",
+      "version": "1.0.0.0",
+      "category": "slurryTanks",
+      "description": "Tank MZHT-16 (machine for applying liquid fertilizers)\nDesigned for self-loading, transportation, mixing\nand continuous surface application of liquid organic fertilizers,\nas well as for the transportation of process water.\nPrice: 10200 € - 12400 €\nCapacity: 17000l - 17200l\nColor: Trailer, Fenders, Decals, Rims\nDesign: Remove Fenders",
+      "filename": "FS22_MZHT_16.zip",
+      "size": 13521652,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MZHT_16.zip",
+      "zipPath": null,
+      "image": "images/mzht-16-7dadf6.jpg",
+      "screenshots": [
+        "images/mzht-16-ce833b.jpg",
+        "images/mzht-16-8019a5.jpg",
+        "images/mzht-16-c6ed73.jpg"
+      ],
+      "createdAt": "2026-11-13T21:30:38.272Z"
     }
   ]
 }
