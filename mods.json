@@ -486,6 +486,26 @@
         "images/mtz-belarus-3522-bdd45c.jpg"
       ],
       "createdAt": "2026-11-13T07:19:24.588Z"
+    },
+    {
+      "title": "MTZ 3522 2024",
+      "author": "SMods sound AiBoLiT",
+      "version": "1.0.0.0",
+      "category": "tractorsL",
+      "description": "The BELARUS-3522 tractor is made according to the 4x4 wheel formula and is designed\nfor various agricultural work with mounted,\nsemi-mounted and trailed machines and implements, in transport,\nwith loading facilities, cleaning complexes,\nas well as for driving stationary agricultural machines.\nPrice: 156.000 $\nPower: 390 hp\nConfigurations:\n- Tire configuration\n- Beacon Lights\n- Main Body Color\n- Rim color\n- Seat color\n- Plastyk color",
+      "filename": "FS22_3522_podgon130sub.zip",
+      "size": 96359639,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_3522_podgon130sub.zip",
+      "zipPath": null,
+      "image": "images/mtz-3522-2024-c70b40.jpg",
+      "screenshots": [
+        "images/mtz-3522-2024-21a40a.jpg",
+        "images/mtz-3522-2024-845d49.jpg",
+        "images/mtz-3522-2024-9b1efe.jpg",
+        "images/mtz-3522-2024-ad3521.jpg"
+      ],
+      "createdAt": "2026-11-13T07:21:23.479Z"
     }
   ]
 }
