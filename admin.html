@@ -100,7 +100,7 @@
 </div>
 
 <script src="config.js"></script>
-<script src="shared.js"></script>
+<script src="shared.js?v=20261114"></script>
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
@@ -664,7 +664,7 @@ async function enter() {
 $("enter").addEventListener("click", enter);
 $("tok").addEventListener("keydown", (e) => { if (e.key === "Enter") enter(); });
 $("logout").addEventListener("click", () => { store.del("fs23_gh_token"); location.reload(); });
-$("autoInfo").textContent = "Версія адмінки: v3 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
+$("autoInfo").textContent = "Версія адмінки: v4 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
 $("category").innerHTML = '<option value="">— оберіть категорію —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${esc(c.title)} (${c.name})</option>`).join("");
 if (store.get("fs23_gh_token")) enter();
 </script>

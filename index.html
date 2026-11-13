@@ -65,7 +65,7 @@
 </dialog>
 
 <script src="config.js"></script>
-<script src="shared.js"></script>
+<script src="shared.js?v=20261114"></script>
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -74,6 +74,12 @@ function tagHtml(m) { const ic = FS.categoryIcon(m.category); return `<span clas
 const catTitle = Object.fromEntries(FS.CATEGORIES.map((c) => [c.name, c.title]));
 const nl = (s) => String(s || "").replace(/\\n/g, "\n");
 // шлях картинки зі сховища -> безпечний відносний URL
+function coverStyle(m) {
+  const pic = m.image || (m.screenshots || [])[0];
+  if (pic) return `background-image:url('${esc(imgUrl(pic))}')`;
+  const ic = FS.categoryIcon(m.category);
+  return ic ? `background-image:url('${esc(ic)}');background-size:auto 60%` : "";
+}
 const imgUrl = (p) => p ? p.split("/").map(encodeURIComponent).join("/") : "";
 const safeHref = (u) => /^https:\/\//.test(u) ? u : "#";
 let mods = [];
@@ -84,7 +90,7 @@ function render() {
     (!c || m.category === c) && (!q || ((m.title || "") + " " + (m.author || "")).toLowerCase().includes(q)));
   $("list").innerHTML = rows.length ? rows.map(({ m, i }) => `
     <article class="card" data-i="${i}">
-      <div class="img" style="${m.image ? `background-image:url('${esc(imgUrl(m.image))}')` : ""}"></div>
+      <div class="img" style="${coverStyle(m)}"></div>
       <div class="body">
         <div class="t">${esc(m.title)}</div>
         <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}</div>
@@ -98,7 +104,7 @@ function render() {
 
 function openMod(i) {
   const m = mods[i]; if (!m) return;
-  $("dh").style.backgroundImage = m.image ? `url('${imgUrl(m.image)}')` : "none";
+  $("dh").style.cssText = coverStyle(m);
   $("db").innerHTML = `
     <h2>${esc(m.title)}</h2>
     <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}${m.author ? " · " + esc(m.author) : ""}</div>
