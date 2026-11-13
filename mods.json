@@ -1173,6 +1173,26 @@
         "images/mzhy-22-1830bc.jpg"
       ],
       "createdAt": "2026-11-13T19:46:49.850Z"
+    },
+    {
+      "title": "Fog-3",
+      "author": "FS-22 MischkaGammi",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Sprayer-spreader self-propelled MIST-3, equipped with replaceable technological equipment (rod sprayer and fertilizer spreader).The Tuman-3 is equipped with a new turbocharged diesel engine Kubota V3800-DI-TE with a capacity of 71 kW (97 hp), a five-speed manual transmission from GAZELLE NEXT A21R22 with synchronizers on all gears.The wheel formula is 6×4.The volume of the fuel tank is 90 liters.\nThanks for the help in the development and good advice from Aibolit,PRO100Simulator,Sevill's Garage,Dimas1523.",
+      "filename": "FS22_Tuman_3_MG.zip",
+      "size": 53829015,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Tuman_3_MG.zip",
+      "zipPath": null,
+      "image": "images/fog-3-c4a67e.jpg",
+      "screenshots": [
+        "images/fog-3-a1b74c.jpg",
+        "images/fog-3-3b0e2e.jpg",
+        "images/fog-3-184fdd.jpg",
+        "images/fog-3-015d69.jpg"
+      ],
+      "createdAt": "2026-11-13T19:49:08.061Z"
     }
   ]
 }
