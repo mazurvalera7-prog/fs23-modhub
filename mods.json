@@ -1000,6 +1000,25 @@
         "images/mtz-1025-now-db99e9.jpg"
       ],
       "createdAt": "2026-11-13T16:00:34.819Z"
+    },
+    {
+      "title": "BELARUS-3022DC.1 early",
+      "author": "Konb FS22-AiBoLiT",
+      "version": "1.0.0.1",
+      "category": "tractorsM",
+      "description": "Tractor \"BELARUS\" 3022 DC.1 is a tractor of General purpose traction class 5 with wheel formula 4x4.",
+      "filename": "FS_22_Belarus_3022_DC1_Early.zip",
+      "size": 68793417,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS_22_Belarus_3022_DC1_Early.zip",
+      "zipPath": null,
+      "image": "images/belarus-3022dc-1-early-c2e890.jpg",
+      "screenshots": [
+        "images/belarus-3022dc-1-early-e35a99.jpg",
+        "images/belarus-3022dc-1-early-02a2c1.jpg",
+        "images/belarus-3022dc-1-early-421b82.jpg"
+      ],
+      "createdAt": "2026-11-13T16:02:54.609Z"
     }
   ]
 }
