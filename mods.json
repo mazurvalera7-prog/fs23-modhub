@@ -1019,6 +1019,25 @@
         "images/belarus-3022dc-1-early-421b82.jpg"
       ],
       "createdAt": "2026-11-13T16:02:54.609Z"
+    },
+    {
+      "title": "John Deere 8R Series 2014-2019",
+      "author": "Udruzenje Nezavisnih Modera",
+      "version": "1.0.0.0",
+      "category": "tractorsL",
+      "description": "John Deere 8R 2014-2019 Series\n\n290 to 450 engine hp. The 8R Series Tractors are world-class machines designed\nto provide the hydraulic capacity and horsepower to handle large planters and implements.\nPowered by the PowerTech™ PSS 9.0L engine, the 8R is a champion in the field, delivering\nuncompromised performance while meeting Tier 4 emission requirements.",
+      "filename": "john_deere_8r_series_2014_2019_v1_0_0_0_by_mayakovsky_for_fs22_v22.zip",
+      "size": 27766955,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/john_deere_8r_series_2014_2019_v1_0_0_0_by_mayakovsky_for_fs22_v22.zip",
+      "zipPath": null,
+      "image": "images/john-deere-8r-series-2014-2019-516de9.jpg",
+      "screenshots": [
+        "images/john-deere-8r-series-2014-2019-5893e4.jpg",
+        "images/john-deere-8r-series-2014-2019-cd73c8.jpg",
+        "images/john-deere-8r-series-2014-2019-e18b90.jpg"
+      ],
+      "createdAt": "2026-11-13T16:04:11.621Z"
     }
   ]
 }
