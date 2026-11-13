@@ -653,6 +653,25 @@
         "images/john-deere-55-60-series-522e20.jpg"
       ],
       "createdAt": "2026-11-13T08:38:00.971Z"
+    },
+    {
+      "title": "Fendt 700 Vario Gen7",
+      "author": "Schnibbl Modding",
+      "version": "1.0.0.1",
+      "category": "tractorsM",
+      "description": "Fendt 700 Vario Gen7\nPrice: 192.000 $ - 351.252 $\nPower: 203 - 303hp\n\nEngine configuration:\nFendt 720 Vario Gen7 (203 hp)\nFendt 722 Vario Gen7 (223 hp)\nFendt 724 Vario Gen7 (243 hp)\nFendt 726 Vario Gen7 (262 hp)\nFendt 728 Vario Gen7 (303 hp)\n\nConfigurations:\n- Base Color\n- Rim Color\n- Roof Color\n- Additional Rim Color\n- Wheel weights\n- Line\n- Beacon Lights\n- Warning Signs\n- Cabin\n- Designpackage\n- Roof terminal\n- Front PTO\n- Crop sensors (Precision Farming needed)\n- Animations (Interactive Control needed)\n- GPS (Guidance Steering needed)\n\nAnimations:\n- The door can be opened/closed by pressing both mouse buttons and left/right movement\n- The rear window can be opened/closed by pressing both mouse buttons and forward/backward movement\n- The roof window can be opened/closed with the mouse wheel\n\nChangelog 1.0.0.1:\n- PTO Power fixed\n- smaller Bugfixes",
+      "filename": "FS22_Fendt700VarioGen7.zip",
+      "size": 50119601,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Fendt700VarioGen7.zip",
+      "zipPath": null,
+      "image": "images/fendt-700-vario-gen7-82396a.jpg",
+      "screenshots": [
+        "images/fendt-700-vario-gen7-a19fab.jpg",
+        "images/fendt-700-vario-gen7-cb2d0a.jpg",
+        "images/fendt-700-vario-gen7-126046.jpg"
+      ],
+      "createdAt": "2026-11-13T13:32:04.564Z"
     }
   ]
 }
