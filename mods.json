@@ -1413,6 +1413,26 @@
         "images/n015-kos-ea46f5.jpg"
       ],
       "createdAt": "2026-11-13T21:21:18.138Z"
+    },
+    {
+      "title": "MTT-4U",
+      "author": "Student, JarviceOne",
+      "version": "1.0.0.1",
+      "category": "fertilizerSpreaders",
+      "description": "MTT-4U\n\nPrice: 12000 $\nRequired power: 80 hp\nCapacity: 10000 l\n\nAdditional option:\n- Color variant",
+      "filename": "FS22_mtt_4u.zip",
+      "size": 9265372,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_mtt_4u.zip",
+      "zipPath": null,
+      "image": "images/mtt-4u-6b891c.jpg",
+      "screenshots": [
+        "images/mtt-4u-e5e636.jpg",
+        "images/mtt-4u-7b07b0.jpg",
+        "images/mtt-4u-9c2f8f.jpg",
+        "images/mtt-4u-036ac4.jpg"
+      ],
+      "createdAt": "2026-11-13T21:23:40.475Z"
     }
   ]
 }
