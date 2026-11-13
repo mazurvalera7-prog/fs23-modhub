@@ -692,6 +692,26 @@
         "images/ursus-6-pack-b10bdf.jpg"
       ],
       "createdAt": "2026-11-13T13:34:22.605Z"
+    },
+    {
+      "title": "MTZ Belarus 50/52",
+      "author": "c0rsa",
+      "version": "1.0.0.2",
+      "category": "tractorsS",
+      "description": "Belarus50 Final:\nManufacturer: Belarus\nModel: Mtz-50\nStandard engine: D-50\nPrice: 55,000 €\nMax. power: 50 hp\nMax. speed: 39 kph",
+      "filename": "FS22_MTZ_50_52.zip",
+      "size": 29521962,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_50_52.zip",
+      "zipPath": null,
+      "image": "images/mtz-belarus-50-52-dc2dad.jpg",
+      "screenshots": [
+        "images/mtz-belarus-50-52-8534d9.jpg",
+        "images/mtz-belarus-50-52-fdbceb.jpg",
+        "images/mtz-belarus-50-52-b7b087.jpg",
+        "images/mtz-belarus-50-52-9b63ed.jpg"
+      ],
+      "createdAt": "2026-11-13T13:37:33.072Z"
     }
   ]
 }
