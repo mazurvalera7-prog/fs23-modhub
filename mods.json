@@ -1471,6 +1471,26 @@
         "images/l-116-751ee2.jpg"
       ],
       "createdAt": "2026-11-13T21:27:15.110Z"
+    },
+    {
+      "title": "RZHT-4M",
+      "author": "FSSA Modding Team",
+      "version": "1.0.0.0",
+      "category": "slurryTanks",
+      "description": "The machine for applying liquid organic fertilizers RZHT-4M is used in agriculture for applying liquid organic fertilizers for crops,\nfor transporting process water and other similar liquids.\nThe RZHT-4M machine is equipped with a device for self-loading and mixing liquid organic fertilizers,\nlighting devices that ensure traffic safety, and a pneumatic brake.\n\nPrice: 5300 €\nCapacity: 5800l\nMax. working speed: 17 km/h\nWorking width: 10 m\nNeeded Power: 70hp\n\nColor: Trailer, Design, Rims",
+      "filename": "FS22_RZHT_4M.zip",
+      "size": 8097633,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_RZHT_4M.zip",
+      "zipPath": null,
+      "image": "images/rzht-4m-a5c685.jpg",
+      "screenshots": [
+        "images/rzht-4m-21da50.jpg",
+        "images/rzht-4m-8703a0.jpg",
+        "images/rzht-4m-e9de50.jpg",
+        "images/rzht-4m-7c3f74.jpg"
+      ],
+      "createdAt": "2026-11-13T21:29:10.536Z"
     }
   ]
 }
