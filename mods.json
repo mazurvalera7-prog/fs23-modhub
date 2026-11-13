@@ -942,6 +942,25 @@
         "images/pack-umz-6-9c50fb.jpg"
       ],
       "createdAt": "2026-11-13T15:53:59.147Z"
+    },
+    {
+      "title": "T-181-153",
+      "author": "Овер Клокер",
+      "version": "1.0.0.0",
+      "category": "tractorsM",
+      "description": "Plant manufacturer: HTZ\nModel: T-181\nEngine: YaMZ-236\nPrice: 8181 €\nEngine power: 180 HP\nMaximum speed: 24 km/h\n\nAdditional options:\n- Choice of tractor modification\n- Choice of painting (design, rollers and basic)\n- Counterweight configuration\n- Light's configuration",
+      "filename": "FS22_HTZ_TS5.zip",
+      "size": 50065525,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_HTZ_TS5.zip",
+      "zipPath": null,
+      "image": "images/t-181-153-0f3627.jpg",
+      "screenshots": [
+        "images/t-181-153-9c405c.jpg",
+        "images/t-181-153-e151fb.jpg",
+        "images/t-181-153-8304f4.jpg"
+      ],
+      "createdAt": "2026-11-13T15:55:21.372Z"
     }
   ]
 }
