@@ -1293,6 +1293,26 @@
         "images/rmu-3000-c84635.jpg"
       ],
       "createdAt": "2026-11-13T20:43:32.016Z"
+    },
+    {
+      "title": "Anhydrous Ammonia Pack",
+      "author": "Collins Custom Modding",
+      "version": "1.2.0.2",
+      "category": "fertilizerSpreaders",
+      "description": "ANHYDROUS AMMONIA PACK\n\nWHY ANHYDROUS AMMONIA\n\n-Anhydrous ammonia application can provide many benefits to farming operations. The high concentration of 82% nitrogen equates to more valuable nutrients for the plant and since NH3 can bond to moisture in the soil, it can be available for a longer period of time.\n\n-With this in mind, you can spread out your work load and apply anhydrous ammonia in the fall after harvest, in the spring before planting or even side dressing to reach the perfect nitrogen needs of your crops.\n\nChangelog 1.2.0.2:\n\n-Fix AI worker",
+      "filename": "FS22_AnhydrousAmmoniaPack.zip",
+      "size": 71474686,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_AnhydrousAmmoniaPack.zip",
+      "zipPath": null,
+      "image": "images/anhydrous-ammonia-pack-9de037.jpg",
+      "screenshots": [
+        "images/anhydrous-ammonia-pack-7114e7.jpg",
+        "images/anhydrous-ammonia-pack-1a22ed.jpg",
+        "images/anhydrous-ammonia-pack-ecc250.jpg",
+        "images/anhydrous-ammonia-pack-96f494.jpg"
+      ],
+      "createdAt": "2026-11-13T20:46:23.426Z"
     }
   ]
 }
