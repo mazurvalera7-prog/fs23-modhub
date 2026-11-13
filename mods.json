@@ -1156,6 +1156,23 @@
         "images/rmd-1000-oryhivsilmash-4aa19e.jpg"
       ],
       "createdAt": "2026-11-13T19:44:12.277Z"
+    },
+    {
+      "title": "MZHY-22",
+      "author": "FraMas, Sania1996",
+      "version": "1.0.0.0",
+      "category": "slurryTanks",
+      "description": "The machine for applying liquid organic fertilizers MZHU-20 is designed for self-loading, transportation and application of liquid organic fertilizers.",
+      "filename": "FS22_MZHY22.zip",
+      "size": 20815867,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MZHY22.zip",
+      "zipPath": null,
+      "image": "images/mzhy-22-e33df5.jpg",
+      "screenshots": [
+        "images/mzhy-22-1830bc.jpg"
+      ],
+      "createdAt": "2026-11-13T19:46:49.850Z"
     }
   ]
 }
