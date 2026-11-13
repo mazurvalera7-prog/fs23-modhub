@@ -427,6 +427,26 @@
         "images/kirovets-k7-series-teomik-039a98.jpg"
       ],
       "createdAt": "2026-11-13T00:55:29.455Z"
+    },
+    {
+      "title": "MTZ-80.1/82.1",
+      "author": "RusAgroTeh,FS22:Gomior",
+      "version": "1.2.1",
+      "category": "tractorsS",
+      "description": "Manufacturer: MTZ\nModel: 82.1\nStandard engine: D-243\nPrice: 12000 €\nMax. power: 81 hp\nMax. speed: 34 kph\n\nAdditional option:\n- Color variant: blue, red\n- Color variant (rim): white, gray, black\n- Frontlader (PFN 0.9)\n- Additional wheel weight\n- Beacon light\n- GPS navigator\n- Support \"guidanceSteering\" script\n\nFrontloader PFN 0.9:\nCombination: MTZ 82.1\nPrice: 2500 €\n\nFrontloader Shovel 0.8:\nCombination: PFN 0.9\nPrice: 550 €\nWorking width: 2.1 m\nCapacity: 800 l\n\nFrontloader Shovel:\nCombination: PFN 0.9\nPrice: 1000 €\nWorking width: 2.0 m\nCapacity: 1000 l\n\nManure Grab Fork:\nCombination: PFN 0.9\nPrice: 670 €\nWorking width: 1.23 m\nCapacity: 1000 l\n\nBale fork:\nCombination: PFN 0.9\nPrice: 360 €\n\nPallet fork:\nCombination: PFN 0.9\nPrice: 300 €\n\nAdditional option:\n- Color variant: red, blue, yellow",
+      "filename": "FS22_MTZ_82_1agroby.zip",
+      "size": 64897243,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_82_1agroby.zip",
+      "zipPath": null,
+      "image": "images/mtz-80-1-82-1-2ece2f.jpg",
+      "screenshots": [
+        "images/mtz-80-1-82-1-7b9ff5.jpg",
+        "images/mtz-80-1-82-1-8988b8.jpg",
+        "images/mtz-80-1-82-1-7bfaae.jpg",
+        "images/mtz-80-1-82-1-ff8712.jpg"
+      ],
+      "createdAt": "2026-11-13T00:56:36.735Z"
     }
   ]
 }
