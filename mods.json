@@ -1313,6 +1313,26 @@
         "images/anhydrous-ammonia-pack-96f494.jpg"
       ],
       "createdAt": "2026-11-13T20:46:23.426Z"
+    },
+    {
+      "title": "Stara Tornado 1300",
+      "author": "Frits",
+      "version": "1.1.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Stara Tornado 1300\nThe Tornado 1300 is a double disc spreader that guarantees quality and efficiency in the distribution of granulated fertilizers and fine seeds, with an excellent distribution range.\n\n- Price: 15000$\n- Capacity: 2600 liters\n- Working Width: 20 meters\n- Fertilizer Distributor\n\nChangelog 1.1.0.0:\n- Fixing decal error",
+      "filename": "FS22_Stara_Tornado_1300.zip",
+      "size": 1833708,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Stara_Tornado_1300.zip",
+      "zipPath": null,
+      "image": "images/stara-tornado-1300-1a4ab5.jpg",
+      "screenshots": [
+        "images/stara-tornado-1300-c80853.jpg",
+        "images/stara-tornado-1300-9ae4e6.jpg",
+        "images/stara-tornado-1300-a833aa.jpg",
+        "images/stara-tornado-1300-5decbf.jpg"
+      ],
+      "createdAt": "2026-11-13T21:12:54.707Z"
     }
   ]
 }
