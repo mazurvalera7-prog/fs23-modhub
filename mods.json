@@ -1660,6 +1660,25 @@
         "images/ru-7000-82cd11.jpg"
       ],
       "createdAt": "2026-11-13T21:42:55.259Z"
+    },
+    {
+      "title": "Rauch MDS 19.1",
+      "author": "ShaRRdY",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Rauch MDS 19.1\n\nPrice: 6500 €\nWorking width: 18m\nWorking speed: 20km/h\n\nConfigurations:\n- Capacity configuration\n- Color configurations",
+      "filename": "FS22_rauchMDS191.zip",
+      "size": 1555003,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_rauchMDS191.zip",
+      "zipPath": null,
+      "image": "images/rauch-mds-19-1-c329d1.jpg",
+      "screenshots": [
+        "images/rauch-mds-19-1-02f66f.jpg",
+        "images/rauch-mds-19-1-808a20.jpg",
+        "images/rauch-mds-19-1-8f26af.jpg"
+      ],
+      "createdAt": "2026-11-13T21:44:19.409Z"
     }
   ]
 }
