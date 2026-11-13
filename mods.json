@@ -523,6 +523,24 @@
         "images/mtz-1523-1b1cf2.jpg"
       ],
       "createdAt": "2026-11-13T07:22:35.848Z"
+    },
+    {
+      "title": "MTZ 1221",
+      "author": "Sevill",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: MTZ\nModel: 1221\nStandard engine: D-260\nPrice: 32000 $\nMax. power: 130 - 132 hp\nMax. speed: 35 kph\n\nAdditional option:\n- Modification: MTZ 1221 Sarex, MTZ 1221.2, MTZ 1221.3\n- Color variant: blue, red, green\n- Wheel selection\n- Dashboard selection\n- Front counterweight selection\n- Selection of lighting equipment\n- Air filter selection\n- Selecting side mirrors\n- Roof selection\n- Glass stickers\n- Beacon light\n- Additional fuel tank\n- Frontloader",
+      "filename": "FS22_MTZ_1221_Pack.zip",
+      "size": 70181880,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_1221_Pack.zip",
+      "zipPath": null,
+      "image": "images/mtz-1221-37d6f9.jpg",
+      "screenshots": [
+        "images/mtz-1221-805451.jpg",
+        "images/mtz-1221-65536b.jpg"
+      ],
+      "createdAt": "2026-11-13T07:24:25.627Z"
     }
   ]
 }
