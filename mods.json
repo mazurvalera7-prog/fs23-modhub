@@ -809,6 +809,26 @@
         "images/htz-t-150k-09-e70085.jpg"
       ],
       "createdAt": "2026-11-13T14:23:18.205Z"
+    },
+    {
+      "title": "T - 2025+KOLOS",
+      "author": "MTV55",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "T - 2025+KOLOS",
+      "filename": "FS22_OMICH_T2025_KOLOS2_BP.zip",
+      "size": 19566154,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_OMICH_T2025_KOLOS2_BP.zip",
+      "zipPath": null,
+      "image": "images/t-2025-kolos-f1f964.jpg",
+      "screenshots": [
+        "images/t-2025-kolos-8056b8.jpg",
+        "images/t-2025-kolos-518b9d.jpg",
+        "images/t-2025-kolos-60caa7.jpg",
+        "images/t-2025-kolos-8a992a.jpg"
+      ],
+      "createdAt": "2026-11-13T14:25:40.963Z"
     }
   ]
 }
