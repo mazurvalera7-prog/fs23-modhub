@@ -289,6 +289,26 @@
         "images/mtz-80-82-series-d8965c.jpg"
       ],
       "createdAt": "2026-11-12T23:58:45.874Z"
+    },
+    {
+      "title": "K700A",
+      "author": "Aluha74rus,region038,voiyka_13(Владимир Кузинкин)Конверт из",
+      "version": "1.5",
+      "category": "tractorsL",
+      "description": "K700A",
+      "filename": "FS22_K700A.zip",
+      "size": 47756075,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_K700A.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/k700a-45da21.jpg",
+        "images/k700a-42eb87.jpg",
+        "images/k700a-a9f494.jpg",
+        "images/k700a-f94ea9.jpg"
+      ],
+      "createdAt": "2026-11-13T00:45:52.772Z"
     }
   ]
 }
