@@ -1253,6 +1253,26 @@
         "images/tuman-2m-772579.jpg"
       ],
       "createdAt": "2026-11-13T20:39:05.760Z"
+    },
+    {
+      "title": "ROSA",
+      "author": "SMods",
+      "version": "1.0.1.0",
+      "category": "sprayers",
+      "description": "",
+      "filename": "FS22_Rosa.zip",
+      "size": 24320758,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Rosa.zip",
+      "zipPath": null,
+      "image": "images/rosa-c1f62e.jpg",
+      "screenshots": [
+        "images/rosa-67fada.jpg",
+        "images/rosa-00b572.jpg",
+        "images/rosa-2bee6e.jpg",
+        "images/rosa-9a1e28.jpg"
+      ],
+      "createdAt": "2026-11-13T20:41:19.091Z"
     }
   ]
 }
