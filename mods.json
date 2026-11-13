@@ -1433,6 +1433,25 @@
         "images/mtt-4u-036ac4.jpg"
       ],
       "createdAt": "2026-11-13T21:23:40.475Z"
+    },
+    {
+      "title": "Unia MX",
+      "author": "Arikson JarviceOne",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Unia MX is a small size fertilizer spreader for small and medium-sized farms.",
+      "filename": "FS22_Unia_MX.zip",
+      "size": 2079821,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Unia_MX.zip",
+      "zipPath": null,
+      "image": "images/unia-mx-d70ad8.jpg",
+      "screenshots": [
+        "images/unia-mx-cc191c.jpg",
+        "images/unia-mx-b9b26a.jpg",
+        "images/unia-mx-c4c965.jpg"
+      ],
+      "createdAt": "2026-11-13T21:25:49.998Z"
     }
   ]
 }
