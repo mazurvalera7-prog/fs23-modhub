@@ -772,6 +772,26 @@
         "images/belarus50-final-e83dd5.jpg"
       ],
       "createdAt": "2026-11-13T13:44:41.698Z"
+    },
+    {
+      "title": "Fendt Xylon Pack",
+      "author": "LSFM - BayernGamers",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "Contents:\nFendt:\nXylon 524:\nEngine configurations:\n- Fendt Xylon 520 (110 HP) - 52,500.00€\n- Fendt Xylon 522 (125 HP) - 55,000.00€\n- Fendt Xylon 524 (147 HP) - 57,500.00€\n- Fendt Xylon 524 Tuning (165 HP) - 60,000.00€\n\nDesign configurations:\n- BayernGamers Edition\n- LSFM Edition\n- Red Edition\n- Green Edition\n- Yellow Edition\n- Blue Edition\n- Orange Edition\n- Black Edition\n- White Edition\n\nOptionally, the hydraulic mounting frame is available for all BG Fahrzeugbau attachments.\nThe Xylon has the option to exit on the right side using the key combination lShift + E (can be reassigned if necessary).\n\nRim color and main color are configurable.\n\nDecal configuration:\n- LSFM sticker on the lower edge of the windshield\n\nInteractive Control installed:\n- Doors\n- Sunroof\n- Front windshield\n- Rear windshield\n- Side mirrors\ncan be opened/folded.\n\nNEW! Front and rear linkage are controllable via IC.\n\nAdditional features:\n- New tire configurations (1.5m and 2.25m care tires)\n- Improved front axle physics\n- Installed spring-loaded passenger seat (requires Kubota DLC)\n\nXylon Front Loader:\nPrice: 5,700.00€\n\nMain color is configurable.\n\nRau:\nSpridoport:\nPrice: 4,000.00€\n\nMain and design color are configurable.\n\nFront Tank Xylon:\nPrice: 2,500.00€\n\nMain and design color are configurable.\n\nBG Fahrzeugbau:\nRear platform:\nPrice: 4,000.00€\n\nConfigurations:\n- Bale wagon (0l)\n- Tipper (1500l)\n- Tipper + extension (2300l)\n\nFor the tipper, the object mode can be activated, which prevents BigBags or palle",
+      "filename": "LSFM22_FendtXylonPack.zip",
+      "size": 29454737,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/LSFM22_FendtXylonPack.zip",
+      "zipPath": null,
+      "image": "images/fendt-xylon-pack-f72a81.jpg",
+      "screenshots": [
+        "images/fendt-xylon-pack-82f3b5.jpg",
+        "images/fendt-xylon-pack-1714e4.jpg",
+        "images/fendt-xylon-pack-cca9e8.jpg",
+        "images/fendt-xylon-pack-e42ba2.jpg"
+      ],
+      "createdAt": "2026-11-13T14:21:42.792Z"
     }
   ]
 }
