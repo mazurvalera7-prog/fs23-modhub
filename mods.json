@@ -1393,6 +1393,26 @@
         "images/mvu-8-c0b7ea.jpg"
       ],
       "createdAt": "2026-11-13T21:19:42.083Z"
+    },
+    {
+      "title": "N015 \"KOS\"",
+      "author": "Hajstel, EE",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Using the N015 fertiliser spreader guarantees even distribution of mineral fertiliser and lime, as well as sowing intercrops\n\nPrice: $700\nWorking width: 7 metres\nCapacity: 200 litres\nHitch configuration\nVisual configurations\nColour configurations",
+      "filename": "FS22_N015_KOS_crossplay.zip",
+      "size": 4451675,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_N015_KOS_crossplay.zip",
+      "zipPath": null,
+      "image": "images/n015-kos-72b972.jpg",
+      "screenshots": [
+        "images/n015-kos-1daf10.jpg",
+        "images/n015-kos-407e75.jpg",
+        "images/n015-kos-01ded0.jpg",
+        "images/n015-kos-ea46f5.jpg"
+      ],
+      "createdAt": "2026-11-13T21:21:18.138Z"
     }
   ]
 }
