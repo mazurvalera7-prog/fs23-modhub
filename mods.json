@@ -1353,6 +1353,26 @@
         "images/stara-tornado-1300-6d8814.jpg"
       ],
       "createdAt": "2026-11-13T21:14:19.510Z"
+    },
+    {
+      "title": "Joskin MODULO 2",
+      "author": "Budowek Team",
+      "version": "1.1.0.0",
+      "category": "slurryTanks",
+      "description": "Price: 77.500€\nMax. Work speed: 17 km/h\nRequired power: 150 hp\nWorking Width: 12m\nCapacity: 15800\n\n- Tires Configuration\n- Chassis color configuration\n- Rim color configuration\n- Hoses color configuration\n- Manure sensor configuration (8.900€, Precision Farming DLC required)\n\nUpdate 1.1.0.0\n- Fixed various bugs\n- Precision farming ready",
+      "filename": "FS22_MODULO2.zip",
+      "size": 6704336,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MODULO2.zip",
+      "zipPath": null,
+      "image": "images/joskin-modulo-2-9abdf4.jpg",
+      "screenshots": [
+        "images/joskin-modulo-2-1ca4ee.jpg",
+        "images/joskin-modulo-2-b1eb91.jpg",
+        "images/joskin-modulo-2-9fa52a.jpg",
+        "images/joskin-modulo-2-04a3ec.jpg"
+      ],
+      "createdAt": "2026-11-13T21:18:12.372Z"
     }
   ]
 }
