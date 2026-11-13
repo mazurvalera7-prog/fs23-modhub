@@ -1118,6 +1118,25 @@
         "images/hta-250-6b71a3.jpg"
       ],
       "createdAt": "2026-11-13T16:52:59.854Z"
+    },
+    {
+      "title": "MTT-4U",
+      "author": "SMods",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "",
+      "filename": "FS22_MTT4U.zip",
+      "size": 6376167,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTT4U.zip",
+      "zipPath": null,
+      "image": "images/mtt-4u-105411.jpg",
+      "screenshots": [
+        "images/mtt-4u-28b4b0.jpg",
+        "images/mtt-4u-617c02.jpg",
+        "images/mtt-4u-63d0b8.jpg"
+      ],
+      "createdAt": "2026-11-13T18:54:40.282Z"
     }
   ]
 }
