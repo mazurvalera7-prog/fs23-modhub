@@ -981,6 +981,25 @@
         "images/mtz-belarus-2022-7-02e44a.jpg"
       ],
       "createdAt": "2026-11-13T15:58:19.244Z"
+    },
+    {
+      "title": "MTZ 1025 NOW",
+      "author": "RusAgroTeh FS22:denla007",
+      "version": "0.2",
+      "category": "tractorsS",
+      "description": "Manufacturer: MTZ\nModel: 1025\nStandard engine: D-245\nPrice: 27000 €\nMax. power: 105 - 107 hp\nMax. speed: 35 kph\n\nAdditional option:\n- Modification: MTZ 1025 - MTZ 1025.2\n- Color variant: blue, red\n- Color variant (rim): white, gray, black\n- Frontlader (PFN 0.9)\n- Additional wheel weight\n- Beacon light\n- GPS navigator\n- Support \"guidanceSteering\" script\n\nFrontloader PFN 0.9:\nCombination: MTZ 1025\nPrice: 2500 €\n\nFrontloader Shovel 0.8:\nCombination: PFN 0.9\nPrice: 550 €\nWorking width: 2.1 m\nCapacity: 800 l\n\nFrontloader Shovel:\nCombination: PFN 0.9\nPrice: 1000 €\nWorking width: 2.0 m\nCapacity: 1000 l\n\nManure Grab Fork:\nCombination: PFN 0.9\nPrice: 670 €\nWorking width: 1.23 m\nCapacity: 1000 l\n\nBale fork:\nCombination: PFN 0.9\nPrice: 360 €\n\nPallet fork:\nCombination: PFN 0.9\nPrice: 300 €\n\nAdditional option:\n- Color variant: red, blue, yellow",
+      "filename": "FS22_MTZ_1025_NOW_denla.zip",
+      "size": 36321798,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_1025_NOW_denla.zip",
+      "zipPath": null,
+      "image": "images/mtz-1025-now-4bdbc1.jpg",
+      "screenshots": [
+        "images/mtz-1025-now-455084.jpg",
+        "images/mtz-1025-now-758836.jpg",
+        "images/mtz-1025-now-db99e9.jpg"
+      ],
+      "createdAt": "2026-11-13T16:00:34.819Z"
     }
   ]
 }
