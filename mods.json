@@ -1624,6 +1624,24 @@
         "images/zunhammer-ske-18-5-pud-e3d0d4.jpg"
       ],
       "createdAt": "2026-11-13T21:39:56.035Z"
+    },
+    {
+      "title": "MVU Fertilizer Spreaders",
+      "author": "Pavel_Tikhonov",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Manufacturer: AGROTECH\nModel: MVU\nPrice: 7000 €\nRequired power: 50 hp\nWorking width: 24 m\nCapacity: 900/1200 l",
+      "filename": "FS22_mvu_agrotech.zip",
+      "size": 1241933,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_mvu_agrotech.zip",
+      "zipPath": null,
+      "image": "images/mvu-fertilizer-spreaders-f1b2ad.jpg",
+      "screenshots": [
+        "images/mvu-fertilizer-spreaders-c11de1.jpg",
+        "images/mvu-fertilizer-spreaders-45b18c.jpg"
+      ],
+      "createdAt": "2026-11-13T21:41:31.567Z"
     }
   ]
 }
