@@ -578,6 +578,26 @@
         "images/mtz-80-1-82-1-5677e9.jpg"
       ],
       "createdAt": "2026-11-13T07:27:48.589Z"
+    },
+    {
+      "title": "Т-40М/AM",
+      "author": "AMT-Rediski,Farm-works",
+      "version": "1.3.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: LTZ\nModel: Т-40M/AM\nMax. power: 60 hp\nMax. speed: 25 kph\nPrice: 4000, 6000 €\n\nColor configuration:\n- Main color\n- Cab color\n- Lattice color\n- Rim color\n\nConfiguration parts:\n- Wheels selection\n- Weight selection: 40, 80, 120, 160 kg.\n- Lattice selection\n- Air filter selection\n- Fenders: yes/no\n- Mudflap: yes/no\n- Mirrors: yes/no\n- Step selection\n- Number selection\n- Hood design",
+      "filename": "FS22_LTZ_T40_pack.zip",
+      "size": 65253070,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_LTZ_T40_pack.zip",
+      "zipPath": null,
+      "image": "images/40-am-e022a9.jpg",
+      "screenshots": [
+        "images/40-am-e1deb3.jpg",
+        "images/40-am-c0b69d.jpg",
+        "images/40-am-ee4ee0.jpg",
+        "images/40-am-c57131.jpg"
+      ],
+      "createdAt": "2026-11-13T08:31:24.583Z"
     }
   ]
 }
