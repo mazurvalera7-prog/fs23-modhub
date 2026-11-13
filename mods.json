@@ -672,6 +672,26 @@
         "images/fendt-700-vario-gen7-126046.jpg"
       ],
       "createdAt": "2026-11-13T13:32:04.564Z"
+    },
+    {
+      "title": "Ursus 6 Pack",
+      "author": "Kasztan18",
+      "version": "2.1.0.0",
+      "category": "tractorsS",
+      "description": "The tractor was developed at the Polish-Czechoslovak Research and Development Center for Tractors in Brno,\nthen produced at the ZM Ursus plant in Poland in 1984–2009.\nProduced in 4857 copies. Many of them still work on Polish farms\nand in less quantity in many other countries.\n\nPrice: 58000 $\nPower: 155 hp\nMax. speed: 28/38 kph\n\nConfiurations:\n- Tires\n- Transmission\n- Decals\n- Front weight\n- Wheel weight\n- Back fenders\n- Front fenders\n- Mud guards\n- Cabine\n- Front lights\n- Grill\n- Back attacher\n- Exhaust\n- Steering wheel\n- Hood\n- Frontloader console\n- Animations: IC/MC\n\nColor confiurations:\n- Engine\n- Hood\n- Fenders\n- Cabine\n- Grill\n- Rims\n- Front weight\n- Wheel weights\n- Roof\n\nChangelog 2.0.0.0:\n- Improved scale of the front drive axle\n- Improved back wiper animation\n- Improved scale of tires\n- Added new tires\n- Added new front weight\n- Improved textures of some elements\n- Improved scale of front fenders\n- Added new hood\n- Added new back fenders\n- Added new exhasust pipe\n- New color configurations\n- Fixed conection hoses of frontloader\n- Fixed animation of frontloader joystick\n- Added new models: 1021, 1204, 1212, 1214, 1222, 1224, 1604\n\nChangelog 2.1.0.0:\n- Improved back lights\n- Improved tires\n- Added few configurations",
+      "filename": "FS22_ursus1222.zip",
+      "size": 36855208,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_ursus1222.zip",
+      "zipPath": null,
+      "image": "images/ursus-6-pack-11fcba.jpg",
+      "screenshots": [
+        "images/ursus-6-pack-1007cc.jpg",
+        "images/ursus-6-pack-f9b52d.jpg",
+        "images/ursus-6-pack-777fbf.jpg",
+        "images/ursus-6-pack-b10bdf.jpg"
+      ],
+      "createdAt": "2026-11-13T13:34:22.605Z"
     }
   ]
 }
