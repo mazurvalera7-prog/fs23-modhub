@@ -1098,6 +1098,26 @@
         "images/htz-t-150k-d260-ccae30.jpg"
       ],
       "createdAt": "2026-11-13T16:51:48.877Z"
+    },
+    {
+      "title": "HTA 250",
+      "author": "_Man_",
+      "version": "1.0.0.0",
+      "category": "tractorsM",
+      "description": "Manufacturer: HTA\nModel: HTA 250\nStandard engine: D-260\nPrice: 55221 €\nMax. power: 240 hp\nMax. speed: 38 kph\n\nAdditional option:\n- Modification: HTA 250\n- 2 Tyre brand configurations (Rosava, Belshina)\n- Twin wheels\n- Selection of hydraulics\n- Choosing an air conditioner\n- Model selection\n- Choice of headlights",
+      "filename": "FS22_HTA_250.zip",
+      "size": 40019631,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_HTA_250.zip",
+      "zipPath": null,
+      "image": "images/hta-250-c75e84.jpg",
+      "screenshots": [
+        "images/hta-250-261f02.jpg",
+        "images/hta-250-ff749d.jpg",
+        "images/hta-250-d9bd3f.jpg",
+        "images/hta-250-6b71a3.jpg"
+      ],
+      "createdAt": "2026-11-13T16:52:59.854Z"
     }
   ]
 }
