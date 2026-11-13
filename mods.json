@@ -329,6 +329,25 @@
         "images/htz-t-150k-f1988b.jpg"
       ],
       "createdAt": "2026-11-13T00:46:41.683Z"
+    },
+    {
+      "title": "John Deere 8R Series 2014-2019",
+      "author": "Матюха",
+      "version": "1.0.0.0",
+      "category": "tractorsL",
+      "description": "John Deere 8R 2014-2019 Series\n\n290 to 450 engine hp. The 8R Series Tractors are world-class machines designed\nto provide the hydraulic capacity and horsepower to handle large planters and implements.\nPowered by the PowerTech™ PSS 9.0L engine, the 8R is a champion in the field, delivering\nuncompromised performance while meeting Tier 4 emission requirements.",
+      "filename": "FS22_jonn_dire_8_seris.zip",
+      "size": 31275162,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_jonn_dire_8_seris.zip",
+      "zipPath": null,
+      "image": "images/john-deere-8r-series-2014-2019-167fae.jpg",
+      "screenshots": [
+        "images/john-deere-8r-series-2014-2019-60be8d.jpg",
+        "images/john-deere-8r-series-2014-2019-350187.jpg",
+        "images/john-deere-8r-series-2014-2019-4cd576.jpg"
+      ],
+      "createdAt": "2026-11-13T00:48:59.315Z"
     }
   ]
 }
