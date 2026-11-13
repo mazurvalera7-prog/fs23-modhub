@@ -1452,6 +1452,25 @@
         "images/unia-mx-c4c965.jpg"
       ],
       "createdAt": "2026-11-13T21:25:49.998Z"
+    },
+    {
+      "title": "L-116",
+      "author": "ANDREI1994,JarviceOne",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Manufacturer: LidSelmash\nModel: L-116\nPrice: 2500 €\nRequired power: 50 hp\nWorking width: 8 m\nCapacity: 500 l",
+      "filename": "FS22_L116.zip",
+      "size": 1506948,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_L116.zip",
+      "zipPath": null,
+      "image": "images/l-116-3ab477.jpg",
+      "screenshots": [
+        "images/l-116-cf8669.jpg",
+        "images/l-116-deffa2.jpg",
+        "images/l-116-751ee2.jpg"
+      ],
+      "createdAt": "2026-11-13T21:27:15.110Z"
     }
   ]
 }
