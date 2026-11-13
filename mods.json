@@ -1510,6 +1510,26 @@
         "images/mzht-16-c6ed73.jpg"
       ],
       "createdAt": "2026-11-13T21:30:38.272Z"
+    },
+    {
+      "title": "MZHT-10",
+      "author": "FSSA Modding Team",
+      "version": "1.0.0.0",
+      "category": "slurryTanks",
+      "description": "Tank MZHT-10 (machine for applying liquid fertilizers)\nDesigned for self-loading, transportation, mixing\nand continuous surface application of liquid organic fertilizers,\nas well as for the transportation of process water.\n\nPrice: 9000 €\nCapacity: 10000l\nMax. working speed: 17 kph\nWorking width: 10 m\nNeeded Power: 130hp\n\nColor: Trailer, Decals, Rims",
+      "filename": "FS22_MZHT_10.zip",
+      "size": 11473447,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MZHT_10.zip",
+      "zipPath": null,
+      "image": "images/mzht-10-b9ff34.jpg",
+      "screenshots": [
+        "images/mzht-10-9d47c1.jpg",
+        "images/mzht-10-e7f220.jpg",
+        "images/mzht-10-e3c359.jpg",
+        "images/mzht-10-57146c.jpg"
+      ],
+      "createdAt": "2026-11-13T21:32:27.481Z"
     }
   ]
 }
