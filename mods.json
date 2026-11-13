@@ -1273,6 +1273,26 @@
         "images/rosa-9a1e28.jpg"
       ],
       "createdAt": "2026-11-13T20:41:19.091Z"
+    },
+    {
+      "title": "RMU-3000",
+      "author": "YURI",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "RMU-3000",
+      "filename": "FS22_RMU3000.zip",
+      "size": 5996431,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_RMU3000.zip",
+      "zipPath": null,
+      "image": "images/rmu-3000-d7888f.jpg",
+      "screenshots": [
+        "images/rmu-3000-0d6fb5.jpg",
+        "images/rmu-3000-805197.jpg",
+        "images/rmu-3000-ca971e.jpg",
+        "images/rmu-3000-c84635.jpg"
+      ],
+      "createdAt": "2026-11-13T20:43:32.016Z"
     }
   ]
 }
