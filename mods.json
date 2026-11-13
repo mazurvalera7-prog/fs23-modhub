@@ -348,6 +348,26 @@
         "images/john-deere-8r-series-2014-2019-4cd576.jpg"
       ],
       "createdAt": "2026-11-13T00:48:59.315Z"
+    },
+    {
+      "title": "MTZ 800-1000 Series",
+      "author": "Sevill",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "MTZ Belarus 800-1000 Series Pack\n\nA series of tractors built at the Belarusian plant, serial production began in 2000 to the present\n\nAvailable models: 80.1, 82.1, 572, 82.2, 820, 890, 890.2, 892, 892.2, 920, 920.2, 950, 952, 952.2, 1021, 1025, 1025.2 and MUL 82.2\n\nConfiurations:\n- Tires\n- Decals\n- Front weight\n- Wheel weight\n- Front fenders\n- Mud guards\n- Mirrors\n- Ladders\n- Front lights\n- Back lights\n- Additional lights\n- Back attacher\n- Exhaust\n- Steering wheel\n- Hood\n- Frontloader console\n- Animations: IC, MC\n\nColor configurations:\n- Hood\n- Axels\n- Glass\n- Fenders\n- Rims\n- Wheel weights\n\nInteractive Control support\nUniversal Passenger support",
+      "filename": "FS22_MTZ_800_1000_Series_UAM.zip",
+      "size": 77925921,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_800_1000_Series_UAM.zip",
+      "zipPath": null,
+      "image": "images/mtz-800-1000-series-139461.jpg",
+      "screenshots": [
+        "images/mtz-800-1000-series-792d7a.jpg",
+        "images/mtz-800-1000-series-e2bd07.jpg",
+        "images/mtz-800-1000-series-4ae4c3.jpg",
+        "images/mtz-800-1000-series-cace3c.jpg"
+      ],
+      "createdAt": "2026-11-13T00:50:15.310Z"
     }
   ]
 }
