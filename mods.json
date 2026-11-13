@@ -1549,6 +1549,24 @@
         "images/mod-ca2101.jpg"
       ],
       "createdAt": "2026-11-13T21:34:27.682Z"
+    },
+    {
+      "title": "Veenhuis 6800",
+      "author": "Dutch Modding Inc.",
+      "version": "1.0.0.0",
+      "category": "slurryTanks",
+      "description": "The Veenhuis 6800 single axle and tandem tank have been specially developed for the dairy farmer.\nThe simple construction in combination with vacuum pump and a rear hitch makes this a great machine for the farmer who wants to spread manure himself.\n\nPrice: 12.000$\nCapacity: 6800 L\nMax. working speed: 17 kph\nRequired power: 40 hp\nWorking width: 9.0 m",
+      "filename": "FS22_veenhuis6800.zip",
+      "size": 3319919,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_veenhuis6800.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/veenhuis-6800-24dd55.jpg",
+        "images/veenhuis-6800-4499d9.jpg"
+      ],
+      "createdAt": "2026-11-13T21:36:16.285Z"
     }
   ]
 }
