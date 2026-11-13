@@ -506,6 +506,23 @@
         "images/mtz-3522-2024-ad3521.jpg"
       ],
       "createdAt": "2026-11-13T07:21:23.479Z"
+    },
+    {
+      "title": "MTZ 1523",
+      "author": "Sevill",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: MTZ\nModel: 1523\nStandard engine: D-260\nPrice: 32000 $\nMax. power: 150 - 158 hp\nMax. speed: 40 kph\n\nAdditional option:\n- Color variant: blue, red, green\n- Wheel selection\n- Dashboard selection\n- Front counterweight selection\n- Selection of lighting equipment\n- Air filter selection\n- Selecting side mirrors\n- Beacon light\n- Additional fuel tank\n- Frontloader",
+      "filename": "FS22_MTZ_1523_Pack.zip",
+      "size": 32515601,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_1523_Pack.zip",
+      "zipPath": null,
+      "image": "images/mtz-1523-76a560.jpg",
+      "screenshots": [
+        "images/mtz-1523-1b1cf2.jpg"
+      ],
+      "createdAt": "2026-11-13T07:22:35.848Z"
     }
   ]
 }
