@@ -864,6 +864,26 @@
         "images/mtz-800-1000-series-new-ec666a.jpg"
       ],
       "createdAt": "2026-11-13T14:29:44.274Z"
+    },
+    {
+      "title": "Kirovets K-700A/701",
+      "author": "SFM-modding, Erlan10, KOVSH, VolgaFS",
+      "version": "1.0.0.1",
+      "category": "tractorsL",
+      "description": "Manufacturer: USSR\nModel: K-701\nProduction: 1975 - 2002\nStandard engine: YaMZ-238ND3/v8\nPrice: 78000 €\nMax. power: 300 hp\nMax. speed: 35 kph",
+      "filename": "FS22_Kirovets.zip",
+      "size": 11844951,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Kirovets.zip",
+      "zipPath": null,
+      "image": "images/kirovets-k-700a-701-f39f18.jpg",
+      "screenshots": [
+        "images/kirovets-k-700a-701-0d0a8e.jpg",
+        "images/kirovets-k-700a-701-483b28.jpg",
+        "images/kirovets-k-700a-701-7b68af.jpg",
+        "images/kirovets-k-700a-701-3c3b5e.jpg"
+      ],
+      "createdAt": "2026-11-13T14:31:33.722Z"
     }
   ]
 }
