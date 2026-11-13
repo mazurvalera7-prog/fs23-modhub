@@ -1605,6 +1605,25 @@
         "images/piccin-master-15000-6c1dea.jpg"
       ],
       "createdAt": "2026-11-13T21:38:41.375Z"
+    },
+    {
+      "title": "Zunhammer SKE 18.5 PUD",
+      "author": "Puszkap",
+      "version": "1.0.0.0",
+      "category": "slurryTanks",
+      "description": "Price: 65000€\nMax. working speed: 17 kph\nRequired power: 180 hp\nWorking width: 14.8",
+      "filename": "FS22_zunhammer18500PE.zip",
+      "size": 2001198,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_zunhammer18500PE.zip",
+      "zipPath": null,
+      "image": "images/zunhammer-ske-18-5-pud-78896b.jpg",
+      "screenshots": [
+        "images/zunhammer-ske-18-5-pud-c76436.jpg",
+        "images/zunhammer-ske-18-5-pud-1494e8.jpg",
+        "images/zunhammer-ske-18-5-pud-e3d0d4.jpg"
+      ],
+      "createdAt": "2026-11-13T21:39:56.035Z"
     }
   ]
 }
