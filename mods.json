@@ -617,6 +617,24 @@
         "images/zetor-ur2-pack-528687.jpg"
       ],
       "createdAt": "2026-11-13T08:33:44.663Z"
+    },
+    {
+      "title": "Case Puma CVX",
+      "author": "STv-Modding",
+      "version": "1.2.0.0",
+      "category": "tractorsM",
+      "description": "Price: $184,000\nPower: 225-270hp\n- Design Color Configurations\n- Joystick Animated and Doors\n- Tires Configurations\n- New Parts\n\n- Update 1.1.0.0\n- Fixed Various Bugs\n- Fix some detail\n- New Interior Configurations\n- New Tires Configurations\n\n- Update 1.2.0.0\n- Fixed Various Bugs\n- New Details\n- New Design Color Configurations\n- New Tires Configurations",
+      "filename": "FS22_caseIHPumaCVX.zip",
+      "size": 10255569,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_caseIHPumaCVX.zip",
+      "zipPath": null,
+      "image": "images/case-puma-cvx-1b2418.jpg",
+      "screenshots": [
+        "images/case-puma-cvx-ff9da6.jpg",
+        "images/case-puma-cvx-b4f227.jpg"
+      ],
+      "createdAt": "2026-11-13T08:37:01.377Z"
     }
   ]
 }
