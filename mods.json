@@ -447,6 +447,25 @@
         "images/mtz-80-1-82-1-ff8712.jpg"
       ],
       "createdAt": "2026-11-13T00:56:36.735Z"
+    },
+    {
+      "title": "MTZ 1221 Teomik",
+      "author": "Teomik",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: MTZ\nModel: 1221\nStandard engine: D-260\nPrice: 32000 $\nMax. power: 200 - 203 hp\nMax. speed: 40 kph\n\nAdditional option:\n- Modification: MTZ 1221 Sarex, MTZ 1221.2, MTZ 1221.3\n- Color variant: blue, red, green\n- Wheel selection\n- Dashboard selection\n- Front counterweight selection\n- Selection of lighting equipment\n- Air filter selection\n- Selecting side mirrors\n- Roof selection\n- Glass stickers\n- Beacon light\n- Additional fuel tank\n- Frontloader",
+      "filename": "FS22_MTZ_Teomik.zip",
+      "size": 67093051,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_Teomik.zip",
+      "zipPath": null,
+      "image": "images/mtz-1221-teomik-4b5c3e.jpg",
+      "screenshots": [
+        "images/mtz-1221-teomik-1dcb86.jpg",
+        "images/mtz-1221-teomik-8a72d2.jpg",
+        "images/mtz-1221-teomik-fec851.jpg"
+      ],
+      "createdAt": "2026-11-13T07:16:10.202Z"
     }
   ]
 }
