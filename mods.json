@@ -1586,6 +1586,25 @@
         "images/samson-agro-td-12-5db201.jpg"
       ],
       "createdAt": "2026-11-13T21:37:32.077Z"
+    },
+    {
+      "title": "Piccin Master 15000",
+      "author": "Piccin",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Equipped with dual hydraulic pump and independent 120 Liter oil reservoir to eliminate dependence on tractor conditions,\nVersatility, high production capacity and quality in distribution make MASTER 15000 FULL TECH the best option for those looking to optimize\noperations and reduce solids distribution costs.\n\n- Price: 80000 $\n- Power: 150 hp\n- Working speed: 18 kph\n- Limestone width: 12m\n- Width for fertilizer: 36m\n- Capacity: 15000 L\n- Optional tires\n- Animations",
+      "filename": "FS22_Piccin_master_15000.zip",
+      "size": 11695438,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Piccin_master_15000.zip",
+      "zipPath": null,
+      "image": "images/piccin-master-15000-6c81a7.jpg",
+      "screenshots": [
+        "images/piccin-master-15000-2c0497.jpg",
+        "images/piccin-master-15000-ac1400.jpg",
+        "images/piccin-master-15000-6c1dea.jpg"
+      ],
+      "createdAt": "2026-11-13T21:38:41.375Z"
     }
   ]
 }
