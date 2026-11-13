@@ -408,6 +408,25 @@
         "images/mtz-belarus-2022-7-6f6380.jpg"
       ],
       "createdAt": "2026-11-13T00:53:38.481Z"
+    },
+    {
+      "title": "Kirovets K7 Series Teomik",
+      "author": "Teomik",
+      "version": "1.0.0.1",
+      "category": "tractorsL",
+      "description": "Kirovets K-730M series Tractor\n- Price: 160000 $\n- Power: 300 hp\n- Max Speed: 32 kph\n- Design Color Configurations\n- Wheel Configurations\n- Manual Shifting Option\n- Lots of animations",
+      "filename": "FS22_kirovetsK7M.zip",
+      "size": 24423041,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_kirovetsK7M.zip",
+      "zipPath": null,
+      "image": "images/kirovets-k7-series-teomik-8b9821.jpg",
+      "screenshots": [
+        "images/kirovets-k7-series-teomik-496049.jpg",
+        "images/kirovets-k7-series-teomik-8a9b38.jpg",
+        "images/kirovets-k7-series-teomik-039a98.jpg"
+      ],
+      "createdAt": "2026-11-13T00:55:29.455Z"
     }
   ]
 }
