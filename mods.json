@@ -884,6 +884,25 @@
         "images/kirovets-k-700a-701-3c3b5e.jpg"
       ],
       "createdAt": "2026-11-13T14:31:33.722Z"
+    },
+    {
+      "title": "MTZ Belarus 4522",
+      "author": "SMods",
+      "version": "1.0.0.1",
+      "category": "tractorsL",
+      "description": "The BELARUS-4522 tractor is made according to the 4x4 wheel formula and is designed\nfor various agricultural work with mounted,\nsemi-mounted and trailed machines and implements, in transport,\nwith loading facilities, cleaning complexes,\nas well as for driving stationary agricultural machines.\nPrice: 156.000 $\nPower: 390 hp\nConfigurations:\n- Tire configuration\n- Beacon Lights\n- Main Body Color\n- Rim color\n- Seat color\n- Plastyk color",
+      "filename": "FS22_MTZ_4522.zip",
+      "size": 41596064,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_4522.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/mtz-belarus-4522-bf800f.jpg",
+        "images/mtz-belarus-4522-10a283.jpg",
+        "images/mtz-belarus-4522-29e4f8.jpg"
+      ],
+      "createdAt": "2026-11-13T14:33:52.375Z"
     }
   ]
 }
