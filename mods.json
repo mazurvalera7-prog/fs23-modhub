@@ -1373,6 +1373,26 @@
         "images/joskin-modulo-2-04a3ec.jpg"
       ],
       "createdAt": "2026-11-13T21:18:12.372Z"
+    },
+    {
+      "title": "MVU-8",
+      "author": "FSSA Modding Team",
+      "version": "1.0.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Price: 7350 €\nRequired power: 75 hp\nWorking width: 20 m (Fertilizer) / 12 m (Lime)\nCapacity: 11000 - 15900 l\n\nChangelog 1.0.0.1:\nAdded Capacity 12800 / 15900 l\nAdded wheel\nFixed wheel\nMinor fixed and improvements",
+      "filename": "FS22_MVU_8.zip",
+      "size": 7563077,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MVU_8.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/mvu-8-fe7deb.jpg",
+        "images/mvu-8-8c04dd.jpg",
+        "images/mvu-8-d1e83a.jpg",
+        "images/mvu-8-c0b7ea.jpg"
+      ],
+      "createdAt": "2026-11-13T21:19:42.083Z"
     }
   ]
 }
