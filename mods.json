@@ -829,6 +829,21 @@
         "images/t-2025-kolos-8a992a.jpg"
       ],
       "createdAt": "2026-11-13T14:25:40.963Z"
+    },
+    {
+      "title": "MTZ Belarus 3022",
+      "author": "SMods",
+      "version": "1.0.0.1",
+      "category": "tractorsL",
+      "description": "The BELARUS-3022 tractor has a 4*4 drive and is designed for agricultural work\nwith mounted, semi-mounted and trailed machines and implements, in transport,\nwith for loading,\nas well as for driving stationary agricultural machinery.\nShop Category: Large Tractors\nPrice: 106.000 $\nPower: 303 hp\nMax speed: 42 kph\nMod supported : Interactive Control\n\nConfigurations:\n- Tire configuration\n- Beacon Lights\n- Main Body Color\n- Rim color\n- Seat color\n- Plastyk color",
+      "filename": "FS22_MTZ_3022.zip",
+      "size": 34256285,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_3022.zip",
+      "zipPath": null,
+      "image": "images/mtz-belarus-3022-82fa0c.jpg",
+      "screenshots": [],
+      "createdAt": "2026-11-13T14:27:32.863Z"
     }
   ]
 }
