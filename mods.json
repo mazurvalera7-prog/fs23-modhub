@@ -1137,6 +1137,25 @@
         "images/mtt-4u-63d0b8.jpg"
       ],
       "createdAt": "2026-11-13T18:54:40.282Z"
+    },
+    {
+      "title": "RMD-1000 Oryhivsilmash",
+      "author": "TomSky, FS_MODDING_TEAM, Bodik55, OLEG28UKR",
+      "version": "1.1.0.0",
+      "category": "fertilizerSpreaders",
+      "description": "Price: 3.000 $\nCapacity: 1000-1200 l\nWorking width: 10-18 m\nMax. working speed: 18 kph",
+      "filename": "FS22_RMD_1000_ORYHIVSILMASH.zip",
+      "size": 5230712,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_RMD_1000_ORYHIVSILMASH.zip",
+      "zipPath": null,
+      "image": "images/rmd-1000-oryhivsilmash-610ab3.jpg",
+      "screenshots": [
+        "images/rmd-1000-oryhivsilmash-896eb3.jpg",
+        "images/rmd-1000-oryhivsilmash-8a0202.jpg",
+        "images/rmd-1000-oryhivsilmash-4aa19e.jpg"
+      ],
+      "createdAt": "2026-11-13T19:44:12.277Z"
     }
   ]
 }
