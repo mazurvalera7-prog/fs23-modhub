@@ -1530,6 +1530,25 @@
         "images/mzht-10-57146c.jpg"
       ],
       "createdAt": "2026-11-13T21:32:27.481Z"
+    },
+    {
+      "title": "ПАК удобрялок",
+      "author": "Vertos, Конверт Kerl",
+      "version": "1.2",
+      "category": "fertilizerSpreaders",
+      "description": "Пак Распределителей удобрений: РУ-1000, РУ-600 MTT-4U",
+      "filename": "FS22_PAC_UDOBRENIE.zip",
+      "size": 20534236,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_PAC_UDOBRENIE.zip",
+      "zipPath": null,
+      "image": "images/mod-77ccd5.jpg",
+      "screenshots": [
+        "images/mod-f29a6a.jpg",
+        "images/mod-f942bc.jpg",
+        "images/mod-ca2101.jpg"
+      ],
+      "createdAt": "2026-11-13T21:34:27.682Z"
     }
   ]
 }
