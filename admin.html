@@ -85,15 +85,15 @@
       <textarea id="description" maxlength="1500"></textarea>
       <div class="row">
         <div><label>Іконка (обкладинка)</label><input type="file" id="image" accept="image/*"></div>
-        <div><label>Скріншоти (до 4)</label><input type="file" id="shots" accept="image/*" multiple></div>
+        <div><label>Скріншоти (до 10)</label><input type="file" id="shots" accept="image/*" multiple></div>
       </div>
       <label>Посилання на сторінку мода з іншого сайту</label>
       <div class="row"><div style="flex:3"><input id="pageLink" placeholder="https://… сторінка мода"></div><div style="flex:1"><button type="button" id="findImgs" style="margin:0;width:100%">Знайти картинки</button></div></div>
-      <div class="hint" id="findInfo">Вставте посилання на сторінку мода й натисніть «Знайти картинки»: з неї збереться все, що схоже на скріншоти. Торкніться потрібних (до 4), і вони підставляться нижче.</div>
+      <div class="hint" id="findInfo">Вставте посилання на сторінку мода й натисніть «Знайти картинки»: з неї збереться все, що схоже на скріншоти. Торкніться потрібних (до 10), і вони підставляться нижче.</div>
       <div id="cands" style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0"></div>
       <label>Або посилання на іконку (https://…)</label>
       <input id="imageLink" placeholder="https://example.com/icon.jpg">
-      <label>Або посилання на скріншоти з іншого сайту (по одному в рядку, до 4)</label>
+      <label>Або посилання на скріншоти з іншого сайту (по одному в рядку, до 10)</label>
       <textarea id="shotLinks" placeholder="https://example.com/1.jpg&#10;https://example.com/2.jpg"></textarea>
       <div class="hint">Посилання мають вести прямо на картинку (jpg, png, webp). Якщо вибрано файли вище, використовуються вони.</div>
       <button id="go" type="submit">Опублікувати</button>
@@ -597,7 +597,7 @@ $("f").addEventListener("submit", async (e) => {
   if (!title) return logLine("Вкажіть назву", "err");
   if (!$("category").value) return logLine("Оберіть категорію", "err");
 
-  const image = $("image").files[0] || autoIcon, shots = [...$("shots").files].slice(0, 4);
+  const image = $("image").files[0] || autoIcon, shots = [...$("shots").files].slice(0, 10);
   const go = $("go"), pr = $("pr");
   go.disabled = true; pr.style.display = "block"; pr.value = 0;
   const written = []; // зображення, записані в репозиторій (для відкату)
@@ -631,7 +631,7 @@ $("f").addEventListener("submit", async (e) => {
     logLine("4/4 Зберігаю картинки й каталог…"); pr.value = 85;
     const saveImg = async (f) => { const bytes = await prepImage(f); const p = `images/${slug(title)}-${rand()}.jpg`; await putFile(p, bytesToB64(bytes), null, `Зображення для ${title}`); written.push(p); return p; };
     const okUrl = (u) => /^https:\/\/\S+$/i.test(u);
-    const linkImg = $("imageLink").value.trim(), linkShots = $("shotLinks").value.split(/\s+/).map((x) => x.trim()).filter(Boolean).slice(0, 4);
+    const linkImg = $("imageLink").value.trim(), linkShots = $("shotLinks").value.split(/\s+/).map((x) => x.trim()).filter(Boolean).slice(0, 10);
     if ((linkImg && !okUrl(linkImg)) || linkShots.some((u) => !okUrl(u))) throw new Error("Посилання на картинки мають починатися з https://");
     const imgPath = image ? await saveImg(image) : (linkImg || null);
     const shotPaths = []; if (shots.length) { for (const s of shots) shotPaths.push(await saveImg(s)); } else shotPaths.push(...linkShots);
@@ -709,7 +709,7 @@ function syncPicked() {
 $("cands").addEventListener("click", (e) => {
   const d = e.target.closest("#cands > div"); if (!d) return;
   const u = d.dataset.u, i = picked.indexOf(u);
-  if (i >= 0) picked.splice(i, 1); else if (picked.length < 4) picked.push(u);
+  if (i >= 0) picked.splice(i, 1); else if (picked.length < 10) picked.push(u);
   syncPicked();
 });
 $("findImgs").addEventListener("click", async () => {
@@ -719,7 +719,7 @@ $("findImgs").addEventListener("click", async () => {
   try {
     const list = extractImages(await fetchPage(url), url);
     if (!list.length) { $("findInfo").textContent = "На сторінці картинок не знайдено. Вставте посилання на картинки вручну."; }
-    else { renderCands(list); $("findInfo").textContent = `Знайдено: ${list.length}. Торкніться потрібних скріншотів (до 4). Цифра показує порядок.`; }
+    else { renderCands(list); $("findInfo").textContent = `Знайдено: ${list.length}. Торкніться потрібних скріншотів (до 10). Цифра показує порядок.`; }
   } catch (err) { $("findInfo").textContent = err.message + ". Вставте посилання на картинки вручну."; }
   b.disabled = false;
 });
@@ -745,7 +745,7 @@ async function enter() {
 $("enter").addEventListener("click", enter);
 $("tok").addEventListener("keydown", (e) => { if (e.key === "Enter") enter(); });
 $("logout").addEventListener("click", () => { store.del("fs23_gh_token"); location.reload(); });
-$("autoInfo").textContent = "Версія адмінки: v6 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
+$("autoInfo").textContent = "Версія адмінки: v7 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
 $("category").innerHTML = '<option value="">— оберіть категорію —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${esc(c.title)} (${c.name})</option>`).join("");
 if (store.get("fs23_gh_token")) enter();
 </script>
