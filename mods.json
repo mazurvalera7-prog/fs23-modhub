@@ -1952,6 +1952,26 @@
         "images/amazone-ux5200-177fe4.jpg"
       ],
       "createdAt": "2026-11-14T10:35:03.891Z"
+    },
+    {
+      "title": "Sprayers Kazan RUS",
+      "author": "Pavel_Tikhonov",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Manufacturer: KAZANSELMASH\nModel: OP-2000 Ruslan\nPrice: 30000 €\nRequired power: 60 hp\nWorking width: 18 m\nCapacity: 2000 l",
+      "filename": "FS22_OP_KSM_sprayers.zip",
+      "size": 15357748,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_OP_KSM_sprayers.zip",
+      "zipPath": null,
+      "image": "images/sprayers-kazan-rus-d37d68.jpg",
+      "screenshots": [
+        "images/sprayers-kazan-rus-73ac70.jpg",
+        "images/sprayers-kazan-rus-11e216.jpg",
+        "images/sprayers-kazan-rus-5da1a3.jpg",
+        "images/sprayers-kazan-rus-3d2b14.jpg"
+      ],
+      "createdAt": "2026-11-14T10:36:37.915Z"
     }
   ]
 }
