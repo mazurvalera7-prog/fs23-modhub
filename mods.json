@@ -1756,6 +1756,26 @@
         "images/kiy-14102-cedd28.jpg"
       ],
       "createdAt": "2026-11-14T09:00:45.777Z"
+    },
+    {
+      "title": "Zetor UR2 Pack",
+      "author": "Kasztan18",
+      "version": "2.0.0.0",
+      "category": "tractorsS",
+      "description": "Zetor UR2 Pack\n\nA series of tractors constructed at the Polish-Czechoslovak Research and Development Center\nfor Tractors in Brno, produced in 1971-1984\n\n8011:\n-Price: 30000 $\n-Power: 80 hp\n-Max. speed: 28 kph\n\n8045:\n-Price: 40000 $\n-Power: 80 hp\n-Max. speed: 28 kph\n\n10011:\n-Price: 34000 $\n-Power: 95 hp\n-Max. speed: 28 kph\n\n10045:\n-Price: 44000 $\n-Power: 95 hp\n-Max. speed: 28 kph\n\n12011:\n-Price: 35000 $\n-Power: 115 hp\n-Max. speed: 28 kph\n\n12045:\n-Price: 45000 $\n-Power: 115 hp\n-Max. speed: 28 kph\n\n16045:\n-Price: 55000 $\n-Power: 155 hp\n-Max. speed: 28 kph\n\n8111:\n-Price: 32500 $\n-Power: 80 hp\n-Max. speed: 28 kph\n\n8145:\n-Price: 42500 $\n-Power: 80 hp\n-Max. speed: 28 kph\n\n10111:\n-Price: 36500 $\n-Power: 95 hp\n-Max. speed: 28 kph\n\n10145:\n-Price: 46500 $\n-Power: 95 hp\n-Max. speed: 28 kph\n\n12111:\n-Price: 38000 $\n-Power: 115 hp\n-Max. speed: 28 kph\n\n12145:\n-Price: 49000 $\n-Power: 115 hp\n-Max. speed: 28 kph\n\n16145:\n-Price: 58000 $\n-Power: 155 hp\n-Max. speed: 28 kph\n\nConfiurations:\n- Tires\n- Transmission\n- Decals\n- Front weight\n- Wheel weight\n- Back fenders\n- Front fenders\n- Mud guards\n- Cabine\n- Front lights\n- Grill\n- Back attacher\n- Exhaust\n- Steering wheel\n- Hood\n- Frontloader console\n- Animations: Ic/Mc\n\nColor confiurations:\n- Engine\n- Hood\n- Fenders\n- Cabine\n- Grill\n- Rims\n- Front weight\n- Wheel weights\n\nInteractive Control support\n\nChangelog 1.1.0.0:\n- Added new models (8111, 8145, 12111, 12145)\n- Improved wom\n- Fixed bugs with textures\n- Improved gearbox\n- corrected configurations\n-",
+      "filename": "FS22_zetorCrystalPack.zip",
+      "size": 56219737,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_zetorCrystalPack.zip",
+      "zipPath": null,
+      "image": "images/zetor-ur2-pack-04750e.jpg",
+      "screenshots": [
+        "images/zetor-ur2-pack-d82a32.jpg",
+        "images/zetor-ur2-pack-f0d8ad.jpg",
+        "images/zetor-ur2-pack-2a4e21.jpg",
+        "images/zetor-ur2-pack-1a7813.jpg"
+      ],
+      "createdAt": "2026-11-14T09:02:33.674Z"
     }
   ]
 }
