@@ -2010,6 +2010,25 @@
         "images/stara-imperador-4000-7f952b.jpg"
       ],
       "createdAt": "2026-11-14T10:39:22.455Z"
+    },
+    {
+      "title": "Amazone FT/UF Pack",
+      "author": "Młody98",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Amazone FT1001\n\nPrice: 5.500 $\nCapacity: 1.125 l\n\nAmazone UF\n\nPrice: 35.000 $\nWorking width: 15.0-21.0 m\nCapacity: 1.050-1.350 l\nMax. working speed: 12 kph\n\nConfigurations UF:\n- Two types of liquid tank ( UF901, UF1201)\n- Working arm (15m,18m,21m)\n- Selective nozzle control (requires Precision Farming DLC)\n- \"Manure System\" is now supported.",
+      "filename": "FS22_amazoneFT_UF.zip",
+      "size": 6683599,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_amazoneFT_UF.zip",
+      "zipPath": null,
+      "image": "images/amazone-ft-uf-pack-b0efcb.jpg",
+      "screenshots": [
+        "images/amazone-ft-uf-pack-d135fe.jpg",
+        "images/amazone-ft-uf-pack-53e3a9.jpg",
+        "images/amazone-ft-uf-pack-1b5f6b.jpg"
+      ],
+      "createdAt": "2026-11-14T10:40:39.152Z"
     }
   ]
 }
