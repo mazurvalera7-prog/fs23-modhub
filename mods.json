@@ -2029,6 +2029,28 @@
         "images/amazone-ft-uf-pack-1b5f6b.jpg"
       ],
       "createdAt": "2026-11-14T10:40:39.152Z"
+    },
+    {
+      "title": "SZ-5.4T",
+      "author": "Ed_mods",
+      "version": "1.0.0.0",
+      "category": "seeders",
+      "description": "Seeder SZ 5,4 is intended for ordinary sowing of seeds of grain, leguminous crops both separately, and with simultaneous sowing of loose and not loose seeds of herbs and introduction of the granulated mineral fertilizers.",
+      "filename": "FS22_SZ_5_4T.zip",
+      "size": 26993608,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_SZ_5_4T.zip",
+      "zipPath": null,
+      "image": "images/sz-5-4t-eb6051.jpg",
+      "screenshots": [
+        "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img1.jpg",
+        "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img2.jpg?6a4d142d31c49",
+        "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img3.jpg?6a4d142d31c49",
+        "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img4.jpg?6a4d142d31c49",
+        "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img5.jpg?6a4d142d31c49",
+        "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img6.jpg?6a4d142d31c49"
+      ],
+      "createdAt": "2026-11-14T11:28:17.750Z"
     }
   ]
 }
