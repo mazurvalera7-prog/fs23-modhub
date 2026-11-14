@@ -51,6 +51,7 @@
 <header>
   <h1>FS23 <span>ModHub</span></h1>
   <p class="sub">Моди для Farming Simulator 23. У грі вони підтягуються автоматично.</p>
+  <p style="margin:10px 0 0"><button class="btn ghost" id="sugBtn" type="button">＋ Запропонувати мод</button></p>
 </header>
 <div class="bar"><div>
   <input id="q" type="search" placeholder="Пошук за назвою або автором" autocomplete="off">
@@ -62,6 +63,20 @@
 <dialog id="dlg">
   <div class="dh" id="dh"></div>
   <div class="db" id="db"></div>
+</dialog>
+
+<dialog id="sug">
+  <form class="db" id="sugForm" method="dialog">
+    <h2>Запропонувати мод</h2>
+    <div class="m">Ваша пропозиція потрапить до власника сайту. Він перевірить мод у грі й, якщо все добре, додасть його в каталог. Потрібен безкоштовний акаунт GitHub: пропозиція відкриється там.</div>
+    <label>Назва мода</label><input id="sName" maxlength="80" required>
+    <label>Посилання на мод (прямий ZIP або сторінка мода)</label><input id="sLink" type="url" placeholder="https://…" required>
+    <label>Категорія</label><select id="sCat" style="flex:1 1 auto"></select>
+    <label>Посилання на фото мода (необов'язково, по одному в рядку)</label><textarea id="sPics" rows="3" placeholder="https://…/1.jpg" style="background:#0c0f13;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit"></textarea>
+    <div class="m">Або додайте фото прямо у вікні GitHub, яке відкриється: кнопка «Add files» або вставте/перетягніть їх у поле опису.</div>
+    <label>Коментар (необов'язково)</label><textarea id="sNote" rows="3" maxlength="500" style="background:#0c0f13;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit"></textarea>
+    <div class="row"><button class="btn" type="submit">Надіслати</button><button class="btn ghost" type="button" id="sClose">Закрити</button></div>
+  </form>
 </dialog>
 
 <script src="config.js"></script>
@@ -132,6 +147,19 @@ fetch("mods.json?t=" + Date.now(), { cache: "no-store" })
     render();
   })
   .catch(() => { $("list").innerHTML = '<div class="empty">Не вдалося завантажити список модів</div>'; });
+
+// ---------- пропозиції модів від відвідувачів (через GitHub Issues) ----------
+const CFG = window.FS_CONFIG;
+$("sCat").innerHTML = '<option value="">— не знаю —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${c.title}</option>`).join("");
+$("sugBtn").addEventListener("click", () => $("sug").showModal());
+$("sClose").addEventListener("click", () => $("sug").close());
+$("sugForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const body = `Назва: ${$("sName").value.trim()}\nПосилання: ${$("sLink").value.trim()}\nКатегорія: ${$("sCat").value}\nФото: ${$("sPics").value.split(/\s+/).filter((u) => /^https:\/\//i.test(u)).slice(0, 10).join(" ")}\nКоментар: ${$("sNote").value.trim().replace(/\n+/g, " ")}\n`;
+  const url = `https://github.com/${CFG.OWNER}/${CFG.REPO}/issues/new?title=${encodeURIComponent("[Мод] " + $("sName").value.trim())}&body=${encodeURIComponent(body)}`;
+  window.open(url, "_blank", "noopener");
+  $("sug").close();
+});
 </script>
 </body>
 </html>

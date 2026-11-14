@@ -69,6 +69,8 @@
       <label>Великий мод: оберіть файл, який ви завантажили в Releases</label>
       <select id="relPick"><option value="">— список ще не завантажено —</option></select>
       <div class="hint" id="relInfo">ZIP понад ~35 МБ GitHub не приймає з браузера. Завантажте його на github.com у Releases (там до 2 ГБ), потім оберіть тут: посилання й розмір підставляться самі.</div>
+      <label>Пропозиція від людини для цього мода (звідти візьмуться фото)</label>
+      <select id="reqPick"><option value="">— немає —</option></select>
       <div class="row">
         <div><label>Назва</label><input id="title" maxlength="80" required></div>
         <div><label>Автор</label><input id="author" maxlength="60"></div>
@@ -100,6 +102,12 @@
       <progress id="pr" max="100" value="0"></progress>
       <div id="log"></div>
     </form>
+
+    <h2>Пропозиції від людей</h2>
+    <div class="panel" id="reqs"><div class="m">Натисніть «Оновити», щоб побачити пропозиції.</div></div>
+    <button type="button" id="reqRefresh" style="margin:10px 0 18px">Оновити пропозиції</button>
+    <div class="hint" id="reqFor" style="display:none"></div>
+    <div class="hint" id="reqPicInfo"></div>
 
     <h2>Моди в каталозі</h2>
     <div class="panel" id="list"></div>
@@ -564,7 +572,13 @@ $("relPick").addEventListener("change", () => {
   $("zipurl").value = a.browser_download_url; $("sizeMb").value = (a.size / 1048576).toFixed(2);
   $("zipurl").dispatchEvent(new Event("input", { bubbles: true }));
 });
-$("relPick").addEventListener("focus", () => { if (typeof token !== "undefined" && token) loadRelAssets(); });
+$("relPick").addEventListener("change", () => {
+  const nm = ((relAssets[Number($("relPick").value)] || {}).name || "").toLowerCase().replace(/\.zip$/, "");
+  if (!nm || !reqList.length) return;
+  const hit = reqList.find((q) => (q.link || "").toLowerCase().includes(nm) || (q.name || "").toLowerCase().replace(/[^a-z0-9]/g, "").length > 3 && nm.replace(/[^a-z0-9]/g, "").includes((q.name || "").toLowerCase().replace(/[^a-z0-9]/g, "")));
+  if (hit && !$("reqPick").value) { $("reqPick").value = String(hit.n); $("reqPick").dispatchEvent(new Event("change")); }
+});
+$("relPick").addEventListener("focus", () => { if (typeof token !== "undefined" && token) { loadRelAssets(); if (!reqList.length) loadReqs(); } });
 
 $("zip").addEventListener("change", async () => {
   autoIcon = null; $("autoInfo").textContent = "";
@@ -647,6 +661,7 @@ $("f").addEventListener("submit", async (e) => {
     }, `Додано мод ${title}`);
     pr.value = 100;
     logLine("Готово: мод додано в каталог. Сайт оновиться за 1–2 хвилини.", "ok");
+    if (curReq) { const n = curReq; curReq = null; $("reqFor").style.display = "none"; closeReq(n, "Мод перевірено й додано в каталог. Дякуємо!").then(loadReqs); }
     $("f").reset(); $("category").value = ""; $("imageLink").value = ""; $("shotLinks").value = ""; $("pageLink").value = ""; $("cands").innerHTML = ""; picked = []; autoIcon = null; $("autoInfo").textContent = ""; $("version").value = "1.0.0.0"; $("sizeRow").style.display = "none";
     loadList();
   } catch (err) {
@@ -724,6 +739,84 @@ $("findImgs").addEventListener("click", async () => {
   b.disabled = false;
 });
 
+
+// ---------- пропозиції модів (GitHub Issues із заголовком «[Мод] …») ----------
+let curReq = null, reqList = [];
+function parseReq(issue) {
+  const f = {}; (issue.body || "").split(/\r?\n/).forEach((l) => { const m = l.match(/^(Назва|Посилання|Категорія|Фото|Коментар):\s*(.*)$/); if (m) f[m[1]] = m[2].trim(); });
+  const pics = [];
+  const addPic = (u) => { u = (u || "").trim(); if (/^https:\/\/\S+$/i.test(u) && !pics.includes(u)) pics.push(u); };
+  (f["Фото"] || "").split(/\s+/).forEach(addPic);
+  (issue.body || "").replace(/!\[[^\]]*\]\((https:\/\/[^)\s]+)\)/g, (_, u) => addPic(u));
+  (issue.body || "").replace(/<img[^>]+src="(https:\/\/[^"]+)"/g, (_, u) => addPic(u));
+  return { pics: pics.slice(0, 10), n: issue.number, by: issue.user && issue.user.login, url: issue.html_url, name: f["Назва"] || issue.title.replace(/^\[Мод\]\s*/, ""), link: f["Посилання"] || "", cat: f["Категорія"] || "", note: f["Коментар"] || "" };
+}
+async function loadReqs() {
+  $("reqs").innerHTML = '<div class="m">Завантажую…</div>';
+  try {
+    const r = await ghOk(`${RP}/issues?state=open&per_page=50&_=${Date.now()}`, { cache: "no-store" });
+    reqList = (await r.json()).filter((x) => !x.pull_request && /^\[Мод\]/i.test(x.title)).map(parseReq);
+    $("reqs").innerHTML = reqList.length ? reqList.map((q, k) => `
+      <div class="item"><div style="min-width:0"><div>${esc(q.name)} <span class="m">від ${esc(q.by || "?")}</span></div>
+        <div class="m" style="word-break:break-all"><a href="${esc(q.link)}" target="_blank" rel="noopener">${esc(q.link)}</a></div>
+        ${q.note ? `<div class="m">${esc(q.note)}</div>` : ""}
+        ${q.pics.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin:4px 0">${q.pics.map((u) => `<img src="${esc(u)}" loading="lazy" style="height:56px;border-radius:6px;border:1px solid #2b3340" alt="">`).join("")}</div>` : ""}
+        <div class="m">${esc(q.cat || "категорія не вказана")}</div></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><button class="use" data-k="${k}">Взяти в роботу</button><button class="del rej" data-k="${k}">Відхилити</button></div></div>`).join("") : '<div class="m">Нових пропозицій немає</div>';
+    fillReqPick();
+  } catch (e) { $("reqs").innerHTML = `<div class="err">${esc(e.message)}</div>`; }
+}
+async function closeReq(n, text) {
+  try {
+    await ghOk(`${RP}/issues/${n}/comments`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ body: text }) });
+    await ghOk(`${RP}/issues/${n}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ state: "closed" }) });
+    return true;
+  } catch { return false; }
+}
+
+async function applyReq(q, overwrite) {
+  curReq = q.n;
+  if (overwrite || !$("title").value.trim()) $("title").value = q.name;
+  if (q.cat && FS.CATEGORIES.some((c) => c.name === q.cat) && (overwrite || !$("category").value)) $("category").value = q.cat;
+  if (overwrite) {
+    if (/\.zip(\?|#|$)/i.test(q.link)) { $("zipurl").value = q.link; $("zipurl").dispatchEvent(new Event("input", { bubbles: true })); }
+    else $("pageLink").value = q.link;
+  }
+  $("reqFor").style.display = ""; $("reqFor").textContent = "Підтягую фото…";
+  let got = 0; const dt = new DataTransfer();
+  for (const u of q.pics) {
+    try { const r = await fetch(u); if (!r.ok) throw 0; const bl = await r.blob(); if (!/^image\//.test(bl.type)) throw 0; dt.items.add(new File([bl], `req-${got + 1}.${(bl.type.split("/")[1] || "jpg").replace("jpeg", "jpg")}`, { type: bl.type })); got++; } catch {}
+  }
+  if (got) { $("shots").files = dt.files; $("shotLinks").value = ""; } else if (q.pics.length) $("shotLinks").value = q.pics.join("\n");
+  $("reqPicInfo").textContent = q.pics.length ? (got ? `Фото підтягнуто й буде збережено на сайті: ${got}.` : `Фото підставлено як посилання: ${q.pics.length}.`) : "У пропозиції фото немає.";
+  $("reqFor").textContent = `Прив'язано до пропозиції «${q.name}». Після «Опублікувати» вона закриється сама.`;
+  $("reqPick").value = String(q.n);
+}
+function fillReqPick() {
+  const cur = $("reqPick").value;
+  $("reqPick").innerHTML = '<option value="">— немає —</option>' + reqList.map((q) => `<option value="${q.n}">${esc(q.name)} (від ${esc(q.by || "?")})</option>`).join("");
+  $("reqPick").value = cur;
+}
+$("reqPick").addEventListener("change", async () => {
+  const q = reqList.find((x) => String(x.n) === $("reqPick").value);
+  if (!q) { curReq = null; $("reqFor").style.display = "none"; $("reqPicInfo").textContent = ""; return; }
+  await applyReq(q, false);
+});
+$("reqRefresh").addEventListener("click", loadReqs);
+$("reqs").addEventListener("click", async (e) => {
+  const q = reqList[Number((e.target.closest("button") || {}).dataset && e.target.closest("button").dataset.k)];
+  if (!q) return;
+  if (e.target.closest("button.use")) {
+    await applyReq(q, true);
+    window.scrollTo({ top: $("f").offsetTop - 10, behavior: "smooth" });
+  } else if (e.target.closest("button.rej")) {
+    if (!confirm(`Відхилити «${q.name}»?`)) return;
+    const ok = await closeReq(q.n, "Дякуємо за пропозицію. Цей мод поки що не буде додано.");
+    if (!ok) alert("Не вдалося закрити пропозицію (токену може бракувати права Issues: Read and write). Закрийте її на github.com вручну.");
+    loadReqs();
+  }
+});
+
 async function enter() {
   $("lerr").textContent = "";
   token = $("tok").value.trim() || store.get("fs23_gh_token");
@@ -738,14 +831,14 @@ async function enter() {
     store.del("fs23_gh_token"); store.set("fs23_gh_token", token, $("remember").checked);
     $("login").classList.add("hidden"); $("app").classList.remove("hidden"); $("logout").classList.remove("hidden");
     $("tok").value = "";
-    loadList();
+    loadList(); loadReqs();
   } catch (e) { token = ""; $("lerr").textContent = e.message; }
   $("enter").disabled = false;
 }
 $("enter").addEventListener("click", enter);
 $("tok").addEventListener("keydown", (e) => { if (e.key === "Enter") enter(); });
 $("logout").addEventListener("click", () => { store.del("fs23_gh_token"); location.reload(); });
-$("autoInfo").textContent = "Версія адмінки: v7 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
+$("autoInfo").textContent = "Версія адмінки: v10 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
 $("category").innerHTML = '<option value="">— оберіть категорію —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${esc(c.title)} (${c.name})</option>`).join("");
 if (store.get("fs23_gh_token")) enter();
 </script>
