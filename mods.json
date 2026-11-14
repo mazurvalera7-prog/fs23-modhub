@@ -1933,6 +1933,25 @@
         "images/stara-imperador-3-0-2018-4826f0.jpg"
       ],
       "createdAt": "2026-11-14T10:32:56.074Z"
+    },
+    {
+      "title": "Amazone UX5200",
+      "author": "Młody98,JMZ",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Amazone UX5200\n\nPrice: 75.000 $\nWorking width: 21.0-40.0 m\nCapacity: 5.600 l\nMax. working speed: 12 kph\n\nConfigurations:\n- Design (Design01, Design02)\n- Added selective weed control (Precision Farming DLC)\n- \"Manure System\" is now supported.",
+      "filename": "FS22_amazoneUX5200.1.zip",
+      "size": 16385392,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_amazoneUX5200.1.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/amazone-ux5200-c99908.jpg",
+        "images/amazone-ux5200-d1bcad.jpg",
+        "images/amazone-ux5200-177fe4.jpg"
+      ],
+      "createdAt": "2026-11-14T10:35:03.891Z"
     }
   ]
 }
