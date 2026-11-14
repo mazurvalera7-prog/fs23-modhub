@@ -1894,6 +1894,25 @@
         "images/lizard-hs-400-2139d0.jpg"
       ],
       "createdAt": "2026-11-14T10:25:31.780Z"
+    },
+    {
+      "title": "Amazone UX5200",
+      "author": "Młody98,JMZ",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Amazone UX5200\n\nPrice: 75.000 $\nWorking width: 21.0-40.0 m\nCapacity: 5.600 l\nMax. working speed: 12 kph\n\nConfigurations:\n- Design (Design01, Design02)\n- Added selective weed control (Precision Farming DLC)\n- \"Manure System\" is now supported.",
+      "filename": "FS22_amazoneUX5200.zip",
+      "size": 16385392,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_amazoneUX5200.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/amazone-ux5200-8b4a7e.jpg",
+        "images/amazone-ux5200-d614ac.jpg",
+        "images/amazone-ux5200-6b6bbb.jpg"
+      ],
+      "createdAt": "2026-11-14T10:28:34.581Z"
     }
   ]
 }
