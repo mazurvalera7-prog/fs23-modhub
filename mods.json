@@ -1972,6 +1972,25 @@
         "images/sprayers-kazan-rus-3d2b14.jpg"
       ],
       "createdAt": "2026-11-14T10:36:37.915Z"
+    },
+    {
+      "title": "AGROMEHANIKA AGS600",
+      "author": "Simmi96",
+      "version": "1.2.0.0",
+      "category": "sprayers",
+      "description": "AGROMEHANIKA AGS600",
+      "filename": "FS22_Agromehanika_AGS600.zip",
+      "size": 3820524,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Agromehanika_AGS600.zip",
+      "zipPath": null,
+      "image": "images/agromehanika-ags600-e03d0f.jpg",
+      "screenshots": [
+        "images/agromehanika-ags600-06f236.jpg",
+        "images/agromehanika-ags600-528ef4.jpg",
+        "images/agromehanika-ags600-992d5c.jpg"
+      ],
+      "createdAt": "2026-11-14T10:37:49.087Z"
     }
   ]
 }
