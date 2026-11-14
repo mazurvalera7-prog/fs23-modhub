@@ -1698,6 +1698,25 @@
         "images/ltz-t-40am-old-a24667.jpg"
       ],
       "createdAt": "2026-11-14T08:51:24.309Z"
+    },
+    {
+      "title": "MTZ-1221",
+      "author": "RusAgroTeh, доработки VFStudio",
+      "version": "1.1.0.0",
+      "category": "tractorsS",
+      "description": "Manufacturer: MTZ\nModel: 1221\nStandard engine: D-260\nPrice: 32000 $\nMax. power: 130 - 132 hp\nMax. speed: 35 kph\n\nAdditional option:\n- Modification: MTZ 1221 Sarex, MTZ 1221.2, MTZ 1221.3 Tropic\n- Color variant: blue, red, green\n- Wheel selection\n- Dashboard selection\n- Front counterweight selection\n- Selection of lighting equipment\n- Air filter selection\n- Selecting side mirrors\n- Roof selection\n- Glass stickers\n- Beacon light\n- Additional fuel tank\n- Frontloader\n- \"guidanceSteering\" ready",
+      "filename": "FS22_MTZ_1221_turbo_VFS.zip",
+      "size": 63461609,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_MTZ_1221_turbo_VFS.zip",
+      "zipPath": null,
+      "image": "images/mtz-1221-d7a151.jpg",
+      "screenshots": [
+        "images/mtz-1221-5f8a25.jpg",
+        "images/mtz-1221-9be84e.jpg",
+        "images/mtz-1221-fb013a.jpg"
+      ],
+      "createdAt": "2026-11-14T08:55:09.159Z"
     }
   ]
 }
