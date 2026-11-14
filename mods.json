@@ -1835,6 +1835,26 @@
         "images/krn-4-2-d38bce.jpg"
       ],
       "createdAt": "2026-11-14T10:18:59.199Z"
+    },
+    {
+      "title": "HORSCH12TD",
+      "author": "EJDŻYNEK",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "HORSCH 12TD is a sprayer for a big farm,you should use a tractor of 200 horsepower for it to do its best work,the sprayers capacity is 12000L sow the tractor has alot of work using this machine.And when this machine unfolds its length is 40m.\ncapacity-12000L\nwidth-40m",
+      "filename": "Horsch12TD.zip",
+      "size": 2834294,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/Horsch12TD.zip",
+      "zipPath": null,
+      "image": "images/horsch12td-edcf31.jpg",
+      "screenshots": [
+        "images/horsch12td-259acd.jpg",
+        "images/horsch12td-9ffa4e.jpg",
+        "images/horsch12td-d9c0d9.jpg",
+        "images/horsch12td-8f51d4.jpg"
+      ],
+      "createdAt": "2026-11-14T10:20:51.813Z"
     }
   ]
 }
