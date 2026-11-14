@@ -1816,6 +1816,25 @@
         "images/htz-t-150k-09-afbb89.jpg"
       ],
       "createdAt": "2026-11-14T09:06:04.716Z"
+    },
+    {
+      "title": "KRN-4.2",
+      "author": "JarviceOne",
+      "version": "1.0.0.0",
+      "category": "weeders",
+      "description": "Lizard KRN-4.2\nPrice: 1200 $\nWorking width: 4.2 m\nRequired power: 35 HP\n\nLizard KRN-4.2M\nPrice: 1400 $\nWorking width: 4.2 m\nRequired power: 35 HP\n\nConfigurations\n- Frame Color;\n- Rim Color;\n- Barrel Color.",
+      "filename": "FS22_KRN_4_2.zip",
+      "size": 5114259,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_KRN_4_2.zip",
+      "zipPath": null,
+      "image": "images/krn-4-2-785828.jpg",
+      "screenshots": [
+        "images/krn-4-2-3bdb15.jpg",
+        "images/krn-4-2-0a315b.jpg",
+        "images/krn-4-2-d38bce.jpg"
+      ],
+      "createdAt": "2026-11-14T10:18:59.199Z"
     }
   ]
 }
