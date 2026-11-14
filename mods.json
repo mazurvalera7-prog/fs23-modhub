@@ -1776,6 +1776,26 @@
         "images/zetor-ur2-pack-1a7813.jpg"
       ],
       "createdAt": "2026-11-14T09:02:33.674Z"
+    },
+    {
+      "title": "BigBud S3 Small And Extra Large Frame",
+      "author": "Classic American Icons Modding, balogh2003",
+      "version": "1.0.0.0",
+      "category": "tractorsL",
+      "description": "BIG BUD SERIES 3 Small and Extra Large Frame is an Articulated 4WD tractors.\nBig Bud series 3 tractors built from 1979 through 1982.\n\nShop Category: Large tractors\nBase price: 180500 $, 240500 $\nPower: 360/30 (360hp), 650/50 (650hp), 665 (665hp)\nFuel tank: 2082 liters, 2650 liters.\nMax. speed: 32 kph\nColors: Original, Blue, Yellow, Industrial, Industrial Custom.\nGears: 9 gears plus 1 reversible.\nSettings: Wheels, Accessories, Attachers, GPS, License plate number, Cabin option.\nAnimations: interior parts, door.",
+      "filename": "FS22_Bigbud_s3_sml_elarge_frame.zip",
+      "size": 37512994,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Bigbud_s3_sml_elarge_frame.zip",
+      "zipPath": null,
+      "image": "images/bigbud-s3-small-and-extra-larg-5bff0a.jpg",
+      "screenshots": [
+        "images/bigbud-s3-small-and-extra-larg-fc84bd.jpg",
+        "images/bigbud-s3-small-and-extra-larg-9c2b84.jpg",
+        "images/bigbud-s3-small-and-extra-larg-cbaba2.jpg",
+        "images/bigbud-s3-small-and-extra-larg-c2c171.jpg"
+      ],
+      "createdAt": "2026-11-14T09:04:12.165Z"
     }
   ]
 }
