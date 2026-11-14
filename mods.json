@@ -1875,6 +1875,25 @@
         "images/tanks-for-carbamide-ammonia-mi-b9c604.jpg"
       ],
       "createdAt": "2026-11-14T10:23:28.891Z"
+    },
+    {
+      "title": "Lizard HS-400",
+      "author": "Holzs FS",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Lizard HS-400 / HS400_AT\n\nOld sprayer designed with the aim of serving small farmers in all regions.\n\n- Price: 2.500 / 600 $\n- Power: 60 HP\n- Working Width: 4 / 6.5 / 11 meters\n- Main color configuration\n- Design Configuration",
+      "filename": "FS22_LizardHS400.zip",
+      "size": 5497764,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_LizardHS400.zip",
+      "zipPath": null,
+      "image": "images/lizard-hs-400-9b9538.jpg",
+      "screenshots": [
+        "images/lizard-hs-400-fd037f.jpg",
+        "images/lizard-hs-400-4b1bf8.jpg",
+        "images/lizard-hs-400-2139d0.jpg"
+      ],
+      "createdAt": "2026-11-14T10:25:31.780Z"
     }
   ]
 }
