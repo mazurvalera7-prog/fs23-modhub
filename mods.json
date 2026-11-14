@@ -1736,6 +1736,26 @@
         "images/ursus-6-pack-ae7e10.jpg"
       ],
       "createdAt": "2026-11-14T08:57:04.994Z"
+    },
+    {
+      "title": "Kiy-14102",
+      "author": "_Man_",
+      "version": "1.0.0.0",
+      "category": "tractorsS",
+      "description": "Power: 105 HP\nSpeed: 34 mph\nPrice: 22.000 $\n\n- Color choice\n- Tyre choice\n- Front mounting configuration\n- Steering wheel/GPS configuration\n- Vertex IC support",
+      "filename": "FS22_Kiy_14102.zip",
+      "size": 32770135,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Kiy_14102.zip",
+      "zipPath": null,
+      "image": "images/kiy-14102-b579fb.jpg",
+      "screenshots": [
+        "images/kiy-14102-73d0c1.jpg",
+        "images/kiy-14102-1d4a4c.jpg",
+        "images/kiy-14102-2d3532.jpg",
+        "images/kiy-14102-cedd28.jpg"
+      ],
+      "createdAt": "2026-11-14T09:00:45.777Z"
     }
   ]
 }
