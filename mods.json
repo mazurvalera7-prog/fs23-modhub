@@ -1855,6 +1855,26 @@
         "images/horsch12td-8f51d4.jpg"
       ],
       "createdAt": "2026-11-14T10:20:51.813Z"
+    },
+    {
+      "title": "Tanks for carbamide-ammonia mixture",
+      "author": "M.Artemov",
+      "version": "1.0.0.1",
+      "category": "sprayers",
+      "description": "Trailers for applying liquid fertilizers. Can be used with all liquid fertilizer application equipment.\nTrailers can be installed both behind the seed drill and between the tractor and the seed drill/cultivator. The supply of liquid fertilizers to the working bodies occurs\ndue to the operation of the diaphragm-piston pump. Liquid fertilizers are most effectively used by young plants by the beginning of the growing season.\nTrailers can be used simultaneously with a granular fertilizer hopper complete with a seeder.\nAll trailer models are characterized by high maneuverability and gentle handling of the soil.\n\n- Price: from 10000€\n- Design selection\n- Wheel selection\n- Color selection\n- Installation of additional weighting (for the front tank)\n\nChangelog 1.0.0.1:\n- Added color selection",
+      "filename": "FS22_pkFertilizerWagons.zip",
+      "size": 8069797,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_pkFertilizerWagons.zip",
+      "zipPath": null,
+      "image": null,
+      "screenshots": [
+        "images/tanks-for-carbamide-ammonia-mi-1718e0.jpg",
+        "images/tanks-for-carbamide-ammonia-mi-69da2e.jpg",
+        "images/tanks-for-carbamide-ammonia-mi-ad0f06.jpg",
+        "images/tanks-for-carbamide-ammonia-mi-b9c604.jpg"
+      ],
+      "createdAt": "2026-11-14T10:23:28.891Z"
     }
   ]
 }
