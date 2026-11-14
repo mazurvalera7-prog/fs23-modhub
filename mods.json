@@ -1913,6 +1913,26 @@
         "images/amazone-ux5200-6b6bbb.jpg"
       ],
       "createdAt": "2026-11-14T10:28:34.581Z"
+    },
+    {
+      "title": "Stara Imperador 3.0 2018",
+      "author": "GFR Modding",
+      "version": "1.0.0.0",
+      "category": "sprayers",
+      "description": "Imperador 3.0 is self-propelled 2 in 1 and in a single machine can spray fertilizers and agricultural pesticides or spread granulated fertilizer. Equipped with high-precision spray nozzles that guarantee uniform distribution of products and automatic control of sections,\nwhich reduces waste and improves application efficiency. In addition to being equipped with GPS and precision agriculture systems, such as variable rate control and application map.\n\nPrice: 195,000 $\nPower: 223 original hp and 280 chipped\nCapacity dispenser: 2,700l\nCapacity sprayer: 2,400l\nSpreader working width: 28m\nSprayer working width: 27m\nMax working speed: 25 kph\nMaximum speed: 50 kph or 55 kph\nOptional 2 types of adhesive\nTire options Trelleborg, Michelin, Vredestein, Lizard\nOptional 3 glass colors\nFlag show in 2 places\nAntenna Optional\nSmall rear light\nOpicinal to place the Isaria Pro Compact sensor, requires the Precision Agriculture DLC\nCompatible with Passenger system, Requires Kubota DLC",
+      "filename": "FS22_staraImperador3_2018.zip",
+      "size": 20347379,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_staraImperador3_2018.zip",
+      "zipPath": null,
+      "image": "images/stara-imperador-3-0-2018-a48bf9.jpg",
+      "screenshots": [
+        "images/stara-imperador-3-0-2018-aa4e7c.jpg",
+        "images/stara-imperador-3-0-2018-71cf14.jpg",
+        "images/stara-imperador-3-0-2018-96e1c0.jpg",
+        "images/stara-imperador-3-0-2018-4826f0.jpg"
+      ],
+      "createdAt": "2026-11-14T10:32:56.074Z"
     }
   ]
 }
