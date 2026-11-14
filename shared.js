@@ -113,11 +113,11 @@
       L.push(p + "sha256=" + (m.sha256 || ""));
       L.push(p + "size=" + (m.size || 0));
       L.push(p + "downloadUrl=" + (m.downloadUrl || ""));
-      L.push(p + "imageUrl=" + (m.image ? base + "/" + encPath(m.image) : ""));
+      L.push(p + "imageUrl=" + (m.image ? (/^https?:\/\//i.test(m.image) ? m.image : base + "/" + encPath(m.image)) : ""));
       L.push(p + "description=" + cleanValue(m.description));
       for (let s = 0; s < 4; s++) {
         const img = (m.screenshots || [])[s];
-        L.push(p + "screenshot" + (s + 1) + "Url=" + (img ? base + "/" + encPath(img) : ""));
+        L.push(p + "screenshot" + (s + 1) + "Url=" + (img ? (/^https?:\/\//i.test(img) ? img : base + "/" + encPath(img)) : ""));
       }
     });
     return L.join("\n") + "\n";

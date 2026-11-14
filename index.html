@@ -80,7 +80,7 @@ function coverStyle(m) {
   const ic = FS.categoryIcon(m.category);
   return ic ? `background-image:url('${esc(ic)}');background-size:auto 60%` : "";
 }
-const imgUrl = (p) => p ? p.split("/").map(encodeURIComponent).join("/") : "";
+const imgUrl = (p) => /^https?:\/\//i.test(p || "") ? p : p ? p.split("/").map(encodeURIComponent).join("/") : "";
 const safeHref = (u) => /^https:\/\//.test(u) ? u : "#";
 let mods = [];
 
