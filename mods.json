@@ -1991,6 +1991,25 @@
         "images/agromehanika-ags600-992d5c.jpg"
       ],
       "createdAt": "2026-11-14T10:37:49.087Z"
+    },
+    {
+      "title": "Stara Imperador 4000",
+      "author": "Stara Brasil e Connect Modding",
+      "version": "1.0.0.1",
+      "category": "sprayers",
+      "description": "The superior spraying efficiency of Stara's self-propelled 4000 is the result of innovative technologies combined with proven application quality. The Imperador sprayers stand out for their excellent application precision, ensured by central booms. When coupled with technologies like Continuous Recirculation System, Dual-Line System, and Intelligent 4-Wheel Steering, they provide even more precise spraying with increased cost-effectiveness.\n\nThe Imperador 4000 sprayer is equipped with the Up and Down System, allowing for a maximum application height of 3 meters, enabling entry into more advanced stages of crops.\n\nSpecifications:\n\nPower: 295 hp\nPrice: $285,605\nCapacity: 4000L\nFuel: 340L\nSuspension lift system\nOptional wheel configurations\nBallast adjustment\nFully functional 100% suspension\nThese features make the Imperador 4000 an advanced and versatile solution for precise and economical crop spraying.\nFlag options\n\n-Changelog 1.0.0.1\n- Particle correction;\n- Removed precision farming, the present model does not have the Eco-Spray Kit;\n- Adjusted working width and section cut;\n- Adjusted bar, wheel and up-and-down controls\n- Managed textures, reduced 2 slots;\n- Reduced engine volume\n- Reverse sound added",
+      "filename": "FS22_Stara_Imperador_4000.zip",
+      "size": 50332050,
+      "sha256": "",
+      "downloadUrl": "https://github.com/mazurvalera7-prog/fs23-modhub/releases/download/mods/FS22_Stara_Imperador_4000.zip",
+      "zipPath": null,
+      "image": "images/stara-imperador-4000-5553b8.jpg",
+      "screenshots": [
+        "images/stara-imperador-4000-b5b25f.jpg",
+        "images/stara-imperador-4000-9dcf8a.jpg",
+        "images/stara-imperador-4000-7f952b.jpg"
+      ],
+      "createdAt": "2026-11-14T10:39:22.455Z"
     }
   ]
 }
