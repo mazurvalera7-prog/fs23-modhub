@@ -37,6 +37,8 @@
   /* вікно мода */
   dialog { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:16px; padding:0; width:min(680px, calc(100vw - 24px)); max-height:calc(100vh - 24px); overflow:auto; }
   dialog::backdrop { background:rgba(0,0,0,.65); }
+  .img img, .dh img { width:100%; height:100%; object-fit:cover; display:block; }
+  .img img.ic, .dh img.ic { object-fit:contain; padding:14% 0; }
   .dh { aspect-ratio:16/9; background:#0c0f13 center/cover no-repeat; }
   .db { padding:16px; display:flex; flex-direction:column; gap:10px; }
   .db h2 { margin:0; font-size:22px; }
@@ -44,6 +46,8 @@
   .shots { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
   .shots img { height:110px; border-radius:8px; border:1px solid var(--line); }
   .row { display:flex; gap:10px; flex-wrap:wrap; }
+  #sugForm input, #sugForm select, #sugForm textarea { flex:none; width:100%; }
+  #sugForm label { font-weight:600; margin-top:4px; }
   .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
 </style>
 </head>
@@ -68,9 +72,11 @@
 <dialog id="sug">
   <form class="db" id="sugForm" method="dialog">
     <h2>Запропонувати мод</h2>
+    <ol class="m" style="margin:0;padding-left:20px"><li>Заповніть форму нижче й натисніть «Надіслати».</li><li>Відкриється сторінка GitHub із вже готовим текстом. Увійдіть у свій акаунт (або створіть безкоштовний).</li><li>Додайте ZIP мода й фото кнопкою «Add files» під полем опису.</li><li>Натисніть зелену кнопку <b>Submit new issue</b>. Готово: пропозицію побачать модератори.</li></ol>
     <div class="m">Ваша пропозиція потрапить до власника сайту. Він перевірить мод у грі й, якщо все добре, додасть його в каталог. Потрібен безкоштовний акаунт GitHub: пропозиція відкриється там.</div>
     <label>Назва мода</label><input id="sName" maxlength="80" required>
-    <label>Посилання на мод (прямий ZIP або сторінка мода)</label><input id="sLink" type="url" placeholder="https://…" required>
+    <label>Посилання на мод (необов'язково, якщо додасте ZIP у вікні GitHub)</label><input id="sLink" type="url" placeholder="https://…">
+    <div class="m">Мод можна додати файлом: у вікні GitHub, яке відкриється, натисніть «Add files» і виберіть ZIP (до 25 МБ). Якщо мод більший, завантажте його в хмару (Google Диск, Mega) і вставте посилання сюди.</div>
     <label>Категорія</label><select id="sCat" style="flex:1 1 auto"></select>
     <label>Посилання на фото мода (необов'язково, по одному в рядку)</label><textarea id="sPics" rows="3" placeholder="https://…/1.jpg" style="background:#0c0f13;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit"></textarea>
     <div class="m">Або додайте фото прямо у вікні GitHub, яке відкриється: кнопка «Add files» або вставте/перетягніть їх у поле опису.</div>
@@ -89,11 +95,16 @@ function tagHtml(m) { const ic = FS.categoryIcon(m.category); return `<span clas
 const catTitle = Object.fromEntries(FS.CATEGORIES.map((c) => [c.name, c.title]));
 const nl = (s) => String(s || "").replace(/\\n/g, "\n");
 // шлях картинки зі сховища -> безпечний відносний URL
-function coverStyle(m) {
-  const pic = m.image || (m.screenshots || [])[0];
-  if (pic) return `background-image:url('${esc(imgUrl(pic))}')`;
-  const ic = FS.categoryIcon(m.category);
-  return ic ? `background-image:url('${esc(ic)}');background-size:auto 60%` : "";
+function coverImg(m) {
+  const list = [m.image, ...(m.screenshots || [])].filter(Boolean).map(imgUrl);
+  const ic = FS.categoryIcon(m.category); if (ic) list.push(ic);
+  if (!list.length) return "";
+  return `<img src="${esc(list[0])}" data-n="1" data-l="${esc(JSON.stringify(list))}" class="${list[0] === ic ? "ic" : ""}" onerror="nextCover(this)" alt="">`;
+}
+function nextCover(img) {
+  const list = JSON.parse(img.dataset.l), n = Number(img.dataset.n);
+  if (n >= list.length) { img.remove(); return; }
+  img.dataset.n = n + 1; img.classList.toggle("ic", /^icons\//.test(list[n])); img.src = list[n];
 }
 const imgUrl = (p) => /^https?:\/\//i.test(p || "") ? p : p ? p.split("/").map(encodeURIComponent).join("/") : "";
 const safeHref = (u) => /^https:\/\//.test(u) ? u : "#";
@@ -105,7 +116,7 @@ function render() {
     (!c || m.category === c) && (!q || ((m.title || "") + " " + (m.author || "")).toLowerCase().includes(q)));
   $("list").innerHTML = rows.length ? rows.map(({ m, i }) => `
     <article class="card" data-i="${i}">
-      <div class="img" style="${coverStyle(m)}"></div>
+      <div class="img">${coverImg(m)}</div>
       <div class="body">
         <div class="t">${esc(m.title)}</div>
         <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}</div>
@@ -119,7 +130,7 @@ function render() {
 
 function openMod(i) {
   const m = mods[i]; if (!m) return;
-  $("dh").style.cssText = coverStyle(m);
+  $("dh").innerHTML = coverImg(m);
   $("db").innerHTML = `
     <h2>${esc(m.title)}</h2>
     <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}${m.author ? " · " + esc(m.author) : ""}</div>

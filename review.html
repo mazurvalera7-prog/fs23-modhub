@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Перевірка модів</title>
+<style>
+  :root { --bg:#12161b; --card:#1b222a; --line:#2a343f; --text:#e8edf2; --mute:#8d9aa8; --acc:#6cc04a; --accd:#10200a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:20px 16px 40px; }
+  h1 { margin:0 0 6px; font-size:24px; } h1 span { color:var(--acc); }
+  .m { color:var(--mute); font-size:14px; }
+  .box { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin:12px 0; }
+  .box ol { margin:6px 0 0; padding-left:20px; }
+  .item { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin:12px 0; display:flex; flex-direction:column; gap:6px; }
+  .item.ok { border-color:var(--acc); }
+  .t { font-weight:650; font-size:18px; }
+  a { color:#8ec5ff; word-break:break-all; }
+  .pics { display:flex; gap:6px; overflow-x:auto; }
+  .pics img { height:90px; border-radius:8px; border:1px solid var(--line); }
+  .btn { display:inline-block; text-align:center; background:var(--acc); color:var(--accd); font-weight:650; padding:10px 14px; border-radius:10px; text-decoration:none; }
+  .st { font-size:15px; }
+  .ex { background:#12161b; border:1px dashed var(--line); border-radius:8px; padding:6px 10px; margin:6px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Перевірка <span>модів</span></h1>
+  <div class="m">Сторінка для модераторів. Тут мод перевіряють перед тим, як він потрапить у каталог.</div>
+  <div class="box"><b>Що потрібно робити модератору</b>
+    <div class="m" style="margin:4px 0">Ваше завдання: перевірити, що мод запускається й працює, і повідомити про це власнику. Дописувати код чи заходити в налаштування не треба.</div>
+    <ol>
+      <li><b>Підготовка (один раз).</b> Потрібен безкоштовний акаунт на <a href="https://github.com/signup" target="_blank" rel="noopener">github.com</a>. Власник має додати ваш логін у список модераторів: якщо ще не додав, подайте заявку внизу цієї сторінки.</li>
+      <li><b>Знайдіть мод нижче.</b> Біля кожного видно назву, категорію, фото й статус. Моди зі статусом «⏳ Чекає перевірки» чекають саме на вас.</li>
+      <li><b>Скачайте мод.</b> Натисніть посилання на мод або «⬇ скачати прикріплений ZIP». Файл не розпаковуйте: покладіть його в папку модів гри.</li>
+      <li><b>Перевірте в грі.</b> Запустіть гру з цим модом. Подивіться, чи мод з'являється в магазині чи в техніці, чи не видає помилок, чи працює так, як описано.</li>
+      <li><b>Повідомте результат.</b> Натисніть синю кнопку «Відкрити пропозицію й залишити коментар». Внизу сторінки в полі «Add a comment» напишіть і натисніть зелену кнопку <b>Comment</b>:
+        <div class="ex">✅ Усе працює, помилок немає</div>
+        або, якщо щось не так:
+        <div class="ex">❌ Гра вилітає при запуску</div>
+      </li>
+      <li><b>Далі</b> власник бачить ваш коментар у своїй адмінці. Якщо все добре, він сам додає мод на сайт, і вам більше нічого робити не треба.</li>
+    </ol>
+    <div class="m" style="margin-top:8px"><b>Важливо:</b> коментар обов'язково починайте зі значка ✅ або ❌, інакше він не буде врахований. Враховуються лише коментарі людей зі списку модераторів. Мод надіслала стороння людина, тому скачуйте лише файли зі списку на цій сторінці й не запускайте нічого, крім самого мода.</div>
+  </div>
+  <div class="box"><b>Ще не модератор?</b>
+    <div class="m" style="margin:4px 0 8px">Подайте заявку: вона відкриється на GitHub, її побачить власник сайту. Ваш акаунт GitHub і є ваш «обліковий запис».</div>
+    <input id="about" maxlength="200" placeholder="Коротко про себе (необов'язково)" style="width:100%;background:#12161b;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;margin-bottom:8px">
+    <a class="btn" id="apply" href="#" target="_blank" rel="noopener">Подати заявку на модератора</a>
+  </div>
+  <div id="list"><div class="m">Завантаження…</div></div>
+</main>
+<script src="config.js"></script>
+<script src="shared.js?v=20261114"></script>
+<script>
+const CFG = window.FS_CONFIG, RP = `${CFG.API_BASE}/repos/${CFG.OWNER}/${CFG.REPO}`;
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function parse(issue) {
+  const f = {}; (issue.body || "").split(/\r?\n/).forEach((l) => { const m = l.match(/^(Назва|Посилання|Категорія|Фото|Коментар):\s*(.*)$/); if (m) f[m[1]] = m[2].trim(); });
+  const body = issue.body || "", pics = [], files = [];
+  const addP = (u) => { u = (u || "").trim(); if (/^https:\/\/\S+$/i.test(u) && !pics.includes(u)) pics.push(u); };
+  (f["Фото"] || "").split(/\s+/).forEach(addP);
+  body.replace(/!\[[^\]]*\]\((https:\/\/[^)\s]+)\)/g, (_, u) => addP(u));
+  body.replace(/<img[^>]+src="(https:\/\/[^"]+)"/g, (_, u) => addP(u));
+  body.replace(/\[[^\]]*\]\((https:\/\/[^)\s]+)\)/g, (m, u) => { if (!/^!/.test(m) && (/\/user-attachments\/files\//i.test(u) || /\.zip(\?|#|$)/i.test(u)) && !files.includes(u)) files.push(u); });
+  const cat = FS.CATEGORIES.find((c) => c.name === f["Категорія"]);
+  return { n: issue.number, url: issue.html_url, by: issue.user && issue.user.login, name: f["Назва"] || issue.title.replace(/^\[Мод\]\s*/, ""), link: f["Посилання"] || "", cat: cat ? cat.title : "", note: f["Коментар"], pics: pics.slice(0, 10), files, comments: issue.comments };
+}
+async function status(q, mods) {
+  const st = { ok: [], no: [] };
+  if (!q.comments) return st;
+  try {
+    const r = await fetch(`${RP}/issues/${q.n}/comments?per_page=100`); if (!r.ok) return st;
+    const last = {};
+    for (const c of await r.json()) {
+      const u = ((c.user && c.user.login) || "").toLowerCase(); if (!mods.list.includes(u)) continue;
+      const t = (c.body || "").trim();
+      if (/^(✅|\/ok\b)/i.test(t)) last[u] = "ok"; else if (/^(❌|\/no\b)/i.test(t)) last[u] = "no";
+    }
+    for (const [u, v] of Object.entries(last)) (v === "ok" ? st.ok : st.no).push(u);
+  } catch {}
+  return st;
+}
+document.getElementById("apply").addEventListener("click", (e) => {
+  e.currentTarget.href = `https://github.com/${CFG.OWNER}/${CFG.REPO}/issues/new?title=${encodeURIComponent("[Модератор] Заявка")}&body=${encodeURIComponent("Заявка на модератора.\nПро себе: " + document.getElementById("about").value.trim().replace(/\n+/g, " ") + "\n")}`;
+});
+(async () => {
+  const box = document.getElementById("list");
+  try {
+    let mods = { need: 1, list: [] };
+    try { const r = await fetch("moderators.json?t=" + Date.now(), { cache: "no-store" }); if (r.ok) { const j = await r.json(); mods = { need: Math.max(1, Number(j.need) || 1), list: (j.moderators || []).map((x) => String(x).toLowerCase()) }; } } catch {}
+    const r = await fetch(`${RP}/issues?state=open&per_page=50`);
+    if (!r.ok) throw new Error("Не вдалося завантажити пропозиції (" + r.status + ")");
+    const qs = (await r.json()).filter((x) => !x.pull_request && /^\[Мод\]/i.test(x.title)).map(parse);
+    const sts = await Promise.all(qs.map((q) => status(q, mods)));
+    box.innerHTML = qs.length ? qs.map((q, i) => { const s = sts[i], ok = s.ok.length >= mods.need; return `
+      <div class="item ${ok ? "ok" : ""}">
+        <div class="t">${esc(q.name)}</div>
+        <div class="m">від ${esc(q.by || "?")}${q.cat ? " · " + esc(q.cat) : ""}</div>
+        ${q.link ? `<div><a href="${esc(q.link)}" target="_blank" rel="noopener">${esc(q.link)}</a></div>` : ""}
+        ${q.files.map((u) => `<div><a href="${esc(u)}" target="_blank" rel="noopener">⬇ скачати прикріплений ZIP</a></div>`).join("")}
+        ${q.note ? `<div class="m">${esc(q.note)}</div>` : ""}
+        ${q.pics.length ? `<div class="pics">${q.pics.map((u) => `<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>` : ""}
+        <div class="st">${ok ? "✅ Підтвердили: " + esc(s.ok.join(", ")) : s.no.length ? "❌ Відхилили: " + esc(s.no.join(", ")) : "⏳ Чекає перевірки"}</div>
+        <div><a class="btn" href="${esc(q.url)}" target="_blank" rel="noopener">Відкрити пропозицію й залишити коментар</a></div>
+      </div>`; }).join("") : '<div class="m">Нових пропозицій немає.</div>';
+  } catch (e) { box.innerHTML = `<div class="m">${esc(e.message)}</div>`; }
+})();
+</script>
+</body>
+</html>
