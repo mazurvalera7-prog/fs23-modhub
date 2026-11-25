@@ -50,7 +50,7 @@
   <div class="panel" id="login" style="margin-top:18px">
     <label for="tok">GitHub-токен (Fine-grained, доступ тільки до цього репозиторію, Contents: Read and write)</label>
     <input id="tok" type="password" autocomplete="off" placeholder="github_pat_…">
-    <label style="display:flex;align-items:center;margin-top:12px"><input type="checkbox" id="remember"> Запам'ятати на цьому пристрої</label>
+    <label style="display:flex;align-items:center;margin-top:12px"><input type="checkbox" id="remember" checked> Запам'ятати на цьому пристрої</label>
     <div class="hint">Токен зберігається тільки в цьому браузері й відправляється лише на GitHub.</div>
     <button id="enter">Увійти</button>
     <div id="lerr" class="err" style="margin-top:10px"></div>
@@ -68,7 +68,7 @@
       <input id="zipurl" type="url" placeholder="https://…/мод.zip">
       <label>Великий мод: оберіть файл, який ви завантажили в Releases</label>
       <select id="relPick"><option value="">— список ще не завантажено —</option></select>
-      <div class="hint" id="relInfo">ZIP понад ~35 МБ GitHub не приймає з браузера. Завантажте його на github.com у Releases (там до 2 ГБ), потім оберіть тут: посилання й розмір підставляться самі.</div>
+      <div class="hint" id="relInfo">ZIP понад ~35 МБ GitHub не приймає з браузера. Завантажте його на github.com у Releases (там до 2 ГБ; для нових модів створюйте новий невеликий реліз, наприклад mods-2), потім оберіть тут. Найновіші файли зверху.: посилання й розмір підставляться самі.</div>
       <label>Пропозиція від людини для цього мода (звідти візьмуться фото)</label>
       <select id="reqPick"><option value="">— немає —</option></select>
       <div class="row">
@@ -105,7 +105,17 @@
 
     <h2>Пропозиції від людей</h2>
     <div class="panel" id="reqs"><div class="m">Натисніть «Оновити», щоб побачити пропозиції.</div></div>
-    <button type="button" id="reqRefresh" style="margin:10px 0 18px">Оновити пропозиції</button>
+    <button type="button" id="reqRefresh" style="margin:10px 0 6px">Оновити пропозиції</button>
+    <label style="display:flex;align-items:center;margin:0 0 14px"><input type="checkbox" id="onlyOk"> Показувати лише підтверджені модераторами</label>
+    <h2>Модератори</h2>
+    <div class="panel" id="modsBox">
+      <div class="hint">Модератори не мають доступу до репозиторію. Вони перевіряють мод у грі й залишають під пропозицією коментар «✅ …» (все добре) або «❌ …» (не підходить). Рахуються лише ті, чиї логіни GitHub є в цьому списку.</div>
+      <div id="modsList" class="m" style="margin:8px 0"></div>
+      <div class="row"><div style="flex:3"><input id="modLogin" placeholder="логін GitHub модератора"></div><div style="flex:1"><button type="button" id="modAdd" style="margin:0;width:100%">Додати</button></div></div>
+      <div id="modApps" style="margin:10px 0"></div>
+      <label>Скільки підтверджень потрібно</label>
+      <select id="modNeed"><option>1</option><option>2</option><option>3</option></select>
+    </div>
     <div class="hint" id="reqFor" style="display:none"></div>
     <div class="hint" id="reqPicInfo"></div>
 
@@ -124,6 +134,7 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " МБ" : Math.max(1, Math.round((b || 0) / 1024)) + " КБ";
 const CFG = window.FS_CONFIG;
+let me = "";
 const RP = `/repos/${CFG.OWNER}/${CFG.REPO}`;
 const encPath = (p) => p.split("/").map(encodeURIComponent).join("/");
 $("cat-url").textContent = FS.siteUrl(CFG) + "/catalog.data";
@@ -512,7 +523,7 @@ async function loadList() {
     $("list").innerHTML = mods.length ? mods.map((m, i) => `
       <div class="item">
         <div><div>${esc(m.title)} <span class="m">v${esc(m.version)}</span></div>
-        <div class="m">${esc(m.filename)} · ${fmt(m.size)}</div>
+        <div class="m">${esc(m.filename)} · ${fmt(m.size)}${m.addedBy ? " · додав " + esc(m.addedBy) : ""}</div>
         <select class="cat" data-fn="${esc(m.filename)}" style="margin-top:6px">${catOptions(m.category)}</select></div>
         <button class="del" data-fn="${esc(m.filename)}" data-t="${esc(m.title)}">Видалити</button>
       </div>`).join("") : '<div class="m">Поки порожньо</div>';
@@ -538,9 +549,8 @@ $("list").addEventListener("click", async (e) => {
       // файли чистимо найкращим зусиллям: помилка тут не страшна
       if (removed.zipPath) { try { await deleteFile(removed.zipPath, "Видалено ZIP"); } catch {} }
       try {
-        const rel = await (await ghOk(`${RP}/releases/tags/${encodeURIComponent(CFG.RELEASE_TAG)}`)).json();
-        const a = (rel.assets || []).find((x) => x.name === fn);
-        if (a) await ghOk(`${RP}/releases/assets/${a.id}`, { method: "DELETE" });
+        const hit = (await listAllReleaseAssets()).find((x) => x.name === fn);
+        if (hit) await ghOk(`${RP}/releases/assets/${hit.id}`, { method: "DELETE" });
       } catch {}
       for (const p of [removed.image, ...(removed.screenshots || [])].filter((x) => x && !/^https?:\/\//i.test(x))) { try { await deleteFile(p, "Видалено зображення"); } catch {} }
     }
@@ -550,20 +560,25 @@ $("list").addEventListener("click", async (e) => {
 
 // ---------- файли з Releases (для великих модів) ----------
 let relAssets = [];
+async function listAllReleaseAssets() {
+  const out = [];
+  for (let page = 1; page <= 5; page++) {
+    const r = await ghOk(`${RP}/releases?per_page=100&page=${page}&_=${Date.now()}`, { cache: "no-store" });
+    const list = await r.json();
+    for (const rel of list) { if (rel.draft) continue; for (const a of rel.assets || []) out.push({ ...a, relId: rel.id, relTag: rel.tag_name }); }
+    if (list.length < 100) break;
+  }
+  return out.sort((x, y) => new Date(y.created_at) - new Date(x.created_at)); // найновіші зверху
+}
 async function loadRelAssets() {
-  const sel = $("relPick"), info = $("relInfo");
+  const sel = $("relPick");
   try {
-    const r = await gh(`${RP}/releases/tags/${encodeURIComponent(CFG.RELEASE_TAG)}`);
-    if (r.status === 404) { sel.innerHTML = '<option value="">— релізу «' + CFG.RELEASE_TAG + '» ще нема —</option>'; return; }
-    if (!r.ok) throw new Error(await errText(r));
-    const rel = await r.json();
-    // файли, що вже є в каталозі, повторно не пропонуємо
     let used = new Set();
     try { const f = await getFile("mods.json"); used = new Set(((f && f.text ? JSON.parse(f.text).mods : []) || []).map((m) => m.filename)); } catch {}
-    const all = (rel.assets || []).filter((a) => /\.zip$/i.test(a.name));
+    const all = (await listAllReleaseAssets()).filter((a) => /\.zip$/i.test(a.name));
     relAssets = all.filter((a) => !used.has(a.name));
-    sel.innerHTML = '<option value="">— не вибрано —</option>' + relAssets.map((a, i) => `<option value="${i}">${a.name} (${(a.size / 1048576).toFixed(1)} МБ)</option>`).join("");
-    if (!relAssets.length) sel.innerHTML = '<option value="">— ' + (all.length ? "усі файли з релізу вже додані в каталог" : "у релізі «" + CFG.RELEASE_TAG + "» немає ZIP") + ' —</option>';
+    sel.innerHTML = '<option value="">— не вибрано —</option>' + relAssets.map((a, i) => `<option value="${i}">${a.name} (${(a.size / 1048576).toFixed(1)} МБ${a.relTag && a.relTag !== CFG.RELEASE_TAG ? ", " + a.relTag : ""})</option>`).join("");
+    if (!relAssets.length) sel.innerHTML = '<option value="">— ' + (all.length ? "усі файли з релізів вже додані в каталог" : "у релізах немає ZIP-файлів") + ' —</option>';
   } catch (err) { sel.innerHTML = '<option value="">— не вдалося завантажити список —</option>'; }
 }
 $("relPick").addEventListener("change", () => {
@@ -653,7 +668,7 @@ $("f").addEventListener("submit", async (e) => {
     const mod = {
       title, author: $("author").value.trim(), version: $("version").value.trim() || "1.0.0.0", category: $("category").value,
       description: $("description").value.trim(), filename, size, sha256, downloadUrl, zipPath, image: imgPath, screenshots: shotPaths,
-      createdAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(), addedBy: me || undefined,
     };
     await updateDb((db) => {
       if (db.mods.some((m) => m.filename === filename)) throw new Error(`Мод із файлом ${filename} уже є.`);
@@ -674,17 +689,19 @@ $("f").addEventListener("submit", async (e) => {
 // ---------- картинки зі сторінки іншого сайту ----------
 const PROXIES = [(u) => "https://corsproxy.io/?url=" + encodeURIComponent(u), (u) => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u), (u) => "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(u)];
 async function fetchPage(url) {
-  let last = "";
-  for (const mk of PROXIES) {
+  // усі проксі пробуємо одночасно, бере найшвидшу нормальну відповідь; кожному дано 12 с
+  const tries = PROXIES.map(async (mk) => {
+    const ac = new AbortController(), t = setTimeout(() => ac.abort(), 12000);
     try {
-      const r = await fetch(mk(url));
-      if (!r.ok) { last = "HTTP " + r.status; continue; }
-      const t = await r.text();
-      if (t && t.length > 500) return t;
-      last = "порожня відповідь";
-    } catch (e) { last = e.message; }
-  }
-  throw new Error("Не вдалося відкрити сторінку (" + last + ")");
+      const r = await fetch(mk(url), { signal: ac.signal });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const txt = await r.text();
+      if (!txt || txt.length < 500) throw new Error("порожня відповідь");
+      return txt;
+    } finally { clearTimeout(t); }
+  });
+  try { return await Promise.any(tries); }
+  catch (err) { throw new Error("Не вдалося відкрити сторінку (" + ((err.errors && err.errors[0] && err.errors[0].message) || "немає відповіді") + ")"); }
 }
 function extractImages(html, base) {
   const doc = new DOMParser().parseFromString(html, "text/html");
@@ -749,19 +766,51 @@ function parseReq(issue) {
   (f["Фото"] || "").split(/\s+/).forEach(addPic);
   (issue.body || "").replace(/!\[[^\]]*\]\((https:\/\/[^)\s]+)\)/g, (_, u) => addPic(u));
   (issue.body || "").replace(/<img[^>]+src="(https:\/\/[^"]+)"/g, (_, u) => addPic(u));
-  return { pics: pics.slice(0, 10), n: issue.number, by: issue.user && issue.user.login, url: issue.html_url, name: f["Назва"] || issue.title.replace(/^\[Мод\]\s*/, ""), link: f["Посилання"] || "", cat: f["Категорія"] || "", note: f["Коментар"] || "" };
+  const files = [];
+  (issue.body || "").replace(/\[[^\]]*\]\((https:\/\/[^)\s]+)\)/g, (m, u) => { if (!/^!/.test(m) && (/\/user-attachments\/files\//i.test(u) || /\.zip(\?|#|$)/i.test(u)) && !files.includes(u)) files.push(u); });
+  (issue.body || "").replace(/https:\/\/github\.com\/user-attachments\/files\/[^\s)>"]+/g, (u) => { if (!files.includes(u)) files.push(u); });
+  return { files, pics: pics.slice(0, 10), n: issue.number, by: issue.user && issue.user.login, url: issue.html_url, name: f["Назва"] || issue.title.replace(/^\[Мод\]\s*/, ""), link: f["Посилання"] || "", cat: f["Категорія"] || "", note: f["Коментар"] || "" };
 }
+// статус пропозиції за коментарями модераторів: «✅…» підтверджує, «❌…» відхиляє (рахується остання думка кожного)
+async function loadMods() {
+  try { const f = await getFile("moderators.json"); const j = f && f.text ? JSON.parse(f.text) : {}; return { sha: f && f.sha, need: Math.max(1, Number(j.need) || 1), list: (j.moderators || []).map((x) => String(x).toLowerCase()) }; }
+  catch { return { sha: null, need: 1, list: [] }; }
+}
+async function reqStatus(issue, mods) {
+  const st = { ok: [], no: [], need: mods.need };
+  if (!issue.comments) return st;
+  try {
+    const r = await ghOk(`${RP}/issues/${issue.number}/comments?per_page=100&_=${Date.now()}`, { cache: "no-store" });
+    const last = {};
+    for (const c of await r.json()) {
+      const u = ((c.user && c.user.login) || "").toLowerCase(); if (!mods.list.includes(u)) continue;
+      const t = (c.body || "").trim();
+      if (/^(✅|\/ok\b)/i.test(t)) last[u] = "ok"; else if (/^(❌|\/no\b)/i.test(t)) last[u] = "no";
+    }
+    for (const [u, v] of Object.entries(last)) (v === "ok" ? st.ok : st.no).push(u);
+  } catch {}
+  return st;
+}
+let modsCfg = { sha: null, need: 1, list: [] };
 async function loadReqs() {
   $("reqs").innerHTML = '<div class="m">Завантажую…</div>';
   try {
     const r = await ghOk(`${RP}/issues?state=open&per_page=50&_=${Date.now()}`, { cache: "no-store" });
-    reqList = (await r.json()).filter((x) => !x.pull_request && /^\[Мод\]/i.test(x.title)).map(parseReq);
+    const raw = (await r.json()).filter((x) => !x.pull_request && /^\[Мод\]/i.test(x.title));
+    modsCfg = await loadMods(); renderMods();
+    const sts = await Promise.all(raw.map((x) => reqStatus(x, modsCfg)));
+    reqList = raw.map((x, i) => ({ ...parseReq(x), st: sts[i] }));
+    const rank = (q) => (q.st.ok.length >= q.st.need ? 0 : q.st.no.length ? 2 : 1);
+    reqList.sort((p, q) => rank(p) - rank(q));
+    if ($("onlyOk") && $("onlyOk").checked) reqList = reqList.filter((q) => q.st.ok.length >= q.st.need);
     $("reqs").innerHTML = reqList.length ? reqList.map((q, k) => `
       <div class="item"><div style="min-width:0"><div>${esc(q.name)} <span class="m">від ${esc(q.by || "?")}</span></div>
-        <div class="m" style="word-break:break-all"><a href="${esc(q.link)}" target="_blank" rel="noopener">${esc(q.link)}</a></div>
+        ${q.link ? `<div class="m" style="word-break:break-all"><a href="${esc(q.link)}" target="_blank" rel="noopener">${esc(q.link)}</a></div>` : ""}
+        ${q.files.length ? `<div class="m">Прикріплено ZIP: ${q.files.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener">скачати для перевірки</a>`).join(", ")}</div>` : ""}
         ${q.note ? `<div class="m">${esc(q.note)}</div>` : ""}
         ${q.pics.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin:4px 0">${q.pics.map((u) => `<img src="${esc(u)}" loading="lazy" style="height:56px;border-radius:6px;border:1px solid #2b3340" alt="">`).join("")}</div>` : ""}
-        <div class="m">${esc(q.cat || "категорія не вказана")}</div></div>
+        <div class="m">${esc(q.cat || "категорія не вказана")}</div>
+        <div class="m">${q.st.ok.length >= q.st.need ? "✅ Підтвердили: " + esc(q.st.ok.join(", ")) : q.st.no.length ? "❌ Відхилили: " + esc(q.st.no.join(", ")) : "⏳ Чекає перевірки модераторів (потрібно " + q.st.need + ")"}${q.st.ok.length && q.st.ok.length < q.st.need ? " · зараз: " + esc(q.st.ok.join(", ")) : ""}</div></div>
         <div style="display:flex;flex-direction:column;gap:6px"><button class="use" data-k="${k}">Взяти в роботу</button><button class="del rej" data-k="${k}">Відхилити</button></div></div>`).join("") : '<div class="m">Нових пропозицій немає</div>';
     fillReqPick();
   } catch (e) { $("reqs").innerHTML = `<div class="err">${esc(e.message)}</div>`; }
@@ -778,7 +827,7 @@ async function applyReq(q, overwrite) {
   curReq = q.n;
   if (overwrite || !$("title").value.trim()) $("title").value = q.name;
   if (q.cat && FS.CATEGORIES.some((c) => c.name === q.cat) && (overwrite || !$("category").value)) $("category").value = q.cat;
-  if (overwrite) {
+  if (overwrite && q.link) {
     if (/\.zip(\?|#|$)/i.test(q.link)) { $("zipurl").value = q.link; $("zipurl").dispatchEvent(new Event("input", { bubbles: true })); }
     else $("pageLink").value = q.link;
   }
@@ -802,7 +851,55 @@ $("reqPick").addEventListener("change", async () => {
   if (!q) { curReq = null; $("reqFor").style.display = "none"; $("reqPicInfo").textContent = ""; return; }
   await applyReq(q, false);
 });
-$("reqRefresh").addEventListener("click", loadReqs);
+
+function renderMods() {
+  $("modsList").innerHTML = modsCfg.list.length ? modsCfg.list.map((u) => `<span class="tag" style="display:inline-block;background:#24303b;border-radius:999px;padding:2px 10px;margin:0 6px 6px 0">${esc(u)} <a href="#" data-rm="${esc(u)}" style="color:#e57373;text-decoration:none">✕</a></span>`).join("") : "Модераторів ще немає";
+  $("modNeed").value = String(modsCfg.need);
+}
+async function saveMods() {
+  const f = await getFile("moderators.json");
+  await putFile("moderators.json", textToB64(JSON.stringify({ need: modsCfg.need, moderators: modsCfg.list }, null, 2) + "\n"), f && f.sha, "Оновлено модераторів");
+}
+$("modAdd").addEventListener("click", async () => {
+  const u = $("modLogin").value.trim().replace(/^@/, "").toLowerCase();
+  if (!/^[a-z0-9-]{1,39}$/.test(u)) return alert("Вкажіть логін GitHub (латиниця, цифри, дефіс)");
+  if (!modsCfg.list.includes(u)) modsCfg.list.push(u);
+  try { await saveMods(); $("modLogin").value = ""; } catch (e) { alert(e.message); }
+  renderMods();
+});
+$("modsList").addEventListener("click", async (e) => {
+  const rm = e.target.closest("a[data-rm]"); if (!rm) return; e.preventDefault();
+  modsCfg.list = modsCfg.list.filter((x) => x !== rm.dataset.rm);
+  try { await saveMods(); } catch (err) { alert(err.message); }
+  renderMods();
+});
+$("modNeed").addEventListener("change", async () => { modsCfg.need = Number($("modNeed").value); try { await saveMods(); loadReqs(); } catch (e) { alert(e.message); } });
+$("onlyOk").addEventListener("change", loadReqs);
+
+// заявки «Стати модератором»: issue із заголовком «[Модератор] …», логін береться з автора заявки (його не підробити)
+let modAppList = [];
+async function loadModApps() {
+  try {
+    const r = await ghOk(`${RP}/issues?state=open&per_page=50&_=${Date.now()}`, { cache: "no-store" });
+    modAppList = (await r.json()).filter((x) => !x.pull_request && /^\[Модератор\]/i.test(x.title)).map((x) => ({ n: x.number, login: x.user && x.user.login, note: ((x.body || "").match(/^Про себе:\s*(.*)$/m) || [])[1] || "" }));
+    $("modApps").innerHTML = modAppList.length ? "<b>Заявки на модератора</b>" + modAppList.map((q, k) => `<div class="item"><div><div>${esc(q.login || "?")}</div>${q.note ? `<div class="m">${esc(q.note)}</div>` : ""}<div class="m"><a href="https://github.com/${esc(q.login)}" target="_blank" rel="noopener">профіль на GitHub</a></div></div><div style="display:flex;flex-direction:column;gap:6px"><button class="use macc" data-k="${k}">Додати</button><button class="del mrej" data-k="${k}">Відхилити</button></div></div>`).join("") : '<div class="m">Заявок на модератора немає</div>';
+  } catch (e) { $("modApps").innerHTML = ""; }
+}
+$("modApps").addEventListener("click", async (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  const q = modAppList[Number(b.dataset.k)]; if (!q) return;
+  if (b.classList.contains("macc")) {
+    const u = (q.login || "").toLowerCase();
+    if (u && !modsCfg.list.includes(u)) modsCfg.list.push(u);
+    try { await saveMods(); } catch (err) { return alert(err.message); }
+    await closeReq(q.n, "Ви тепер модератор. Перевіряйте моди на сторінці перевірки й залишайте коментарі ✅ або ❌.");
+  } else if (b.classList.contains("mrej")) {
+    if (!confirm(`Відхилити заявку ${q.login}?`)) return;
+    await closeReq(q.n, "Дякуємо за заявку. Зараз модератори не потрібні.");
+  }
+  renderMods(); loadModApps();
+});
+$("reqRefresh").addEventListener("click", () => { loadReqs(); loadModApps(); });
 $("reqs").addEventListener("click", async (e) => {
   const q = reqList[Number((e.target.closest("button") || {}).dataset && e.target.closest("button").dataset.k)];
   if (!q) return;
@@ -827,18 +924,20 @@ async function enter() {
     const r = await gh(RP);
     if (!r.ok) throw new Error(await errText(r));
     const repo = await r.json();
+    try { const ur = await gh("/user"); if (ur.ok) me = (await ur.json()).login || ""; } catch {}
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch {}
     if (repo.permissions && !repo.permissions.push) throw new Error("У токена немає права запису в цей репозиторій");
     store.del("fs23_gh_token"); store.set("fs23_gh_token", token, $("remember").checked);
     $("login").classList.add("hidden"); $("app").classList.remove("hidden"); $("logout").classList.remove("hidden");
     $("tok").value = "";
-    loadList(); loadReqs();
+    loadList(); loadReqs(); loadModApps();
   } catch (e) { token = ""; $("lerr").textContent = e.message; }
   $("enter").disabled = false;
 }
 $("enter").addEventListener("click", enter);
 $("tok").addEventListener("keydown", (e) => { if (e.key === "Enter") enter(); });
 $("logout").addEventListener("click", () => { store.del("fs23_gh_token"); location.reload(); });
-$("autoInfo").textContent = "Версія адмінки: v10 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
+$("autoInfo").textContent = "Версія адмінки: v16 (автокатегорія). Виберіть ZIP мода: з нього підставляться дані й категорія.";
 $("category").innerHTML = '<option value="">— оберіть категорію —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${esc(c.title)} (${c.name})</option>`).join("");
 if (store.get("fs23_gh_token")) enter();
 </script>
