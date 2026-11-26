@@ -19,43 +19,53 @@
   a { color:#8ec5ff; word-break:break-all; }
   .pics { display:flex; gap:6px; overflow-x:auto; }
   .pics img { height:90px; border-radius:8px; border:1px solid var(--line); }
-  .btn { display:inline-block; text-align:center; background:var(--acc); color:var(--accd); font-weight:650; padding:10px 14px; border-radius:10px; text-decoration:none; }
+  a.btn { display:inline-block; text-align:center; background:var(--acc); text-decoration:none; }
   .st { font-size:15px; }
+  .tabs { display:flex; gap:8px; overflow-x:auto; margin:14px 0 4px; }
+  .tab { flex:none; background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font:inherit; cursor:pointer; }
+  .tab.on { background:var(--acc); border-color:var(--acc); font-weight:700; } .tab .n { opacity:.7; font-size:13px; }
+  .act { display:flex; gap:8px; flex-wrap:wrap; }
+  .btn.yes { background:#2fa84f; } .btn.no { background:#d1493f; } .btn.sec { background:transparent; border:1px solid var(--line); color:var(--text); }
+  .btn { border:0; cursor:pointer; font:inherit; font-weight:650; padding:10px 14px; border-radius:10px; color:#fff; }
+  input.tk { width:100%; background:#0b1220; color:inherit; border:1px solid var(--line); border-radius:10px; padding:10px; font:inherit; margin:6px 0; }
+  .me { color:#8ec5ff; font-size:14px; } .done { opacity:.75; }
   .ex { background:#0b1220; border:1px dashed var(--line); border-radius:8px; padding:6px 10px; margin:6px 0; }
 </style>
 </head>
 <body>
 <main>
   <h1>Перевірка <span>модів</span></h1>
-  <div class="m">Сторінка для модераторів. Тут мод перевіряють перед тим, як він потрапить у каталог.</div>
-  <div class="box"><b>Що потрібно робити модератору</b>
-    <div class="m" style="margin:4px 0">Ваше завдання: перевірити, що мод запускається й працює, і повідомити про це власнику. Дописувати код чи заходити в налаштування не треба.</div>
+  <div class="m">Панель модератора: тут видно, які моди чекають перевірки, а які вже підтверджені чи вже є в каталозі.</div>
+
+  <div class="box" id="login"></div>
+
+  <details class="box"><summary><b>Як перевіряти мод</b></summary>
     <ol>
-      <li><b>Підготовка (один раз).</b> Потрібен безкоштовний акаунт на <a href="https://github.com/signup" target="_blank" rel="noopener">github.com</a>. Власник має додати ваш логін у список модераторів: якщо ще не додав, подайте заявку внизу цієї сторінки.</li>
-      <li><b>Знайдіть мод нижче.</b> Біля кожного видно назву, категорію, фото й статус. Моди зі статусом «⏳ Чекає перевірки» чекають саме на вас.</li>
-      <li><b>Скачайте мод.</b> Натисніть посилання на мод або «⬇ скачати прикріплений ZIP». Файл не розпаковуйте: покладіть його в папку модів гри.</li>
-      <li><b>Перевірте в грі.</b> Запустіть гру з цим модом. Подивіться, чи мод з'являється в магазині чи в техніці, чи не видає помилок, чи працює так, як описано.</li>
-      <li><b>Повідомте результат.</b> Натисніть синю кнопку «Відкрити пропозицію й залишити коментар». Внизу сторінки в полі «Add a comment» напишіть і натисніть зелену кнопку <b>Comment</b>:
-        <div class="ex">✅ Усе працює, помилок немає</div>
-        або, якщо щось не так:
-        <div class="ex">❌ Гра вилітає при запуску</div>
-      </li>
-      <li><b>Далі</b> власник бачить ваш коментар у своїй адмінці. Якщо все добре, він сам додає мод на сайт, і вам більше нічого робити не треба.</li>
+      <li>На вкладці «Чекають» оберіть мод. Скачайте його за посиланням чи прикріпленим ZIP і покладіть у папку модів гри.</li>
+      <li>Запустіть гру й перевірте: мод з'являється, помилок немає, працює як описано.</li>
+      <li>Натисніть <b>✅ Усе працює</b> або <b>❌ Не підходить</b> (і вкажіть причину). Власник побачить вашу відповідь у своїй панелі.</li>
     </ol>
-    <div class="m" style="margin-top:8px"><b>Важливо:</b> коментар обов'язково починайте зі значка ✅ або ❌, інакше він не буде врахований. Враховуються лише коментарі людей зі списку модераторів. Мод надіслала стороння людина, тому скачуйте лише файли зі списку на цій сторінці й не запускайте нічого, крім самого мода.</div>
-  </div>
+    <div class="m" style="margin-top:6px">Враховуються лише відповіді людей зі списку модераторів. Мод надіслала стороння людина, тому скачуйте лише файли зі списку на цій сторінці й не запускайте нічого, крім самого мода.</div>
+  </details>
+
+  <div class="tabs" id="tabs"></div>
+  <div id="list"><div class="m">Завантаження…</div></div>
+
   <div class="box"><b>Ще не модератор?</b>
-    <div class="m" style="margin:4px 0 8px">Подайте заявку: вона відкриється на GitHub, її побачить власник сайту. Ваш акаунт GitHub і є ваш «обліковий запис».</div>
-    <input id="about" maxlength="200" placeholder="Коротко про себе (необов'язково)" style="width:100%;background:#0b1220;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;margin-bottom:8px">
+    <div class="m" style="margin:4px 0 8px">Подайте заявку: вона відкриється на GitHub, її побачить власник сайту.</div>
+    <input id="about" maxlength="200" placeholder="Коротко про себе (необов'язково)" class="tk">
     <a class="btn" id="apply" href="#" target="_blank" rel="noopener">Подати заявку на модератора</a>
   </div>
-  <div id="list"><div class="m">Завантаження…</div></div>
 </main>
 <script src="config.js"></script>
 <script src="shared.js?v=20261114"></script>
 <script>
-const CFG = window.FS_CONFIG, RP = `${CFG.API_BASE}/repos/${CFG.OWNER}/${CFG.REPO}`;
+const CFG = window.FS_CONFIG, RP = `${CFG.API_BASE}/repos/${CFG.OWNER}/${CFG.REPO}`, $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const store = { get() { try { return localStorage.getItem("modTk") || ""; } catch { return ""; } }, set(v) { try { localStorage.setItem("modTk", v); } catch {} }, del() { try { localStorage.removeItem("modTk"); } catch {} } };
+let token = store.get(), me = "", mods = { need: 1, list: [] }, items = [], catalog = [], tab = "wait";
+const api = (path, opt = {}) => fetch(path.startsWith("http") ? path : RP + path, { ...opt, headers: { Accept: "application/vnd.github+json", ...(token ? { Authorization: "Bearer " + token } : {}), ...(opt.headers || {}) } });
+
 function parse(issue) {
   const f = {}; (issue.body || "").split(/\r?\n/).forEach((l) => { const m = l.match(/^(Назва|Посилання|Категорія|Фото|Коментар):\s*(.*)$/); if (m) f[m[1]] = m[2].trim(); });
   const body = issue.body || "", pics = [], files = [];
@@ -67,45 +77,105 @@ function parse(issue) {
   const cat = FS.CATEGORIES.find((c) => c.name === f["Категорія"]);
   return { n: issue.number, url: issue.html_url, by: issue.user && issue.user.login, name: f["Назва"] || issue.title.replace(/^\[Мод\]\s*/, ""), link: f["Посилання"] || "", cat: cat ? cat.title : "", note: f["Коментар"], pics: pics.slice(0, 10), files, comments: issue.comments };
 }
-async function status(q, mods) {
-  const st = { ok: [], no: [] };
-  if (!q.comments) return st;
+async function votes(q) {
+  const v = { ok: [], no: [], last: {} };
+  if (!q.comments) return v;
   try {
-    const r = await fetch(`${RP}/issues/${q.n}/comments?per_page=100`); if (!r.ok) return st;
-    const last = {};
+    const r = await api(`/issues/${q.n}/comments?per_page=100&_=${Date.now()}`); if (!r.ok) return v;
     for (const c of await r.json()) {
       const u = ((c.user && c.user.login) || "").toLowerCase(); if (!mods.list.includes(u)) continue;
       const t = (c.body || "").trim();
-      if (/^(✅|\/ok\b)/i.test(t)) last[u] = "ok"; else if (/^(❌|\/no\b)/i.test(t)) last[u] = "no";
+      if (/^(✅|\/ok\b)/i.test(t)) v.last[u] = "ok"; else if (/^(❌|\/no\b)/i.test(t)) v.last[u] = "no";
     }
-    for (const [u, v] of Object.entries(last)) (v === "ok" ? st.ok : st.no).push(u);
+    for (const [u, x] of Object.entries(v.last)) (x === "ok" ? v.ok : v.no).push(u);
   } catch {}
-  return st;
+  return v;
 }
-document.getElementById("apply").addEventListener("click", (e) => {
-  e.currentTarget.href = `https://github.com/${CFG.OWNER}/${CFG.REPO}/issues/new?title=${encodeURIComponent("[Модератор] Заявка")}&body=${encodeURIComponent("Заявка на модератора.\nПро себе: " + document.getElementById("about").value.trim().replace(/\n+/g, " ") + "\n")}`;
-});
-(async () => {
-  const box = document.getElementById("list");
+const isOk = (q) => q.v.ok.length >= mods.need;
+const group = (q) => (isOk(q) ? "ok" : q.v.no.length ? "no" : "wait");
+
+function renderLogin() {
+  const isMod = me && mods.list.includes(me.toLowerCase());
+  $("login").innerHTML = me
+    ? `<div>Ви увійшли як <b>${esc(me)}</b>${isMod ? " (модератор)" : ' <span class="m">— вас ще немає в списку модераторів, ваші відповіді не враховуються</span>'}</div><button class="btn sec" id="out" style="margin-top:8px">Вийти</button>`
+    : `<b>Вхід для швидкого підтвердження</b>
+       <div class="m" style="margin:6px 0">Це робиться один раз, займає хвилину:</div>
+       <ol style="margin:0 0 8px;padding-left:20px">
+         <li>Натисніть кнопку нижче й увійдіть у GitHub (якщо попросить).</li>
+         <li>Усе вже заповнено. Прокрутіть сторінку в самий низ і натисніть зелену кнопку <b>Generate token</b>.</li>
+         <li>З'явиться зелений рядок, що починається з <b>ghp_</b>. Натисніть поруч значок копіювання.</li>
+         <li>Поверніться сюди, вставте його в поле й натисніть «Увійти».</li>
+       </ol>
+       <a class="btn" href="https://github.com/settings/tokens/new?scopes=public_repo&description=FS23%20moderator" target="_blank" rel="noopener" style="margin-bottom:8px">1. Створити токен на GitHub</a>
+       <input class="tk" id="tk" placeholder="Вставте сюди токен (ghp_…)" autocomplete="off"><button class="btn" id="in">Увійти</button>
+       <div class="m" style="margin-top:6px">Без входу теж можна: кнопки відкриють пропозицію на GitHub, де треба написати коментар, що починається з ✅ або ❌.</div>`;
+  if (me) $("out").onclick = () => { store.del(); token = ""; me = ""; renderLogin(); render(); };
+  else $("in").onclick = async () => {
+    const t = $("tk").value.trim(); if (!t) return; token = t;
+    const r = await api("https://api.github.com/user");
+    if (!r.ok) { token = ""; return alert("Токен не підійшов. Перевірте, що вставили його повністю."); }
+    me = (await r.json()).login; store.set(t); renderLogin(); render();
+  };
+}
+function renderTabs() {
+  const cnt = { wait: 0, ok: 0, no: 0 }; items.forEach((q) => cnt[group(q)]++);
+  const T = [["wait", "Чекають", cnt.wait], ["ok", "Підтверджені", cnt.ok], ["no", "Відхилені", cnt.no], ["cat", "У каталозі", catalog.length]];
+  $("tabs").innerHTML = T.map(([k, t, n]) => `<button class="tab ${tab === k ? "on" : ""}" data-t="${k}">${t} <span class="n">${n}</span></button>`).join("");
+}
+function render() {
+  renderTabs();
+  if (tab === "cat") {
+    $("list").innerHTML = catalog.length ? catalog.map((m) => `<div class="item done"><div class="t">${esc(m.title)}</div><div class="m">${esc(m.author || "")} · v${esc(m.version || "")}</div><div class="st">✔ Уже в каталозі</div></div>`).join("") : '<div class="m">У каталозі ще немає модів.</div>';
+    return;
+  }
+  const rows = items.filter((q) => group(q) === tab);
+  $("list").innerHTML = rows.length ? rows.map((q) => {
+    const mine = me ? q.v.last[me.toLowerCase()] : "";
+    return `<div class="item ${isOk(q) ? "ok" : ""}">
+      <div class="t">${esc(q.name)}</div>
+      <div class="m">від ${esc(q.by || "?")}${q.cat ? " · " + esc(q.cat) : ""}</div>
+      ${q.link ? `<div><a href="${esc(q.link)}" target="_blank" rel="noopener">${esc(q.link)}</a></div>` : ""}
+      ${q.files.map((u) => `<div><a href="${esc(u)}" target="_blank" rel="noopener">⬇ скачати прикріплений ZIP</a></div>`).join("")}
+      ${q.note ? `<div class="m">${esc(q.note)}</div>` : ""}
+      ${q.pics.length ? `<div class="pics">${q.pics.map((u) => `<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>` : ""}
+      <div class="st">${isOk(q) ? "✅ Підтвердили: " + esc(q.v.ok.join(", ")) : q.v.no.length ? "❌ Відхилили: " + esc(q.v.no.join(", ")) : "⏳ Чекає перевірки"}${q.v.ok.length && !isOk(q) ? ` · ${q.v.ok.length} з ${mods.need}` : ""}</div>
+      ${mine ? `<div class="me">Ваша відповідь: ${mine === "ok" ? "✅ усе працює" : "❌ не підходить"}</div>` : ""}
+      <div class="act"><button class="btn yes" data-v="ok" data-n="${q.n}">✅ Усе працює</button><button class="btn no" data-v="no" data-n="${q.n}">❌ Не підходить</button><a class="btn sec" style="background:transparent;border:1px solid var(--line)" href="${esc(q.url)}" target="_blank" rel="noopener">Відкрити на GitHub</a></div>
+    </div>`;
+  }).join("") : '<div class="m">Тут поки що нічого немає.</div>';
+}
+document.addEventListener("click", async (e) => {
+  const t = e.target.closest(".tab"); if (t) { tab = t.dataset.t; return render(); }
+  const b = e.target.closest("button[data-v]"); if (!b) return;
+  const q = items.find((x) => x.n === Number(b.dataset.n)); if (!q) return;
+  if (!me) { alert("Щоб відповісти одним дотиком, увійдіть (блок угорі). Зараз відкриється сторінка пропозиції: залишіть там коментар, що починається з " + (b.dataset.v === "ok" ? "✅" : "❌") + "."); return window.open(q.url, "_blank", "noopener"); }
+  let text = b.dataset.v === "ok" ? "✅ Усе працює, помилок немає" : "";
+  if (b.dataset.v === "no") { const why = prompt("Чому мод не підходить?", ""); if (why === null) return; text = "❌ " + (why.trim() || "Не підходить"); }
+  b.disabled = true;
   try {
-    let mods = { need: 1, list: [] };
+    const r = await api(`/issues/${q.n}/comments`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ body: text }) });
+    if (!r.ok) throw new Error(r.status === 401 ? "Токен недійсний" : r.status === 403 || r.status === 404 ? "Токен не має права public_repo" : "Помилка " + r.status);
+    await load();
+  } catch (err) { alert(err.message); b.disabled = false; }
+});
+document.getElementById("apply").addEventListener("click", (e) => {
+  e.currentTarget.href = `https://github.com/${CFG.OWNER}/${CFG.REPO}/issues/new?title=${encodeURIComponent("[Модератор] Заявка")}&body=${encodeURIComponent("Заявка на модератора.\nПро себе: " + $("about").value.trim().replace(/\n+/g, " ") + "\n")}`;
+});
+async function load() {
+  try {
     try { const r = await fetch("moderators.json?t=" + Date.now(), { cache: "no-store" }); if (r.ok) { const j = await r.json(); mods = { need: Math.max(1, Number(j.need) || 1), list: (j.moderators || []).map((x) => String(x).toLowerCase()) }; } } catch {}
-    const r = await fetch(`${RP}/issues?state=open&per_page=50`);
+    try { const r = await fetch("mods.json?t=" + Date.now(), { cache: "no-store" }); if (r.ok) catalog = (await r.json()).mods || []; } catch {}
+    const r = await api("/issues?state=open&per_page=50");
     if (!r.ok) throw new Error("Не вдалося завантажити пропозиції (" + r.status + ")");
     const qs = (await r.json()).filter((x) => !x.pull_request && /^\[Мод\]/i.test(x.title)).map(parse);
-    const sts = await Promise.all(qs.map((q) => status(q, mods)));
-    box.innerHTML = qs.length ? qs.map((q, i) => { const s = sts[i], ok = s.ok.length >= mods.need; return `
-      <div class="item ${ok ? "ok" : ""}">
-        <div class="t">${esc(q.name)}</div>
-        <div class="m">від ${esc(q.by || "?")}${q.cat ? " · " + esc(q.cat) : ""}</div>
-        ${q.link ? `<div><a href="${esc(q.link)}" target="_blank" rel="noopener">${esc(q.link)}</a></div>` : ""}
-        ${q.files.map((u) => `<div><a href="${esc(u)}" target="_blank" rel="noopener">⬇ скачати прикріплений ZIP</a></div>`).join("")}
-        ${q.note ? `<div class="m">${esc(q.note)}</div>` : ""}
-        ${q.pics.length ? `<div class="pics">${q.pics.map((u) => `<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>` : ""}
-        <div class="st">${ok ? "✅ Підтвердили: " + esc(s.ok.join(", ")) : s.no.length ? "❌ Відхилили: " + esc(s.no.join(", ")) : "⏳ Чекає перевірки"}</div>
-        <div><a class="btn" href="${esc(q.url)}" target="_blank" rel="noopener">Відкрити пропозицію й залишити коментар</a></div>
-      </div>`; }).join("") : '<div class="m">Нових пропозицій немає.</div>';
-  } catch (e) { box.innerHTML = `<div class="m">${esc(e.message)}</div>`; }
+    const vs = await Promise.all(qs.map(votes));
+    items = qs.map((q, i) => ({ ...q, v: vs[i] }));
+    render();
+  } catch (e) { $("list").innerHTML = `<div class="m">${esc(e.message)}</div>`; }
+}
+(async () => {
+  if (token) { try { const r = await api("https://api.github.com/user"); if (r.ok) me = (await r.json()).login; else { token = ""; store.del(); } } catch {} }
+  await load(); renderLogin(); render();
 })();
 </script>
 </body>
