@@ -2,88 +2,188 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FS23 ModHub</title>
-<meta name="description" content="Моди для Farming Simulator 23. У грі вони підтягуються автоматично.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101713">
+<title>FS23 ModHub: моди для Farming Simulator 23</title>
 <style>
-  :root { --bg:#12161b; --card:#1b222a; --line:#2a343f; --text:#e8edf2; --mute:#8d9aa8; --acc:#6cc04a; --accd:#10200a; }
-  * { box-sizing:border-box; }
-  html { -webkit-text-size-adjust:100%; }
-  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
-  header { max-width:1100px; margin:0 auto; padding:22px 16px 6px; }
-  h1 { margin:0; font-size:26px; letter-spacing:.2px; }
-  h1 span { color:var(--acc); }
-  .sub { color:var(--mute); margin:4px 0 0; }
-  .bar { position:sticky; top:0; z-index:5; background:linear-gradient(var(--bg) 80%, transparent); padding:12px 16px 8px; }
-  .bar > div { max-width:1100px; margin:0 auto; display:flex; gap:10px; flex-wrap:wrap; }
-  input, select { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font:inherit; min-width:0; }
-  input { flex:1 1 220px; }
-  select { flex:0 1 220px; }
-  main { max-width:1100px; margin:0 auto; padding:6px 16px 40px; display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; transition:border-color .15s, transform .15s; }
-  .card:hover { border-color:var(--acc); transform:translateY(-2px); }
-  .img { aspect-ratio:16/9; background:#0c0f13 center/cover no-repeat; }
-  .body { padding:12px 14px 14px; display:flex; flex-direction:column; gap:5px; flex:1; }
-  .t { font-weight:650; }
-  .m { color:var(--mute); font-size:14px; }
-  .d { color:var(--mute); font-size:14px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; white-space:pre-line; }
-  .btn { display:inline-block; text-align:center; background:var(--acc); color:var(--accd); font-weight:650; padding:10px 14px; border-radius:10px; text-decoration:none; border:0; font:inherit; font-weight:650; cursor:pointer; }
-  .btn:hover { filter:brightness(1.08); }
-  .card .btn { margin-top:auto; }
-  .tag img { width:18px; height:18px; vertical-align:-4px; margin-right:5px; }
-  .tag { display:inline-block; background:#24303b; border-radius:999px; padding:1px 10px; font-size:13px; color:#b9c6d3; }
-  .empty { grid-column:1/-1; text-align:center; color:var(--mute); padding:60px 0; }
-  footer { text-align:center; color:var(--mute); padding:0 16px 28px; font-size:14px; }
-  /* вікно мода */
-  dialog { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:16px; padding:0; width:min(680px, calc(100vw - 24px)); max-height:calc(100vh - 24px); overflow:auto; }
-  dialog::backdrop { background:rgba(0,0,0,.65); }
-  .img img, .dh img { width:100%; height:100%; object-fit:cover; display:block; }
-  .img img.ic, .dh img.ic { object-fit:contain; padding:14% 0; }
-  .dh { aspect-ratio:16/9; background:#0c0f13 center/cover no-repeat; }
-  .db { padding:16px; display:flex; flex-direction:column; gap:10px; }
-  .db h2 { margin:0; font-size:22px; }
-  .db .desc { white-space:pre-line; color:#cdd6df; }
-  .shots { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
-  .shots img { height:110px; border-radius:8px; border:1px solid var(--line); }
-  .row { display:flex; gap:10px; flex-wrap:wrap; }
-  #sugForm input, #sugForm select, #sugForm textarea { flex:none; width:100%; }
-  #sugForm label { font-weight:600; margin-top:4px; }
-  .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+  :root { --bg:#0b1220; --bg2:#0f1830; --card:#131d36; --card2:#182445; --line:#233158; --line2:#2f4170; --text:#eaf0ff; --mute:#8fa0c4; --acc:#2a74ff; --acc2:#4d8dff; --new:#35b34a; --r:16px; --shadow:0 14px 34px rgba(0,0,0,.4); }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:84px; }
+  body { margin:0; background:radial-gradient(1100px 500px at 80% -10%, rgba(42,116,255,.14), transparent 60%), var(--bg); color:var(--text); font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; min-height:100vh; }
+  a { color:inherit; text-decoration:none; }
+  button { font:inherit; color:inherit; }
+  .wrap { max-width:1360px; margin:0 auto; padding:0 16px; }
+
+  /* ---- верхня панель ---- */
+  .nav { position:sticky; top:0; z-index:40; background:rgba(11,18,32,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav .wrap { display:flex; align-items:center; gap:14px; min-height:64px; flex-wrap:wrap; padding-top:8px; padding-bottom:8px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:20px; letter-spacing:.2px; }
+  .logo { width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--acc),#6aa6ff); display:grid; place-items:center; flex:none; box-shadow:0 6px 18px rgba(42,116,255,.4); }
+  .logo svg { width:24px; height:24px; }
+  .brand em { font-style:normal; color:var(--acc2); }
+  .links { display:none; gap:4px; margin-left:12px; }
+  .links a, .links button { background:none; border:0; cursor:pointer; padding:9px 14px; border-radius:10px; color:var(--text); font-weight:600; display:flex; align-items:center; gap:7px; }
+  .links a:hover, .links button:hover { background:var(--card2); }
+  .links a.on { background:var(--acc); }
+  .links svg { width:18px; height:18px; }
+  .nsearch { position:relative; flex:1 1 100%; order:5; }
+  .nsearch svg { position:absolute; right:14px; top:50%; transform:translateY(-50%); width:19px; height:19px; opacity:.7; pointer-events:none; }
+  .nsearch input { width:100%; background:var(--card); color:var(--text); border:1px solid var(--line2); border-radius:12px; padding:11px 42px 11px 14px; font:inherit; outline:none; transition:.15s; }
+  .nsearch input:focus { border-color:var(--acc); box-shadow:0 0 0 3px rgba(42,116,255,.22); }
+  .burger { margin-left:auto; width:42px; height:42px; border-radius:12px; border:1px solid var(--line2); background:var(--card); cursor:pointer; display:grid; place-items:center; }
+  .burger svg { width:22px; height:22px; }
+  .menu { display:none; flex-direction:column; flex:1 1 100%; order:4; gap:2px; }
+  .menu.on { display:flex; } .menu a, .menu button { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:11px 14px; text-align:left; cursor:pointer; font-weight:600; }
+  .mod-link { display:none; }
+
+  /* ---- каркас ---- */
+  .layout { display:block; padding-top:16px; }
+  .side { display:none; }
+  .chips { display:flex; gap:8px; overflow-x:auto; padding:2px 0 12px; scrollbar-width:none; }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip { flex:none; display:flex; align-items:center; gap:7px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:7px 14px 7px 8px; font-size:14px; cursor:pointer; white-space:nowrap; }
+  .chip img { width:24px; height:24px; object-fit:contain; } .chip.all { padding-left:14px; }
+  .chip .n { color:var(--mute); font-size:12px; }
+  .chip.on { background:var(--acc); border-color:var(--acc); font-weight:700; } .chip.on .n { color:rgba(255,255,255,.8); }
+
+  /* ---- банер ---- */
+  .banner { position:relative; border-radius:20px; overflow:hidden; min-height:230px; display:flex; align-items:center; border:1px solid var(--line); background:linear-gradient(120deg,#16254a,#0e1a36 60%,#1b3a7a); }
+  .banner .bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:.9; transition:opacity .6s; }
+  .banner::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(7,12,26,.92) 0%, rgba(7,12,26,.7) 45%, rgba(7,12,26,.1) 100%); }
+  .banner .in { position:relative; z-index:2; padding:26px 22px; max-width:560px; }
+  .banner h2 { margin:0 0 8px; font-size:28px; line-height:1.15; font-weight:850; }
+  .banner h2 em { font-style:normal; color:var(--acc2); }
+  .banner p { margin:0 0 16px; color:#c9d5f2; }
+  .banner .feat { position:absolute; right:14px; bottom:12px; z-index:2; font-size:13px; color:#d7e2ff; background:rgba(8,14,30,.7); border:1px solid rgba(255,255,255,.15); border-radius:999px; padding:3px 12px; }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--acc); color:#fff; font-weight:700; padding:11px 18px; border-radius:12px; border:0; cursor:pointer; transition:filter .15s, transform .1s; }
+  .btn:hover { filter:brightness(1.12); } .btn:active { transform:scale(.98); }
+  .btn svg { width:18px; height:18px; }
+  .btn.ghost { background:transparent; border:1px solid var(--line2); } .btn.ghost:hover { border-color:var(--acc); }
+
+  .sec { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:26px 0 12px; flex-wrap:wrap; }
+  .sec h3 { margin:0; font-size:22px; display:flex; align-items:center; gap:8px; } .sec h3 svg { width:24px; height:24px; color:#f5c542; }
+  .sort { background:var(--card); color:var(--text); border:1px solid var(--line2); border-radius:10px; padding:8px 10px; font:inherit; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
+  .row-scroll { display:flex; gap:14px; overflow-x:auto; padding-bottom:6px; scroll-snap-type:x mandatory; scrollbar-width:thin; }
+  .row-scroll .card { flex:0 0 min(78vw,290px); scroll-snap-align:start; }
+
+  .card { position:relative; background:var(--card); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; cursor:pointer; transition:transform .18s, border-color .18s, box-shadow .18s; animation:up .35s both; }
+  .card:hover { transform:translateY(-3px); border-color:var(--acc); box-shadow:var(--shadow); }
+  .img { position:relative; aspect-ratio:16/10; background:linear-gradient(135deg,#1a2a52,#101b38); overflow:hidden; }
+  .img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; } .card:hover .img img { transform:scale(1.05); }
+  .img img.ic { object-fit:contain; padding:14%; opacity:.92; }
+  .badge { position:absolute; left:8px; top:8px; z-index:2; background:var(--new); color:#fff; font-weight:750; font-size:12.5px; padding:2px 10px; border-radius:6px; box-shadow:0 4px 10px rgba(0,0,0,.35); }
+  .pill { position:absolute; right:8px; bottom:8px; z-index:2; display:flex; align-items:center; gap:6px; background:rgba(8,14,30,.78); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:2px 10px 2px 5px; font-size:12px; max-width:80%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pill img { width:17px; height:17px; object-fit:contain; flex:none; }
+  .body { padding:12px 14px 14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .t { font-weight:750; font-size:17px; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .meta { display:flex; align-items:center; flex-wrap:wrap; gap:4px 14px; color:var(--mute); font-size:13.5px; }
+  .meta span { display:flex; align-items:center; gap:5px; } .meta svg { width:15px; height:15px; }
+  .au { color:var(--mute); font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .card .btn { margin-top:auto; width:100%; }
+  .empty { grid-column:1/-1; text-align:center; color:var(--mute); padding:60px 10px; } .empty b { display:block; font-size:20px; color:var(--text); margin-bottom:6px; }
+  .skel { height:300px; border-radius:var(--r); background:linear-gradient(100deg,var(--card) 30%,var(--card2) 50%,var(--card) 70%); background-size:200% 100%; animation:sh 1.2s infinite; }
+  @keyframes sh { to { background-position:-200% 0; } } @keyframes up { from { opacity:0; transform:translateY(10px); } }
+  footer { text-align:center; color:var(--mute); padding:30px 16px 110px; font-size:14px; border-top:1px solid var(--line); margin-top:40px; }
+  .fab { position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom)); z-index:30; box-shadow:0 10px 26px rgba(0,0,0,.55); border-radius:999px; padding:13px 20px; }
+
+  /* ---- вікна ---- */
+  dialog { background:var(--card); color:var(--text); border:1px solid var(--line2); border-radius:22px; padding:0; width:min(720px, calc(100vw - 20px)); max-height:calc(100dvh - 20px); overflow:auto; box-shadow:0 30px 80px rgba(0,0,0,.65); }
+  dialog::backdrop { background:rgba(3,7,16,.75); backdrop-filter:blur(3px); }
+  .dh { position:relative; aspect-ratio:16/9; background:linear-gradient(135deg,#1a2a52,#101b38); overflow:hidden; }
+  .dh img { width:100%; height:100%; object-fit:cover; display:block; } .dh img.ic { object-fit:contain; padding:12% 0; }
+  .x { position:absolute; right:10px; top:10px; z-index:3; width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:rgba(8,14,30,.75); color:#fff; font-size:20px; line-height:1; cursor:pointer; display:grid; place-items:center; }
+  .db { padding:18px; display:flex; flex-direction:column; gap:12px; }
+  .db h2 { margin:0; font-size:24px; line-height:1.2; }
+  .facts { display:flex; flex-wrap:wrap; gap:8px; }
+  .fact { background:var(--card2); border:1px solid var(--line); border-radius:10px; padding:4px 10px; font-size:13.5px; color:var(--mute); display:flex; align-items:center; gap:6px; } .fact img { width:20px; height:20px; object-fit:contain; } .fact b { color:var(--text); font-weight:600; }
+  .db .desc { white-space:pre-line; color:#d3def7; } .db .m, .m { color:var(--mute); font-size:14px; }
+  .shots { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; scroll-snap-type:x mandatory; }
+  .shots img { height:130px; border-radius:12px; border:1px solid var(--line); scroll-snap-align:start; cursor:zoom-in; flex:none; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; } .row .btn { flex:1 1 150px; }
+  #sugForm label { font-weight:650; margin-top:4px; }
+  #sugForm input, #sugForm select, #sugForm textarea { width:100%; background:var(--bg2); color:var(--text); border:1px solid var(--line2); border-radius:12px; padding:11px 12px; font:inherit; outline:none; }
+  #sugForm input:focus, #sugForm select:focus, #sugForm textarea:focus { border-color:var(--acc); }
+  .steps { margin:0; padding:0; list-style:none; counter-reset:s; display:flex; flex-direction:column; gap:8px; }
+  .steps li { counter-increment:s; display:flex; gap:10px; color:#c9d5f2; font-size:14.5px; }
+  .steps li::before { content:counter(s); flex:none; width:24px; height:24px; border-radius:50%; background:var(--acc); color:#fff; font-weight:800; font-size:13px; display:grid; place-items:center; margin-top:1px; }
+  #lb { position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.94); display:none; align-items:center; justify-content:center; } #lb.on { display:flex; }
+  #lb img { max-width:100vw; max-height:100dvh; object-fit:contain; } #lb .x { position:absolute; }
+  #lb .nav2 { position:absolute; top:50%; width:48px; height:64px; margin-top:-32px; background:rgba(255,255,255,.1); border:0; color:#fff; font-size:28px; cursor:pointer; border-radius:12px; } #lb .prev { left:8px; } #lb .next { right:8px; }
+
+  /* ---- великий екран ---- */
+  @media (min-width:900px) {
+    .nav .wrap { flex-wrap:nowrap; } .links { display:flex; } .burger, .menu { display:none !important; }
+    .nsearch { flex:0 1 320px; order:0; margin-left:auto; } .mod-link { display:flex; }
+    .layout { display:grid; grid-template-columns:260px 1fr; gap:26px; align-items:start; }
+    .side { display:block; position:sticky; top:84px; background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:14px 10px; max-height:calc(100vh - 100px); overflow:auto; }
+    .side h4 { margin:2px 10px 8px; font-size:18px; display:flex; gap:8px; align-items:center; }
+    .side button.cat { width:100%; display:flex; align-items:center; gap:11px; background:none; border:0; border-radius:10px; padding:8px 10px; cursor:pointer; text-align:left; }
+    .side button.cat:hover { background:var(--card2); } .side button.cat.on { background:var(--acc); font-weight:700; }
+    .side button.cat img { width:26px; height:26px; object-fit:contain; } .side button.cat .n { margin-left:auto; color:var(--mute); } .side button.cat.on .n { color:#fff; }
+    .side .cta { margin:14px 6px 4px; padding:14px; border-radius:14px; background:linear-gradient(135deg,#1a3a80,#142a5c); border:1px solid var(--line2); }
+    .side .cta p { margin:0 0 10px; color:#c9d5f2; font-size:14px; } .side .cta .btn { width:100%; }
+    .chips { display:none; } .fab { display:none; }
+    .banner { min-height:300px; } .banner .in { padding:40px 36px; } .banner h2 { font-size:38px; }
+    .row-scroll { display:grid; grid-template-columns:repeat(4,1fr); overflow:visible; } .row-scroll .card { flex:none; }
+    .shots img { height:170px; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>FS23 <span>ModHub</span></h1>
-  <p class="sub">Моди для Farming Simulator 23. У грі вони підтягуються автоматично.</p>
-  <p style="margin:10px 0 0"><button class="btn ghost" id="sugBtn" type="button">＋ Запропонувати мод</button></p>
-</header>
-<div class="bar"><div>
-  <input id="q" type="search" placeholder="Пошук за назвою або автором" autocomplete="off">
-  <select id="cat"><option value="">Усі категорії</option></select>
-</div></div>
-<main id="list"><div class="empty">Завантаження…</div></main>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V9"/><path d="M12 9c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 9c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 15c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 15c3 0 5-2 5-5-3 0-5 2-5 5z"/></svg></span>FS23 <em>ModHub</em></a>
+  <div class="links">
+    <a class="on" href="#top">Головна</a><a href="#all">Моди</a><button type="button" data-open="about">Про сайт</button><button type="button" data-open="help">Допомога</button><a class="mod-link" href="review.html">Модераторам</a>
+  </div>
+  <button class="burger" id="burger" type="button" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="menu" id="menu"><a href="#top">Головна</a><a href="#all">Моди</a><button type="button" data-open="about">Про сайт</button><button type="button" data-open="help">Допомога</button><a href="review.html">Модераторам</a></div>
+  <div class="nsearch"><input id="q" type="search" placeholder="Пошук модів…" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+</div></nav>
+
+<div class="wrap layout" id="top">
+  <aside class="side">
+    <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg>Категорії</h4>
+    <div id="sideCats"></div>
+    <div class="cta"><p>Знайшли гарний мод? Запропонуйте його: власник перевірить і додасть.</p><button class="btn" type="button" id="sugBtn2">＋ Запропонувати мод</button></div>
+  </aside>
+  <div>
+    <div class="chips" id="chips"></div>
+    <div id="hero"></div>
+    <div id="newBox"></div>
+    <div class="sec" id="all"><h3 id="allTitle">Усі моди</h3><select id="sort" class="sort" aria-label="Сортування"><option value="new">Спочатку нові</option><option value="name">За назвою</option><option value="size">За розміром</option></select></div>
+    <main class="grid" id="list"><div class="skel"></div><div class="skel"></div><div class="skel"></div></main>
+  </div>
+</div>
 <footer id="count"></footer>
+<button class="btn fab" id="sugBtn" type="button">＋ Запропонувати мод</button>
 
 <dialog id="dlg">
   <div class="dh" id="dh"></div>
+  <button class="x" id="dx" type="button" aria-label="Закрити">✕</button>
   <div class="db" id="db"></div>
 </dialog>
+
+<dialog id="info"><div class="db" id="infoBody"></div></dialog>
 
 <dialog id="sug">
   <form class="db" id="sugForm" method="dialog">
     <h2>Запропонувати мод</h2>
-    <ol class="m" style="margin:0;padding-left:20px"><li>Заповніть форму нижче й натисніть «Надіслати».</li><li>Відкриється сторінка GitHub із вже готовим текстом. Увійдіть у свій акаунт (або створіть безкоштовний).</li><li>Додайте ZIP мода й фото кнопкою «Add files» під полем опису.</li><li>Натисніть зелену кнопку <b>Submit new issue</b>. Готово: пропозицію побачать модератори.</li></ol>
-    <div class="m">Ваша пропозиція потрапить до власника сайту. Він перевірить мод у грі й, якщо все добре, додасть його в каталог. Потрібен безкоштовний акаунт GitHub: пропозиція відкриється там.</div>
+    <ol class="steps"><li>Заповніть форму нижче й натисніть «Надіслати».</li><li>Відкриється сторінка GitHub із готовим текстом. Увійдіть у свій акаунт (або створіть безкоштовний).</li><li>Додайте ZIP мода й фото кнопкою «Add files» під полем опису.</li><li>Натисніть зелену кнопку <b>Submit new issue</b>. Пропозицію побачать модератори.</li></ol>
+    <div class="m">Власник перевірить мод у грі й, якщо все добре, додасть його в каталог.</div>
     <label>Назва мода</label><input id="sName" maxlength="80" required>
     <label>Посилання на мод (необов'язково, якщо додасте ZIP у вікні GitHub)</label><input id="sLink" type="url" placeholder="https://…">
-    <div class="m">Мод можна додати файлом: у вікні GitHub, яке відкриється, натисніть «Add files» і виберіть ZIP (до 25 МБ). Якщо мод більший, завантажте його в хмару (Google Диск, Mega) і вставте посилання сюди.</div>
-    <label>Категорія</label><select id="sCat" style="flex:1 1 auto"></select>
-    <label>Посилання на фото мода (необов'язково, по одному в рядку)</label><textarea id="sPics" rows="3" placeholder="https://…/1.jpg" style="background:#0c0f13;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit"></textarea>
-    <div class="m">Або додайте фото прямо у вікні GitHub, яке відкриється: кнопка «Add files» або вставте/перетягніть їх у поле опису.</div>
-    <label>Коментар (необов'язково)</label><textarea id="sNote" rows="3" maxlength="500" style="background:#0c0f13;color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit"></textarea>
+    <div class="m">ZIP до 25 МБ можна додати файлом у вікні GitHub. Більший мод завантажте в хмару (Google Диск, Mega) і вставте посилання сюди.</div>
+    <label>Категорія</label><select id="sCat"></select>
+    <label>Посилання на фото мода (необов'язково, по одному в рядку)</label><textarea id="sPics" rows="3" placeholder="https://…/1.jpg"></textarea>
+    <div class="m">Або додайте фото прямо у вікні GitHub: кнопка «Add files» чи вставте/перетягніть їх у поле опису.</div>
+    <label>Коментар (необов'язково)</label><textarea id="sNote" rows="3" maxlength="500"></textarea>
     <div class="row"><button class="btn" type="submit">Надіслати</button><button class="btn ghost" type="button" id="sClose">Закрити</button></div>
   </form>
 </dialog>
+
+<div id="lb"><button class="x" id="lbx" type="button" aria-label="Закрити">✕</button><button class="nav2 prev" type="button">‹</button><img alt=""><button class="nav2 next" type="button">›</button></div>
 
 <script src="config.js"></script>
 <script src="shared.js?v=20261114"></script>
@@ -91,10 +191,19 @@
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " МБ" : Math.max(1, Math.round(b / 1024)) + " КБ";
-function tagHtml(m) { const ic = FS.categoryIcon(m.category); return `<span class="tag">${ic ? `<img src="${esc(ic)}" alt="" onerror="this.remove()">` : ""}${esc(catTitle[m.category] || m.category)}</span>`; }
+const fdate = (d) => { const t = new Date(d); return isNaN(t) ? "" : t.toLocaleDateString("uk-UA", { day: "2-digit", month: "2-digit", year: "numeric" }); };
+const isNew = (m) => m.createdAt && (Date.now() - new Date(m.createdAt)) < 14 * 864e5;
 const catTitle = Object.fromEntries(FS.CATEGORIES.map((c) => [c.name, c.title]));
 const nl = (s) => String(s || "").replace(/\\n/g, "\n");
-// шлях картинки зі сховища -> безпечний відносний URL
+const imgUrl = (p) => /^https?:\/\//i.test(p || "") ? p : p ? p.split("/").map(encodeURIComponent).join("/") : "";
+const safeHref = (u) => /^https:\/\//.test(u) ? u : "#";
+const IC = {
+  dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>',
+  cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  box: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>',
+  tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12 12 20 4 12V4h8l8 8z"/><circle cx="8.5" cy="8.5" r="1"/></svg>',
+  star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8L12 2z"/></svg>',
+};
 function coverImg(m) {
   const list = [m.image, ...(m.screenshots || [])].filter(Boolean).map(imgUrl);
   const ic = FS.categoryIcon(m.category); if (ic) list.push(ic);
@@ -106,64 +215,100 @@ function nextCover(img) {
   if (n >= list.length) { img.remove(); return; }
   img.dataset.n = n + 1; img.classList.toggle("ic", /^icons\//.test(list[n])); img.src = list[n];
 }
-const imgUrl = (p) => /^https?:\/\//i.test(p || "") ? p : p ? p.split("/").map(encodeURIComponent).join("/") : "";
-const safeHref = (u) => /^https:\/\//.test(u) ? u : "#";
-let mods = [];
+function catIcon(name) { const ic = FS.categoryIcon(name); return ic ? `<img src="${esc(ic)}" alt="" onerror="this.remove()">` : ""; }
 
+let mods = [], curCat = "";
+const filtering = () => !!(curCat || $("q").value.trim());
+function cardHtml(m, i, k) {
+  return `<article class="card" data-i="${i}" style="animation-delay:${Math.min(k, 12) * 30}ms">
+    <div class="img">${coverImg(m)}${isNew(m) ? '<span class="badge">Новий</span>' : ""}<span class="pill">${catIcon(m.category)}${esc(catTitle[m.category] || m.category)}</span></div>
+    <div class="body">
+      <div class="t">${esc(m.title)}</div>
+      ${m.author ? `<div class="au">${esc(m.author)}</div>` : ""}
+      <div class="meta"><span>${IC.tag}v${esc(m.version)}</span><span>${IC.box}${fmt(m.size || 0)}</span>${m.createdAt ? `<span>${IC.cal}${fdate(m.createdAt)}</span>` : ""}</div>
+      <a class="btn" href="${esc(safeHref(m.downloadUrl))}" data-dl>${IC.dl}Завантажити</a>
+    </div></article>`;
+}
+function sortedRows(rows) {
+  const f = { new: (a, b) => String(b.m.createdAt || "").localeCompare(String(a.m.createdAt || "")) || b.i - a.i, name: (a, b) => String(a.m.title).localeCompare(String(b.m.title), "uk"), size: (a, b) => (b.m.size || 0) - (a.m.size || 0) }[$("sort").value];
+  return rows.sort(f);
+}
+function renderCats() {
+  const cnt = {}; mods.forEach((m) => { cnt[m.category] = (cnt[m.category] || 0) + 1; });
+  const used = FS.CATEGORIES.filter((c) => cnt[c.name]);
+  $("chips").innerHTML = `<button class="chip all ${curCat ? "" : "on"}" data-c="">Усі <span class="n">${mods.length}</span></button>` + used.map((c) => `<button class="chip ${curCat === c.name ? "on" : ""}" data-c="${c.name}">${catIcon(c.name)}${esc(c.title)} <span class="n">${cnt[c.name]}</span></button>`).join("");
+  $("sideCats").innerHTML = `<button class="cat ${curCat ? "" : "on"}" data-c="">${'<span style="width:26px;text-align:center">☰</span>'}Усі моди<span class="n">${mods.length}</span></button>` + used.map((c) => `<button class="cat ${curCat === c.name ? "on" : ""}" data-c="${c.name}">${catIcon(c.name)}${esc(c.title)}<span class="n">${cnt[c.name]}</span></button>`).join("");
+}
+function renderHero() {
+  if (filtering() || !mods.length) { $("hero").innerHTML = ""; $("newBox").innerHTML = ""; return; }
+  const all = sortedRowsBy("new");
+  const withPic = all.find(({ m }) => m.image || (m.screenshots || []).length);
+  const bg = withPic ? imgUrl(withPic.m.image || withPic.m.screenshots[0]) : "";
+  $("hero").innerHTML = `<section class="banner">${bg ? `<div class="bg" style="background-image:url('${esc(bg)}')"></div>` : ""}<div class="in"><h2>Моди для <em>Farming Simulator 23</em></h2><p>Обирайте мод тут, а в грі він підтягнеться й встановиться автоматично.</p><a class="btn" href="#all">Перейти до модів →</a></div>${withPic ? `<span class="feat">${esc(withPic.m.title)}</span>` : ""}</section>`;
+  const nw = all.slice(0, 4);
+  $("newBox").innerHTML = `<div class="sec"><h3>${IC.star}Нові моди</h3></div><div class="row-scroll">${nw.map(({ m, i }, k) => cardHtml(m, i, k)).join("")}</div>`;
+}
+function sortedRowsBy(mode) { const keep = $("sort").value; $("sort").value = mode; const r = sortedRows(mods.map((m, i) => ({ m, i }))); $("sort").value = keep; return r; }
 function render() {
-  const q = $("q").value.trim().toLowerCase(), c = $("cat").value;
-  const rows = mods.map((m, i) => ({ m, i })).filter(({ m }) =>
-    (!c || m.category === c) && (!q || ((m.title || "") + " " + (m.author || "")).toLowerCase().includes(q)));
-  $("list").innerHTML = rows.length ? rows.map(({ m, i }) => `
-    <article class="card" data-i="${i}">
-      <div class="img">${coverImg(m)}</div>
-      <div class="body">
-        <div class="t">${esc(m.title)}</div>
-        <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}</div>
-        ${m.author ? `<div class="m">Автор: ${esc(m.author)}</div>` : ""}
-        <div class="d">${esc(nl(m.description))}</div>
-        <a class="btn" href="${esc(safeHref(m.downloadUrl))}" data-dl>Завантажити</a>
-      </div>
-    </article>`).join("") : '<div class="empty">Нічого не знайдено</div>';
+  const q = $("q").value.trim().toLowerCase();
+  const rows = sortedRows(mods.map((m, i) => ({ m, i })).filter(({ m }) => (!curCat || m.category === curCat) && (!q || ((m.title || "") + " " + (m.author || "")).toLowerCase().includes(q))));
+  $("allTitle").textContent = curCat ? (catTitle[curCat] || curCat) : q ? "Результати пошуку" : "Усі моди";
+  $("list").innerHTML = rows.length ? rows.map(({ m, i }, k) => cardHtml(m, i, k)).join("") : '<div class="empty"><b>Нічого не знайдено</b>Спробуйте інший запит або категорію</div>';
   $("count").textContent = mods.length ? `Показано ${rows.length} з ${mods.length}` : "";
+  renderHero();
 }
 
+let shots = [], shotI = 0;
 function openMod(i) {
   const m = mods[i]; if (!m) return;
-  $("dh").innerHTML = coverImg(m);
-  $("db").innerHTML = `
-    <h2>${esc(m.title)}</h2>
-    <div class="m">${tagHtml(m)} v${esc(m.version)} · ${fmt(m.size || 0)}${m.author ? " · " + esc(m.author) : ""}</div>
-    <div class="desc">${esc(nl(m.description))}</div>
-    ${(m.screenshots || []).length ? `<div class="shots">${m.screenshots.map((s) => `<img src="${esc(imgUrl(s))}" loading="lazy" alt="">`).join("")}</div>` : ""}
-    <div class="row"><a class="btn" href="${esc(safeHref(m.downloadUrl))}">Завантажити ZIP</a><button class="btn ghost" id="close">Закрити</button></div>`;
-  $("close").onclick = () => $("dlg").close();
-  $("dlg").showModal();
+  $("dh").innerHTML = coverImg(m); shots = (m.screenshots || []).map(imgUrl);
+  $("db").innerHTML = `<h2>${esc(m.title)}</h2>
+    <div class="facts"><span class="fact">${catIcon(m.category)}<b>${esc(catTitle[m.category] || m.category)}</b></span><span class="fact">Версія <b>${esc(m.version)}</b></span><span class="fact">Розмір <b>${fmt(m.size || 0)}</b></span>${m.createdAt ? `<span class="fact">Додано <b>${fdate(m.createdAt)}</b></span>` : ""}${m.author ? `<span class="fact">Автор <b>${esc(m.author)}</b></span>` : ""}</div>
+    ${m.description ? `<div class="desc">${esc(nl(m.description))}</div>` : ""}
+    ${shots.length ? `<div class="shots">${shots.map((s, k) => `<img src="${esc(s)}" data-k="${k}" loading="lazy" alt="">`).join("")}</div>` : ""}
+    <div class="row"><a class="btn" href="${esc(safeHref(m.downloadUrl))}">${IC.dl}Завантажити ZIP</a><button class="btn ghost" id="close" type="button">Закрити</button></div>`;
+  $("close").onclick = () => $("dlg").close(); $("dlg").showModal(); $("dlg").scrollTop = 0;
 }
+function showShot(k) { shotI = (k + shots.length) % shots.length; $("lb").querySelector("img").src = shots[shotI]; $("lb").classList.add("on"); }
+function setCat(c) { curCat = c; renderCats(); render(); if (c) $("all").scrollIntoView(); }
 
-$("list").addEventListener("click", (e) => {
-  if (e.target.closest("[data-dl]")) return; // кнопка «Завантажити» працює як звичайне посилання
-  const card = e.target.closest(".card"); if (card) openMod(Number(card.dataset.i));
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".card"); if (card && !e.target.closest("[data-dl]")) return openMod(Number(card.dataset.i));
+  const cb = e.target.closest("[data-c]"); if (cb) return setCat(cb.dataset.c);
+  const op = e.target.closest("[data-open]"); if (op) { $("menu").classList.remove("on"); return openInfo(op.dataset.open); }
 });
-$("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
+$("burger").onclick = () => $("menu").classList.toggle("on");
+$("menu").addEventListener("click", (e) => { if (e.target.closest("a")) $("menu").classList.remove("on"); });
+$("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); const s = e.target.closest(".shots img"); if (s) showShot(Number(s.dataset.k)); });
+$("dx").onclick = () => $("dlg").close();
+$("lbx").onclick = () => $("lb").classList.remove("on");
+$("lb").querySelector(".prev").onclick = (e) => { e.stopPropagation(); showShot(shotI - 1); };
+$("lb").querySelector(".next").onclick = (e) => { e.stopPropagation(); showShot(shotI + 1); };
+$("lb").addEventListener("click", (e) => { if (e.target === $("lb") || e.target.tagName === "IMG") $("lb").classList.remove("on"); });
+let tx = 0; $("lb").addEventListener("touchstart", (e) => { tx = e.touches[0].clientX; }, { passive: true });
+$("lb").addEventListener("touchend", (e) => { const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) showShot(shotI + (d < 0 ? 1 : -1)); });
 $("q").addEventListener("input", render);
-$("cat").addEventListener("change", render);
+$("sort").addEventListener("change", render);
+
+const PAGES = {
+  about: ["Про сайт", `<p>FS23 ModHub — безкоштовний каталог модів для Farming Simulator 23 Mobile. Кожен мод перевіряється в грі перед публікацією.</p><p>У грі відкрийте ModHub: ті самі моди з'являться там автоматично, і їх можна встановити одним дотиком.</p>`],
+  help: ["Допомога", `<ol class="steps"><li>Оберіть мод і натисніть «Завантажити». Або відкрийте ModHub у грі: там моди встановлюються самі.</li><li>Якщо качали ZIP вручну, не розпаковуйте його: покладіть у папку модів гри.</li><li>Запустіть гру й увімкніть мод у налаштуваннях збереження.</li><li>Хочете додати свій мод? Натисніть «Запропонувати мод».</li></ol>`],
+};
+function openInfo(k) { const [t, h] = PAGES[k]; $("infoBody").innerHTML = `<h2>${t}</h2><div class="desc">${h}</div><div class="row"><button class="btn" type="button" id="infoClose">Зрозуміло</button></div>`; $("infoClose").onclick = () => $("info").close(); $("info").showModal(); }
+$("info").addEventListener("click", (e) => { if (e.target === $("info")) $("info").close(); });
 
 fetch("mods.json?t=" + Date.now(), { cache: "no-store" })
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then((j) => {
-    mods = j.mods || [];
-    const used = new Set(mods.map((x) => x.category));
-    FS.CATEGORIES.filter((x) => used.has(x.name)).forEach((x) => $("cat").insertAdjacentHTML("beforeend", `<option value="${x.name}">${esc(x.title)}</option>`));
-    render();
-  })
-  .catch(() => { $("list").innerHTML = '<div class="empty">Не вдалося завантажити список модів</div>'; });
+  .then((j) => { mods = j.mods || []; renderCats(); render(); })
+  .catch(() => { $("list").innerHTML = '<div class="empty"><b>Не вдалося завантажити список</b>Перевірте інтернет і оновіть сторінку</div>'; });
 
 // ---------- пропозиції модів від відвідувачів (через GitHub Issues) ----------
 const CFG = window.FS_CONFIG;
 $("sCat").innerHTML = '<option value="">— не знаю —</option>' + FS.CATEGORIES.map((c) => `<option value="${c.name}">${c.title}</option>`).join("");
 $("sugBtn").addEventListener("click", () => $("sug").showModal());
+$("sugBtn2").addEventListener("click", () => $("sug").showModal());
 $("sClose").addEventListener("click", () => $("sug").close());
+$("sug").addEventListener("click", (e) => { if (e.target === $("sug")) $("sug").close(); });
 $("sugForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const body = `Назва: ${$("sName").value.trim()}\nПосилання: ${$("sLink").value.trim()}\nКатегорія: ${$("sCat").value}\nФото: ${$("sPics").value.split(/\s+/).filter((u) => /^https:\/\//i.test(u)).slice(0, 10).join(" ")}\nКоментар: ${$("sNote").value.trim().replace(/\n+/g, " ")}\n`;
