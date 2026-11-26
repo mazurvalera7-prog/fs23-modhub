@@ -2051,6 +2051,27 @@
         "https://stmods.org/farming_simulator_2022/mods/sz_5_4t_by_ed_mods_for_fs22/sz_5_4t_by_ed_mods_for_fs22_img6.jpg?6a4d142d31c49"
       ],
       "createdAt": "2026-11-14T11:28:17.750Z"
+    },
+    {
+      "title": "MAZ_856103",
+      "author": "Cheb_mods",
+      "version": "1.0.0.1",
+      "category": "trucks",
+      "description": "MAZ-6501A8 \"Kolos\" is a large-capacity grain truck with a wheeled structure \"6 × 4\", designed to transport a large volume of loose small-fraction cargo with a small specific weight on roads with asphalt or hard soil surface. Power: 309 kW / 420 hp; Speed: 85 km / h; Fuel tank volume: 500 l; Body volume 33,000 liters; Cost: 60,000 euros; Available Options: Color configuration of the cockpit, fenders; Engine configuration; License plate configuration; Support for the script \"SimpleIC\" Trailer Maz; Body volume 39,000 liters; Cost 25,000 euros",
+      "filename": "file.zip",
+      "size": 77190553,
+      "sha256": "",
+      "downloadUrl": "https://www.mediafire.com/file/j0cznpvroc6hlq4/FS22_MAZ_856103_Cheb.zip/file",
+      "zipPath": null,
+      "image": "images/maz-856103-d4d8b3.jpg",
+      "screenshots": [
+        "https://github.com/user-attachments/assets/b7ab7cc9-e2e9-4628-8edc-0dcc4780b232",
+        "https://github.com/user-attachments/assets/2fcee6d2-2a8b-447c-b8cd-f33a38f86b61",
+        "https://github.com/user-attachments/assets/ddf888cc-d822-47da-ac4e-4122ae9f9bd4",
+        "https://github.com/user-attachments/assets/898dc2ad-6ebb-449c-bb14-21e730c5b6c3"
+      ],
+      "createdAt": "2026-11-26T17:06:50.059Z",
+      "addedBy": "mazurvalera7-prog"
     }
   ]
 }
